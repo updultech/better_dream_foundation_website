@@ -38,9 +38,12 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Visit Us</h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  123 Hope Street<br />
-                  Suite 456<br />
-                  New York, NY 10001<br />
+                  123 Hope Street
+                  <br />
+                  Suite 456
+                  <br />
+                  New York, NY 10001
+                  <br />
                   United States
                 </p>
               </CardContent>
@@ -53,9 +56,12 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Call Us</h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Main Office: +1 (555) 123-4567<br />
-                  Donations: +1 (555) 123-4568<br />
-                  Emergency: +1 (555) 123-4569<br />
+                  Main Office: +1 (555) 123-4567
+                  <br />
+                  Donations: +1 (555) 123-4568
+                  <br />
+                  Emergency: +1 (555) 123-4569
+                  <br />
                   Toll-free: 1-800-BETTER-DREAM
                 </p>
               </CardContent>
@@ -68,9 +74,12 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Email Us</h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  General: info@betterdreamfoundation.org<br />
-                  Donations: donations@betterdreamfoundation.org<br />
-                  Volunteers: volunteers@betterdreamfoundation.org<br />
+                  General: info@betterdreamfoundation.org
+                  <br />
+                  Donations: donations@betterdreamfoundation.org
+                  <br />
+                  Volunteers: volunteers@betterdreamfoundation.org
+                  <br />
                   Press: media@betterdreamfoundation.org
                 </p>
               </CardContent>
@@ -90,14 +99,16 @@ export default function ContactPage() {
                 <div>
                   <h4 className="font-semibold mb-2">Weekdays</h4>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Monday - Friday<br />
+                    Monday - Friday
+                    <br />
                     9:00 AM - 6:00 PM EST
                   </p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Weekends</h4>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Saturday: 10:00 AM - 2:00 PM EST<br />
+                    Saturday: 10:00 AM - 2:00 PM EST
+                    <br />
                     Sunday: Closed
                   </p>
                 </div>
@@ -169,11 +180,7 @@ export default function ContactPage() {
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Message *</label>
-                    <Textarea 
-                      placeholder="Please provide details about your inquiry..."
-                      rows={6}
-                      required
-                    />
+                    <Textarea placeholder="Please provide details about your inquiry..." rows={6} required />
                   </div>
 
                   <div className="flex items-center space-x-2">
@@ -210,7 +217,9 @@ export default function ContactPage() {
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold mb-3">How can I volunteer with Better Dream Foundation?</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    You can apply to volunteer through our Get Involved page. We offer both local and international volunteer opportunities across various programs including education, healthcare, and community development.
+                    You can apply to volunteer through our Get Involved page. We offer both local and international
+                    volunteer opportunities across various programs including education, healthcare, and community
+                    development.
                   </p>
                 </CardContent>
               </Card>
@@ -219,9 +228,48 @@ export default function ContactPage() {
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold mb-3">How are donations used?</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    We maintain complete transparency about fund allocation. 85% of donations go directly to programs, 10% to administrative costs, and 5% to fundraising. You can view detailed financial reports in our Annual Reports section.
+                    We maintain complete transparency about fund allocation. 85% of donations go directly to programs,
+                    10% to administrative costs, and 5% to fundraising. You can view detailed financial reports in our
+                    Annual Reports section.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>\
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-3">What countries do you work in?</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    We currently operate programs in 15 countries across Africa, Asia, and Latin America. Our focus is
+                    on underserved communities where we can make the greatest impact through our education, healthcare,
+                    and development programs.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-3">How can I stay updated on your work?</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    You can subscribe to our newsletter, follow us on social media, or check our News & Events page
+                    regularly for updates on our programs, impact stories, and upcoming events.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-3">Do you accept corporate partnerships?</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Yes, we welcome partnerships with corporations that share our values and commitment to social
+                    impact. We offer various partnership opportunities including sponsorships, employee volunteer
+                    programs, and collaborative projects.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
