@@ -1,140 +1,142 @@
 import Link from "next/link"
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, Heart } from "lucide-react"
 import Image from "next/image"
 
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Organization Info */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
+          {/* About */}
+          <div>
+            <div className="flex items-center space-x-2 mb-6">
               <Image
                 src="/images/logo.jpg"
                 alt="Better Dream Foundation Logo"
-                width={32}
-                height={32}
+                width={40}
+                height={40}
                 className="rounded-full"
               />
-              <span className="text-lg font-bold">Better Dream Foundation</span>
+              <span className="text-xl font-bold text-blue-400">Better Dream Foundation</span>
             </div>
-            <p className="text-gray-300 text-sm">
-              Empowering communities worldwide through education, healthcare, and sustainable development programs.
+            <p className="text-gray-400 mb-6">
+              Empowering communities through education, healthcare, and sustainable development programs that transform
+              lives.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
+              <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <Facebook className="h-5 w-5" />
+                <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
+              <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <Twitter className="h-5 w-5" />
+                <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
+              <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <Instagram className="h-5 w-5" />
+                <span className="sr-only">Instagram</span>
               </Link>
-              <Link href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
-                <Linkedin className="h-5 w-5" />
+              <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <Youtube className="h-5 w-5" />
+                <span className="sr-only">YouTube</span>
               </Link>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
+            <ul className="space-y-3">
               <li>
-                <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/about" className="text-gray-400 hover:text-blue-400 transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/projects" className="text-gray-400 hover:text-blue-400 transition-colors">
                   Our Projects
                 </Link>
               </li>
               <li>
-                <Link href="/get-involved" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/get-involved" className="text-gray-400 hover:text-blue-400 transition-colors">
                   Get Involved
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/news" className="text-gray-400 hover:text-blue-400 transition-colors">
                   News & Events
                 </Link>
               </li>
               <li>
-                <Link href="/reports" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/reports" className="text-gray-400 hover:text-blue-400 transition-colors">
                   Annual Reports
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Programs */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Our Programs</h3>
-            <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/projects" className="text-gray-300 hover:text-white transition-colors">
-                  Education
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-gray-300 hover:text-white transition-colors">
-                  Healthcare
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-gray-300 hover:text-white transition-colors">
-                  Environment
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-gray-300 hover:text-white transition-colors">
-                  Women Empowerment
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-gray-300 hover:text-white transition-colors">
-                  Emergency Relief
+                <Link href="/contact" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  Contact Us
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact Us</h3>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300">123 Hope Street, City, Country</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300">info@betterdreamfoundation.org</span>
-              </div>
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start">
+                <MapPin className="h-5 w-5 text-blue-400 mr-2 mt-0.5" />
+                <span className="text-gray-400">123 Main Street, City, Country</span>
+              </li>
+              <li className="flex items-center">
+                <Phone className="h-5 w-5 text-blue-400 mr-2" />
+                <span className="text-gray-400">+1 (555) 123-4567</span>
+              </li>
+              <li className="flex items-center">
+                <Mail className="h-5 w-5 text-blue-400 mr-2" />
+                <span className="text-gray-400">info@betterdreamfoundation.org</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Newsletter</h3>
+            <p className="text-gray-400 mb-4">Subscribe to our newsletter for updates on our work and impact.</p>
+            <div className="space-y-3">
+              <Input
+                type="email"
+                placeholder="Your email address"
+                className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
+              />
+              <Button className="w-full bg-blue-600 hover:bg-blue-700">Subscribe</Button>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-300">
-          <p>&copy; {new Date().getFullYear()} Better Dream Foundation. All rights reserved.</p>
-          <div className="flex justify-center space-x-4 mt-2">
-            <Link href="/privacy" className="hover:text-white transition-colors">
+        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-400 text-sm mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} Better Dream Foundation. All rights reserved.
+          </p>
+          <div className="flex space-x-6">
+            <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors text-sm">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
+            <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors text-sm">
               Terms of Service
             </Link>
-            <Link href="/transparency" className="hover:text-white transition-colors">
-              Transparency
+            <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors text-sm">
+              Cookie Policy
             </Link>
           </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="text-gray-500 text-sm flex items-center justify-center">
+            Made with <Heart className="h-4 w-4 text-red-500 mx-1" /> by Better Dream Foundation
+          </p>
         </div>
       </div>
     </footer>

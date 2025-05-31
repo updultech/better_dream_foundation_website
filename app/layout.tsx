@@ -77,8 +77,32 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#2563eb" />
+        {/* Prevent MetaMask detection */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Disable Web3 and MetaMask detection
+              window.ethereum = undefined;
+              window.web3 = undefined;
+              
+              // Prevent any potential MetaMask detection
+              Object.defineProperty(window, 'ethereum', {
+                value: undefined,
+                writable: false,
+                configurable: false
+              });
+              
+              // Block any potential Web3 detection
+              Object.defineProperty(window, 'web3', {
+                value: undefined,
+                writable: false,
+                configurable: false
+              });
+            `,
+          }}
+        />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} theme-transition`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

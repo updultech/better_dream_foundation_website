@@ -62,6 +62,7 @@ export default function HomePage() {
                 width={600}
                 height={500}
                 className="rounded-lg shadow-2xl"
+                priority
               />
             </div>
           </div>
@@ -190,13 +191,14 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-              <Image
-                src="/images/digital-learning-center.jpg"
-                alt="Digital Learning Centers project with youth volunteers in yellow shirts participating in the 'Cleaning for Peace' initiative"
-                width={400}
-                height={200}
-                className="w-full h-48 object-cover"
-              />
+              <div className="relative h-48 w-full">
+                <Image
+                  src="/images/digital-learning-center.jpg"
+                  alt="Digital Learning Centers project with youth volunteers in yellow shirts participating in the 'Cleaning for Peace' initiative"
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-3">Digital Learning Centers</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -213,13 +215,14 @@ export default function HomePage() {
             </Card>
 
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-              <Image
-                src="/images/career-guidance-mentorship.jpg"
-                alt="Career guidance and mentorship program with students in pink uniforms gathered for human rights and career awareness session"
-                width={400}
-                height={200}
-                className="w-full h-48 object-cover"
-              />
+              <div className="relative h-48 w-full">
+                <Image
+                  src="/images/career-guidance-mentorship.jpg"
+                  alt="Career guidance and mentorship program with students in pink uniforms gathered for human rights and career awareness session"
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-3">Career Guidance and Mentorship</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -236,13 +239,14 @@ export default function HomePage() {
             </Card>
 
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-              <Image
-                src="/images/sanitary-pads-donation.jpg"
-                alt="Donation of sanitary pads to schoolgirls in Ghana, showing girls in school uniforms proudly holding up their sanitary pad packages"
-                width={400}
-                height={200}
-                className="w-full h-48 object-cover"
-              />
+              <div className="relative h-48 w-full">
+                <Image
+                  src="/images/sanitary-pads-donation.jpg"
+                  alt="Donation of sanitary pads to schoolgirls in Ghana, showing girls in school uniforms proudly holding up their sanitary pad packages"
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-3">Donation of Sanitary Pads</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">

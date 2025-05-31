@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -11,6 +11,18 @@ import Image from "next/image"
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  // Ensure we only render theme switching UI client-side to avoid hydration mismatch
+  useEffect(() => {
+    // Prevent MetaMask detection
+    if (typeof window !== "undefined") {
+      window.ethereum = undefined
+      window.web3 = undefined
+    }
+
+    setMounted(true)
+  }, [])
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -27,13 +39,14 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <Image
-              src="/images/logo.jpg"
-              alt="Better Dream Foundation Logo"
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
+            <div className="relative w-10 h-10">
+              <Image
+                src="/images/logo.jpg"
+                alt="Better Dream Foundation Logo"
+                fill
+                className="rounded-full object-cover"
+              />
+            </div>
             <span className="text-xl font-bold text-blue-600 dark:text-blue-400">Better Dream Foundation</span>
           </Link>
 
@@ -51,17 +64,19 @@ export function Header() {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="hidden sm:inline-flex"
-              aria-label="Toggle theme"
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
+            {mounted && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="hidden sm:inline-flex"
+                aria-label="Toggle theme"
+              >
+                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            )}
 
             <Link href="/donate" className="hidden sm:inline-flex">
               <Button className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold">
@@ -98,16 +113,18 @@ export function Header() {
                       </Button>
                     </Link>
                   </div>
-                  <Button
-                    variant="ghost"
-                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    className="justify-start"
-                    aria-label="Toggle theme"
-                  >
-                    <Sun className="h-5 w-5 mr-2 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Moon className="absolute h-5 w-5 ml-2 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                    Toggle theme
-                  </Button>
+                  {mounted && (
+                    <Button
+                      variant="ghost"
+                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                      className="justify-start"
+                      aria-label="Toggle theme"
+                    >
+                      <Sun className="h-5 w-5 mr-2 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                      <Moon className="absolute h-5 w-5 ml-2 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                      Toggle theme
+                    </Button>
+                  )}
                 </nav>
               </SheetContent>
             </Sheet>

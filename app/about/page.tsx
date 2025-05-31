@@ -1,6 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Users, Target, Award, Globe } from "lucide-react"
+import { Users, Target, Award, Globe, Heart } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -55,7 +57,7 @@ export default function AboutPage() {
 
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="/images/community-distribution.jpg"
                 alt="Our mission in action"
                 width={600}
                 height={500}
@@ -173,7 +175,7 @@ export default function AboutPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
                 <Image
-                  src="/placeholder.svg?height=200&width=200"
+                  src="/images/sanitary-pads-program.jpg"
                   alt="CEO"
                   width={200}
                   height={200}
@@ -239,163 +241,41 @@ export default function AboutPage() {
                 </p>
               </CardContent>
             </Card>
+          </div>
 
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Education Program Manager"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">Dr. James Thompson</h3>
-                <p className="text-blue-600 font-medium mb-4">Education Program Manager</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Dr. Thompson leads our education initiatives and has established over 50 learning centers worldwide.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="text-center mt-8">
+            <Link href="/team">
+              <Button variant="outline" className="mt-4">
+                View Full Team
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Healthcare Director"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">Dr. Priya Sharma</h3>
-                <p className="text-blue-600 font-medium mb-4">Healthcare Director</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Dr. Sharma oversees our mobile health clinics and community health programs across 12 countries.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Communications Director"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">Emily Davis</h3>
-                <p className="text-blue-600 font-medium mb-4">Communications Director</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Emily manages our global communications strategy and stakeholder engagement initiatives.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Technology Director"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">David Kim</h3>
-                <p className="text-blue-600 font-medium mb-4">Technology Director</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  David leads our digital transformation initiatives and manages our technology infrastructure.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Regional Director Africa"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">Dr. Kwame Asante</h3>
-                <p className="text-blue-600 font-medium mb-4">Regional Director - Africa</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Dr. Asante oversees all programs across Africa and has 20 years of experience in community
-                  development.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Regional Director Asia"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">Dr. Raj Patel</h3>
-                <p className="text-blue-600 font-medium mb-4">Regional Director - Asia</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Dr. Patel manages our Asian operations and specializes in sustainable development and poverty
-                  alleviation.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Human Resources Director"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">Lisa Anderson</h3>
-                <p className="text-blue-600 font-medium mb-4">Human Resources Director</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Lisa manages our global workforce and volunteer programs, ensuring we attract and retain top talent.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Partnerships Director"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">Robert Martinez</h3>
-                <p className="text-blue-600 font-medium mb-4">Partnerships Director</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Robert develops strategic partnerships with governments, corporations, and other NGOs to amplify our
-                  impact.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Research Director"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">Dr. Sophie Laurent</h3>
-                <p className="text-blue-600 font-medium mb-4">Research & Impact Director</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Dr. Laurent leads our research initiatives and impact measurement, ensuring evidence-based program
-                  design.
-                </p>
-              </CardContent>
-            </Card>
+      {/* Call to Action */}
+      <section className="py-16 bg-blue-700 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Join Us in Making a Difference</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Together, we can create lasting change in communities around the world.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/get-involved">
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-blue-900">
+                Get Involved
+              </Button>
+            </Link>
+            <Link href="/donate">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-blue-700"
+              >
+                <Heart className="mr-2 h-5 w-5" />
+                Donate Now
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
