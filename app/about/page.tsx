@@ -267,8 +267,7 @@ export default function AboutPage() {
             <Link href="/donate">
               <Button
                 size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-700"
+                className="bg-blue-600 hover:bg-blue-700 text-white border-blue-600 hover:border-blue-700"
               >
                 <Heart className="mr-2 h-5 w-5" />
                 Donate Now
