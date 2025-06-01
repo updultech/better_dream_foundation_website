@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { BookOpen, Heart, Globe, Users, Handshake, Target, MapPin, Calendar, ArrowRight } from "lucide-react"
+import { BookOpen, Heart, Globe, Users, Handshake, Target, MapPin, Calendar } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import type { Metadata } from "next"
@@ -111,7 +111,7 @@ const categories = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="container mx-auto px-4">
@@ -223,10 +223,12 @@ export default function ProjectsPage() {
                       <div className="text-sm text-gray-600 dark:text-gray-300">{project.impact}</div>
                     </div>
 
-                    <Button variant="outline" className="w-full group">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    <Link
+                      href={`/projects/${project.title.toLowerCase().replace(/\s+/g, "-")}`}
+                      className="text-blue-600 hover:underline"
+                    >
+                      Learn more →
+                    </Link>
                   </CardContent>
                 </Card>
               )

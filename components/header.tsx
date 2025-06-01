@@ -15,12 +15,6 @@ export function Header() {
 
   // Ensure we only render theme switching UI client-side to avoid hydration mismatch
   useEffect(() => {
-    // Prevent MetaMask detection
-    if (typeof window !== "undefined") {
-      window.ethereum = undefined
-      window.web3 = undefined
-    }
-
     setMounted(true)
   }, [])
 

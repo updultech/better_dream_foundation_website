@@ -46,3 +46,10 @@ html.dark {
 .ethereum-related {
   display: none !important;
 }
+
+/* Hide any potential Web3 related elements */
+[data-metamask],
+[data-web3],
+[data-ethereum] {
+  display: none !important;
+}

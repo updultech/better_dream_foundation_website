@@ -14,8 +14,29 @@ export const metadata: Metadata = {
 }
 
 export default function GetInvolvedPage() {
+  const ways = [
+    {
+      title: "Volunteer",
+      description:
+        "Join our team of dedicated volunteers and contribute your skills to make a direct impact on our programs.",
+    },
+    {
+      title: "Donate",
+      description:
+        "Support our programs with a financial contribution. Every donation, no matter the size, makes a difference.",
+    },
+    {
+      title: "Fundraise",
+      description: "Organize fundraising events or campaigns in your community to support our mission.",
+    },
+    {
+      title: "Spread Awareness",
+      description: "Help us reach more people by sharing our mission on social media and with your network.",
+    },
+  ]
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="container mx-auto px-4">
@@ -314,6 +335,47 @@ export default function GetInvolvedPage() {
                 Contact Us
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Updated Ways Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white">
+              Ways to Make a Difference
+            </h2>
+            <p className="text-xl mb-12 text-center text-gray-700 dark:text-gray-300">
+              Whether you have time, skills, or resources to share, there's a perfect way for you to contribute to our
+              mission.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {ways.map((way, index) => (
+                <div key={index} className="border rounded-lg p-6">
+                  <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">{way.title}</h2>
+                  <p className="text-gray-700 dark:text-gray-300">{way.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="border rounded-lg p-8 bg-gray-50 dark:bg-gray-800">
+              <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800 dark:text-white">
+                Contact Us to Get Started
+              </h2>
+              <p className="text-gray-700 dark:text-gray-300 text-center mb-6">
+                Ready to make a difference? Reach out to us to learn more about how you can get involved.
+              </p>
+              <div className="text-center">
+                <Link
+                  href="/contact"
+                  className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors inline-block"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

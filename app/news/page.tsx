@@ -105,15 +105,57 @@ export default function NewsPage() {
   const featuredArticle = newsArticles.find((article) => article.featured)
   const regularArticles = newsArticles.filter((article) => !article.featured)
 
+  const news = [
+    {
+      title: "New Digital Learning Center Opens in Rural Kenya",
+      date: "March 15, 2024",
+      excerpt:
+        "We're excited to announce the opening of our 15th digital learning center, bringing technology education to 500 more students.",
+    },
+    {
+      title: "Partnership with Local Healthcare Providers Expands Medical Reach",
+      date: "March 10, 2024",
+      excerpt: "Our new partnership will enable us to serve 10,000 additional patients through mobile health clinics.",
+    },
+    {
+      title: "Clean Water Project Reaches Milestone: 50 Communities Served",
+      date: "March 5, 2024",
+      excerpt:
+        "Celebrating a major milestone in our clean water initiative with the completion of our 50th water purification system.",
+    },
+  ]
+
+  const events = [
+    {
+      title: "Annual Fundraising Gala",
+      date: "April 20, 2024",
+      location: "Grand Ballroom, City Center",
+      description: "Join us for an evening of celebration and fundraising to support our global programs.",
+    },
+    {
+      title: "Volunteer Orientation Workshop",
+      date: "April 15, 2024",
+      location: "Better Dream Foundation Office",
+      description: "Learn about our programs and how you can get involved as a volunteer.",
+    },
+    {
+      title: "Community Health Fair",
+      date: "April 25, 2024",
+      location: "Central Park Community Center",
+      description: "Free health screenings and wellness education for the local community.",
+    },
+  ]
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">News & Events</h1>
             <p className="text-xl lg:text-2xl text-blue-100">
-              Stay updated with our latest news, upcoming events, and success stories from around the world.
+              Stay updated with Better Dream Foundation's latest news, upcoming events, and success stories from around
+              the world.
             </p>
           </div>
         </div>

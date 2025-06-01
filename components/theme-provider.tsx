@@ -9,12 +9,6 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
   // Use useEffect for client-side mounting
   React.useEffect(() => {
-    // Prevent MetaMask detection
-    if (typeof window !== "undefined") {
-      window.ethereum = undefined
-      window.web3 = undefined
-    }
-
     setMounted(true)
 
     // Add a class to the document to indicate JS is enabled

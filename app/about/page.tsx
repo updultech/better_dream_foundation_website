@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="container mx-auto px-4">
@@ -57,8 +57,8 @@ export default function AboutPage() {
 
             <div className="relative">
               <Image
-                src="/images/community-distribution.jpg"
-                alt="Our mission in action"
+                src="/images/mission-vision-community.jpg"
+                alt="Better Dream Foundation community distribution event showing volunteers and community members celebrating with aid packages"
                 width={600}
                 height={500}
                 className="rounded-lg shadow-lg"
@@ -175,16 +175,16 @@ export default function AboutPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
                 <Image
-                  src="/images/sanitary-pads-program.jpg"
+                  src="/images/ceo-shaibu-mohammed.jpg"
                   alt="CEO"
                   width={200}
                   height={200}
                   className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
                 />
-                <h3 className="text-xl font-semibold mb-2">Sarah Johnson</h3>
+                <h3 className="text-xl font-semibold mb-2">Shaibu Mohammed</h3>
                 <p className="text-blue-600 font-medium mb-4">Chief Executive Officer</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  With over 15 years of experience in international development, Sarah leads our strategic vision and
+                  With over 15 years of experience in international development, Shaibu leads our strategic vision and
                   global operations.
                 </p>
               </CardContent>
@@ -245,9 +245,7 @@ export default function AboutPage() {
 
           <div className="text-center mt-8">
             <Link href="/team">
-              <Button variant="outline" className="mt-4">
-                View Full Team
-              </Button>
+              <Button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white">View Full Team</Button>
             </Link>
           </div>
         </div>
