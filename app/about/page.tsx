@@ -174,13 +174,16 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
-                <Image
-                  src="/images/ceo-shaibu-mohammed.jpg"
-                  alt="CEO"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
+                <div className="w-40 h-40 mx-auto mb-6 relative">
+                  <Image
+                    src="/images/ceo-shaibu-mohammed.jpg"
+                    alt="Shaibu Mohammed, CEO"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 160px"
+                    className="rounded-full object-cover object-center"
+                    style={{ objectPosition: "center 30%" }}
+                  />
+                </div>
                 <h3 className="text-xl font-semibold mb-2">Shaibu Mohammed</h3>
                 <p className="text-blue-600 font-medium mb-4">Chief Executive Officer</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -192,17 +195,21 @@ export default function AboutPage() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Program Director"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">Michael Chen</h3>
-                <p className="text-blue-600 font-medium mb-4">Program Director</p>
+                <div className="w-40 h-40 mx-auto mb-6 relative">
+                  <Image
+                    src="/images/regional-coordinator-ernest.jpg"
+                    alt="Agolmah Atozire Ernest, Regional Coordinator NR"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 160px"
+                    className="rounded-full object-cover object-center"
+                    style={{ objectPosition: "center top" }}
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Agolmah Atozire Ernest</h3>
+                <p className="text-blue-600 font-medium mb-4">Regional Coordinator NR</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Michael oversees all our field programs and ensures quality implementation across all our initiatives.
+                  Agolmah coordinates our regional initiatives and ensures effective implementation of programs across
+                  the Northern Region.
                 </p>
               </CardContent>
             </Card>
