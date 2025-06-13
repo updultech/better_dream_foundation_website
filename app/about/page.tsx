@@ -181,7 +181,7 @@ export default function AboutPage() {
                     fill
                     sizes="(max-width: 768px) 100vw, 160px"
                     className="rounded-full object-cover object-center"
-                    style={{ objectPosition: "center 30%" }}
+                    style={{ objectPosition: "center 15%" }}
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Shaibu Mohammed</h3>
@@ -218,16 +218,16 @@ export default function AboutPage() {
               <CardContent className="p-8">
                 <Image
                   src="/placeholder.svg?height=200&width=200"
-                  alt="Finance Director"
+                  alt="Regional Coordinator SR"
                   width={200}
                   height={200}
                   className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
                 />
-                <h3 className="text-xl font-semibold mb-2">Dr. Amara Okafor</h3>
-                <p className="text-blue-600 font-medium mb-4">Finance Director</p>
+                <h3 className="text-xl font-semibold mb-2">Awudu Yahaya</h3>
+                <p className="text-blue-600 font-medium mb-4">Regional Coordinator SR</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Dr. Okafor ensures financial transparency and accountability while maximizing the impact of every
-                  dollar donated.
+                  Awudu oversees our regional programs and coordinates community development initiatives across the
+                  Savannah Region.
                 </p>
               </CardContent>
             </Card>
@@ -235,16 +235,19 @@ export default function AboutPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
                 <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Operations Director"
+                  src="/images/project-manager-alhassan.jpg"
+                  alt="Alhassan Zakaria, Project Manager"
                   width={200}
                   height={200}
                   className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
+                  style={{ objectPosition: "center 20%" }}
                 />
-                <h3 className="text-xl font-semibold mb-2">Maria Rodriguez</h3>
-                <p className="text-blue-600 font-medium mb-4">Operations Director</p>
+                <h3 className="text-xl font-semibold mb-2">Alhassan Zakaria</h3>
+                <p className="text-blue-600 font-medium mb-4">Project Manager</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Maria manages day-to-day operations and coordinates between our global offices and field teams.
+                  Alhassan Zakaria is the Project Manager at Better Dream Foundation Ghana (Northern Regional Chapter)
+                  and aspiring Medical Laboratory Scientist with a passion for improving health outcomes. SDG ambassador
+                  at University for Development Studies. Committed to making a positive impact in his community.
                 </p>
               </CardContent>
             </Card>

@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect } from "react"
 import Link from "next/link"
 
 export default function Error({
@@ -10,13 +9,6 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  useEffect(() => {
-    // Filter out MetaMask errors from the console
-    if (!(error.message.includes("MetaMask") || error.message.includes("ChromeTransport"))) {
-      console.error("Page error:", error)
-    }
-  }, [error])
-
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-white">
       <div className="text-center">

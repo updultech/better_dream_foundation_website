@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Join Better Dream Foundation in creating positive change. We work to empower communities through education, healthcare, and sustainable development programs.",
   keywords: "NGO, charity, community development, education, healthcare, Better Dream Foundation",
   openGraph: {
-    title: "Better Dream Foundation",
+    title: "Better Dream Foundation Ghana",
     description: "Empowering Communities for a Better Tomorrow",
     type: "website",
   },
@@ -44,11 +44,7 @@ export default function HomePage() {
                   </Button>
                 </Link>
                 <Link href="/about">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-blue-800 px-8 py-4 text-lg"
-                  >
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
                     <BookOpen className="mr-2 h-5 w-5" />
                     Learn More
                   </Button>

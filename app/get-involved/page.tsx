@@ -2,7 +2,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Heart, Users, DollarSign, Calendar, Globe, Handshake, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
@@ -174,66 +173,59 @@ export default function GetInvolvedPage() {
 
             <Card>
               <CardContent className="p-8">
-                <form className="space-y-6">
+                <form className="space-y-6" action="/api/submit-volunteer" method="POST">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium mb-2">First Name</label>
-                      <Input placeholder="Enter your first name" />
+                      <Input name="firstName" placeholder="Enter your first name" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">Last Name</label>
-                      <Input placeholder="Enter your last name" />
+                      <Input name="lastName" placeholder="Enter your last name" />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Email Address</label>
-                    <Input type="email" placeholder="Enter your email address" />
+                    <Input type="email" name="email" placeholder="Enter your email address" />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Phone Number</label>
-                    <Input type="tel" placeholder="Enter your phone number" />
+                    <Input type="tel" name="phone" placeholder="Enter your phone number" />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Area of Interest</label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select your area of interest" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="education">Education</SelectItem>
-                        <SelectItem value="healthcare">Healthcare</SelectItem>
-                        <SelectItem value="environment">Environment</SelectItem>
-                        <SelectItem value="community">Community Development</SelectItem>
-                        <SelectItem value="women">Women Empowerment</SelectItem>
-                        <SelectItem value="emergency">Emergency Relief</SelectItem>
-                        <SelectItem value="fundraising">Fundraising</SelectItem>
-                        <SelectItem value="marketing">Marketing & Communications</SelectItem>
-                        <SelectItem value="admin">Administrative Support</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <select className="w-full px-3 py-2 border rounded-md" name="interest">
+                      <option value="">Select your area of interest</option>
+                      <option value="education">Education</option>
+                      <option value="healthcare">Healthcare</option>
+                      <option value="environment">Environment</option>
+                      <option value="community">Community Development</option>
+                      <option value="women">Women Empowerment</option>
+                      <option value="emergency">Emergency Relief</option>
+                      <option value="fundraising">Fundraising</option>
+                      <option value="marketing">Marketing & Communications</option>
+                      <option value="admin">Administrative Support</option>
+                    </select>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Availability</label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select your availability" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="weekdays">Weekdays</SelectItem>
-                        <SelectItem value="weekends">Weekends</SelectItem>
-                        <SelectItem value="both">Both Weekdays and Weekends</SelectItem>
-                        <SelectItem value="flexible">Flexible</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <select className="w-full px-3 py-2 border rounded-md" name="availability">
+                      <option value="">Select your availability</option>
+                      <option value="weekdays">Weekdays</option>
+                      <option value="weekends">Weekends</option>
+                      <option value="both">Both Weekdays and Weekends</option>
+                      <option value="flexible">Flexible</option>
+                    </select>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Skills & Experience</label>
                     <Textarea
+                      name="skills"
                       placeholder="Tell us about your relevant skills, experience, and what motivates you to volunteer with us"
                       rows={4}
                     />

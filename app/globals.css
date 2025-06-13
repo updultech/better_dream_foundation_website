@@ -16,12 +16,10 @@
   }
 }
 
-/* Remove any Web3 or MetaMask related styles */
 body {
   color: rgb(var(--foreground-rgb));
 }
 
-/* Fix for potential theme flashing during load */
 .no-js-show {
   display: none;
 }
@@ -30,26 +28,24 @@ html.js .no-js-show {
   display: block;
 }
 
-/* Ensure proper dark mode transitions */
 html.dark {
   color-scheme: dark;
 }
 
-/* Prevent layout shifts during theme changes */
 .theme-transition {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Disable any potential Web3 related styles */
-.web3-related,
-.metamask-related,
-.ethereum-related {
+/* MetaMask blocker styles */
+/* Hide any MetaMask related elements that might appear */
+[class*="metamask"],
+[id*="metamask"],
+[class*="web3"],
+[id*="web3"],
+[class*="ethereum"],
+[id*="ethereum"] {
   display: none !important;
-}
-
-/* Hide any potential Web3 related elements */
-[data-metamask],
-[data-web3],
-[data-ethereum] {
-  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }

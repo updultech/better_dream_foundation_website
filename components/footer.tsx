@@ -26,19 +26,30 @@ export function Footer() {
               lives.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <Link
+                href="https://www.facebook.com/profile.php?id=100087786070983"
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+              >
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <Link
+                href="https://twitter.com/shaibum137?t=nRW3UxWL1isYYkSiVuTuhw&s=09
+
+"
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+              >
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <Link href="https://www.instagram.com/betterdreamfoundationghana?igsh=YzljYTk1ODg3Zg==" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <Link
+                href="#"
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+              >
                 <Youtube className="h-5 w-5" />
                 <span className="sr-only">YouTube</span>
               </Link>
@@ -88,11 +99,11 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-blue-400 mr-2 mt-0.5" />
-                <span className="text-gray-400">123 Main Street, City, Country</span>
+                <span className="text-gray-400">P. O Box, 45, East Legon, Ghana</span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-blue-400 mr-2" />
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+                <span className="text-gray-400">+233597399216</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-blue-400 mr-2" />
