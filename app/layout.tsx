@@ -5,7 +5,6 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -78,9 +77,6 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#2563eb" />
-
-        {/* Load Web3 mock implementation as early as possible */}
-        <Script src="/web3-mock.js" strategy="beforeInteractive" />
       </head>
       <body className={`${inter.className} theme-transition`}>
         <ThemeProvider

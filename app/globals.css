@@ -20,32 +20,10 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
-.no-js-show {
-  display: none;
-}
-
-html.js .no-js-show {
-  display: block;
-}
-
 html.dark {
   color-scheme: dark;
 }
 
 .theme-transition {
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* MetaMask blocker styles */
-/* Hide any MetaMask related elements that might appear */
-[class*="metamask"],
-[id*="metamask"],
-[class*="web3"],
-[id*="web3"],
-[class*="ethereum"],
-[id*="ethereum"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
 }

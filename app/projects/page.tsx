@@ -17,13 +17,13 @@ const projects = [
     id: 1,
     title: "Digital Learning Centers",
     category: "Education",
-    location: "Rural Kenya",
+    location: "Rural Ghana",
     status: "Active",
     description:
       "Establishing computer labs and digital literacy programs in rural schools to bridge the digital divide and prepare students for the modern economy.",
     impact: "2,500 students trained",
     duration: "2023 - 2025",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/digital-learning-center.jpg",
     icon: BookOpen,
     color: "blue",
   },
@@ -31,13 +31,13 @@ const projects = [
     id: 2,
     title: "Mobile Health Clinics",
     category: "Healthcare",
-    location: "Remote Bangladesh",
+    location: "Remote Ghana",
     status: "Active",
     description:
       "Bringing essential healthcare services to remote villages through mobile clinics staffed with qualified medical professionals.",
     impact: "15,000 patients served",
     duration: "2022 - 2024",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/mobile-health-clinic.jpg",
     icon: Heart,
     color: "red",
   },
@@ -45,7 +45,7 @@ const projects = [
     id: 3,
     title: "Clean Water Initiative",
     category: "Environment",
-    location: "Sub-Saharan Africa",
+    location: "Northern Ghana",
     status: "Completed",
     description:
       "Installing water purification systems and teaching communities about water conservation and hygiene practices.",
@@ -59,13 +59,13 @@ const projects = [
     id: 4,
     title: "Women's Empowerment Program",
     category: "Women Empowerment",
-    location: "Rural India",
+    location: "Rural Ghana",
     status: "Active",
     description:
       "Providing vocational training, microfinance opportunities, and leadership development for women in rural communities.",
     impact: "1,200 women empowered",
     duration: "2023 - 2026",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/womens-empowerment-program.jpg",
     icon: Handshake,
     color: "purple",
   },
@@ -73,27 +73,27 @@ const projects = [
     id: 5,
     title: "Youth Leadership Academy",
     category: "Community Development",
-    location: "Urban Philippines",
+    location: "Urban Ghana",
     status: "Active",
     description:
       "Training young leaders to become change agents in their communities through leadership skills and civic engagement programs.",
     impact: "500 youth leaders trained",
     duration: "2022 - 2025",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/youth-leadership-conference.jpg",
     icon: Users,
     color: "yellow",
   },
   {
     id: 6,
-    title: "Emergency Relief Response",
-    category: "Emergency Relief",
-    location: "Disaster-affected areas",
+    title: "Capacity Building Workshops",
+    category: "Professional Development",
+    location: "Ghana",
     status: "Ongoing",
     description:
-      "Providing immediate assistance and long-term recovery support to communities affected by natural disasters and humanitarian crises.",
-    impact: "10,000 people assisted",
+      "Organizing and participating in professional development workshops and training programs to build local capacity and strengthen partnerships.",
+    impact: "200+ professionals trained",
     duration: "Ongoing",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/capacity-building-workshop.jpg",
     icon: Target,
     color: "orange",
   },
@@ -106,7 +106,7 @@ const categories = [
   { name: "Environment", count: projects.filter((p) => p.category === "Environment").length },
   { name: "Women Empowerment", count: projects.filter((p) => p.category === "Women Empowerment").length },
   { name: "Community Development", count: projects.filter((p) => p.category === "Community Development").length },
-  { name: "Emergency Relief", count: projects.filter((p) => p.category === "Emergency Relief").length },
+  { name: "Professional Development", count: projects.filter((p) => p.category === "Professional Development").length },
 ]
 
 export default function ProjectsPage() {
@@ -154,7 +154,11 @@ export default function ProjectsPage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-4 justify-center">
             {categories.map((category) => (
-              <Button key={category.name} variant="outline" className="hover:bg-blue-600 hover:text-white">
+              <Button
+                key={category.name}
+                variant="outline"
+                className="hover:bg-blue-600 hover:text-white bg-transparent"
+              >
                 {category.name} ({category.count})
               </Button>
             ))}
@@ -255,7 +259,7 @@ export default function ProjectsPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg"
+                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg bg-transparent"
               >
                 <Users className="mr-2 h-5 w-5" />
                 Volunteer

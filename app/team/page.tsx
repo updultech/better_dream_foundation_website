@@ -71,7 +71,7 @@ export default function TeamPage() {
     {
       name: "Maxwell Opoku Darkwah",
       role: "Regional Secretary",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/images/regional-secretary-maxwell.jpg",
       bio: "I love bringing order to chaos and making sure communication flows smoothly across our team. As Regional Secretary, I manage all official records and correspondence, ensuring we stay organized and informed. I take pride in being dependable, efficient, and always ready to support the team behind the scenes.",
       email: "maxwell@betterdreamfoundation.org",
     },
@@ -85,28 +85,28 @@ export default function TeamPage() {
     {
       name: "David Adu Nantwi",
       role: "Project Director",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/images/project-director-david.jpg",
       bio: "As Project Director, I take pride in turning vision into execution. I am passionate about building meaningful initiatives that are not only effective but also empowering for the people we serve. From planning to implementation, I focus on the little details that make a big impact, and I am always driven by results that uplift communities.",
       email: "david@betterdreamfoundation.org",
     },
     {
       name: "Ahmed Dawud Mohammed",
       role: "Financial Secretary",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/images/financial-secretary-ahmed.jpg",
       bio: "I believe financial accountability is at the heart of any strong organization. As Financial Secretary, I make it my duty to handle all funds with integrity, accuracy, and transparency. I am detail-oriented and deeply committed to ensuring that every cedi we manage contributes to our mission in the most responsible way possible.",
       email: "ahmed@betterdreamfoundation.org",
     },
     {
       name: "Ofori Paul",
       role: "Deputy Regional Secretary",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/images/deputy-secretary-ofori.jpg",
       bio: "In my role as Deputy Regional Secretary, I focus on the little things that make a big difference—supporting documentation, managing schedules, and helping keep the team organized. I am passionate about teamwork and always ready to lend a hand to ensure everything runs smoothly.",
       email: "ofori@betterdreamfoundation.org",
     },
     {
       name: "James Anibilla Adongo",
       role: "Graphic Designer",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/images/graphic-designer-james.jpg",
       bio: "Design is my way of storytelling. As the team's Graphic Designer, I use visuals to reflect who we are and what we stand for. Whether it's a flyer, banner, or social media post, I aim to create work that is not just eye-catching, but deeply connected to our mission. I believe good design should inspire action—and that's what I strive for every time.",
       email: "james@betterdreamfoundation.org",
     },
@@ -144,7 +144,7 @@ export default function TeamPage() {
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Complete Leadership Team
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w3xl mx-auto">
               Our comprehensive team of leaders, coordinators, and specialists working across all our programs and
               regions.
             </p>
