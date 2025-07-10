@@ -5,6 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -92,6 +93,15 @@ export default function RootLayout({
             <Footer />
           </div>
         </ThemeProvider>
+
+        {/* Load Web3 mock as a separate script with error handling */}
+        <Script
+          src="/web3-mock.js"
+          strategy="afterInteractive"
+          onError={(e) => {
+            console.log("Web3 mock script failed to load, continuing without it")
+          }}
+        />
       </body>
     </html>
   )

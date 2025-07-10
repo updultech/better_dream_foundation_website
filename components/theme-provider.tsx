@@ -11,8 +11,9 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     setMounted(true)
   }, [])
 
+  // Prevent hydration mismatch by not rendering theme-specific UI until mounted
   if (!mounted) {
-    return <>{children}</>
+    return <div className="theme-transition">{children}</div>
   }
 
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>

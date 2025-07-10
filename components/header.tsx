@@ -66,8 +66,7 @@ export function Header() {
                 className="hidden sm:inline-flex text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20"
                 aria-label="Toggle theme"
               >
-                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                 <span className="sr-only">Toggle theme</span>
               </Button>
             )}
@@ -118,9 +117,17 @@ export function Header() {
                       className="justify-start text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20"
                       aria-label="Toggle theme"
                     >
-                      <Sun className="h-5 w-5 mr-2 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                      <Moon className="absolute h-5 w-5 ml-2 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                      Toggle theme
+                      {theme === "dark" ? (
+                        <>
+                          <Sun className="h-5 w-5 mr-2" />
+                          Light mode
+                        </>
+                      ) : (
+                        <>
+                          <Moon className="h-5 w-5 mr-2" />
+                          Dark mode
+                        </>
+                      )}
                     </Button>
                   )}
                 </nav>
