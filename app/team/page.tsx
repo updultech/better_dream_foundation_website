@@ -18,8 +18,6 @@ export default function TeamPage() {
       image: "/images/ceo-shaibu-mohammed.jpg",
       bio: "With over 15 years of experience in international development, Shaibu leads our strategic vision and global operations. He holds a Master's degree in Development Studies and has worked with various international NGOs across Africa.",
       email: "shaibu@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
     },
     {
       name: "Agolmah Atozire Ernest",
@@ -27,8 +25,6 @@ export default function TeamPage() {
       image: "/images/regional-coordinator-ernest.jpg",
       bio: "Agolmah coordinates our regional initiatives and ensures effective implementation of programs across the Northern Region. He has extensive experience in community development and project management.",
       email: "ernest@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
     },
     {
       name: "Awudu Yahaya",
@@ -36,133 +32,69 @@ export default function TeamPage() {
       image: "/placeholder.svg?height=200&width=200",
       bio: "Awudu oversees our regional programs and coordinates community development initiatives across the Savannah Region. He specializes in rural development and community engagement.",
       email: "awudu@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
     },
     {
       name: "Hamdan Sibdoo Zakaria Hamid",
       role: "Publicity Secretary",
-      image: "hamdan.png?height=200&width=200",
+      image: "/placeholder.svg?height=200&width=200",
       bio: "Hamdan Sibdoo Zakaria Hamid is a passionate Computer Science student at the University for Development Studies with strong leadership experience and a drive for youth empowerment. As an active student leader and tech enthusiast, he is committed to using innovation and education to create lasting opportunities for young people across Ghana.",
       email: "hamdan@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
     },
     {
       name: "Alhassan Zakaria",
       role: "Project Manager",
       image: "/images/project-manager-alhassan.jpg",
-      bio: "I'm ALHASSAN ZAKARIA. Project Manager at Better Dream Foundation Ghana (Northern Regional Chapter) and aspiring Medical Laboratory Scientist with a passion for improving health outcomes. SDG ambassador at University for Development Studies. Committed to making a positive impact in my community..",
-      email: "amara@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
+      bio: "Alhassan Zakaria is the Project Manager at Better Dream Foundation Ghana and aspiring Medical Laboratory Scientist with a passion for improving health outcomes. SDG ambassador at University for Development Studies. Committed to making a positive impact in his community.",
+      email: "alhassan@betterdreamfoundation.org",
     },
     {
-      name: " Esther Lovia Dankyi
- ",
+      name: "Esther Lovia Dankyi",
       role: "Regional Coordinator AR",
       image: "/placeholder.svg?height=200&width=200",
-      bio: "As Regional Coordinator, I’m passionate about creating real impact at the grassroots level. I believe in leading by example and building strong, collaborative teams that can turn ideas into action. Every project I oversee is a chance to make a difference, and I’m committed to ensuring our region thrives through purposeful leadership and unity.
-
-.",
-      email: "maria@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
+      bio: "As Regional Coordinator, I am passionate about creating real impact at the grassroots level. I believe in leading by example and building strong, collaborative teams that can turn ideas into action. Every project I oversee is a chance to make a difference, and I am committed to ensuring our region thrives through purposeful leadership and unity.",
+      email: "esther@betterdreamfoundation.org",
     },
     {
-      name: "Maxwell Opoku Darkwah 
-",
+      name: "Maxwell Opoku Darkwah",
       role: "Regional Secretary",
       image: "/placeholder.svg?height=200&width=200",
-      bio: "I love bringing order to chaos and making sure communication flows smoothly across our team. As Regional Secretary, I manage all official records and correspondence, ensuring we stay organized and informed. I take pride in being dependable, efficient, and always ready to support the team behind the scenes.
-",
-      email: "james@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
+      bio: "I love bringing order to chaos and making sure communication flows smoothly across our team. As Regional Secretary, I manage all official records and correspondence, ensuring we stay organized and informed. I take pride in being dependable, efficient, and always ready to support the team behind the scenes.",
+      email: "maxwell@betterdreamfoundation.org",
     },
     {
       name: "Munayya Seidu Musah",
       role: "Deputy Regional Coordinator AR",
       image: "/placeholder.svg?height=200&width=200",
-      bio: "I serve as the Deputy Regional Coordinator with a heart for service and structure. I enjoy being hands-on with planning and problem-solving, and I’m always ready to support the team wherever needed. Working closely with the Regional Coordinator, I help keep our projects moving smoothly and our vision alive in every activity we carry out.",
-      email: "priya@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
+      bio: "I serve as the Deputy Regional Coordinator with a heart for service and structure. I enjoy being hands-on with planning and problem-solving, and I am always ready to support the team wherever needed. Working closely with the Regional Coordinator, I help keep our projects moving smoothly and our vision alive in every activity we carry out.",
+      email: "munayya@betterdreamfoundation.org",
     },
     {
       name: "David Adu Nantwi",
-      role: "Project Director
-",
+      role: "Project Director",
       image: "/placeholder.svg?height=200&width=200",
-      bio: "As Project Director, I take pride in turning vision into execution. I’m passionate about building meaningful initiatives that are not only effective but also empowering for the people we serve. From planning to implementation, I focus on the little details that make a big impact, and I’m always driven by results that uplift communities.
-.",
-      email: "emily@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
+      bio: "As Project Director, I take pride in turning vision into execution. I am passionate about building meaningful initiatives that are not only effective but also empowering for the people we serve. From planning to implementation, I focus on the little details that make a big impact, and I am always driven by results that uplift communities.",
+      email: "david@betterdreamfoundation.org",
     },
     {
       name: "Ahmed Dawud Mohammed",
       role: "Financial Secretary",
       image: "/placeholder.svg?height=200&width=200",
-      bio: "I believe financial accountability is at the heart of any strong organization. As Financial Secretary, I make it my duty to handle all funds with integrity, accuracy, and transparency. I’m detail-oriented and deeply committed to ensuring that every cedi we manage contributes to our mission in the most responsible way possible.
-.",
-      email: "david@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
+      bio: "I believe financial accountability is at the heart of any strong organization. As Financial Secretary, I make it my duty to handle all funds with integrity, accuracy, and transparency. I am detail-oriented and deeply committed to ensuring that every cedi we manage contributes to our mission in the most responsible way possible.",
+      email: "ahmed@betterdreamfoundation.org",
     },
     {
       name: "Ofori Paul",
       role: "Deputy Regional Secretary",
       image: "/placeholder.svg?height=200&width=200",
-      bio: "In my role as Deputy Regional Secretary, I focus on the little things that make a big difference—supporting documentation, managing schedules, and helping keep the team organized. I’m passionate about teamwork and always ready to lend a hand to ensure everything runs smoothly",
-      email: "kwame@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
+      bio: "In my role as Deputy Regional Secretary, I focus on the little things that make a big difference—supporting documentation, managing schedules, and helping keep the team organized. I am passionate about teamwork and always ready to lend a hand to ensure everything runs smoothly.",
+      email: "ofori@betterdreamfoundation.org",
     },
     {
       name: "James Anibilla Adongo",
       role: "Graphic Designer",
       image: "/placeholder.svg?height=200&width=200",
-      bio: "Design is my way of storytelling. As the team’s Graphic Designer, I use visuals to reflect who we are and what we stand for. Whether it’s a flyer, banner, or social media post, I aim to create work that is not just eye-catching, but deeply connected to our mission. I believe good design should inspire action—and that’s what I strive for every time.",
-      email: "raj@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
-    },
-    {
-      name: "Lisa Anderson",
-      role: "Human Resources Director",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "Lisa manages our global workforce and volunteer programs, ensuring we attract and retain top talent. She has 15 years of experience in HR management and organizational development.",
-      email: "lisa@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
-    },
-    {
-      name: "Robert Martinez",
-      role: "Partnerships Director",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "Robert develops strategic partnerships with governments, corporations, and other NGOs to amplify our impact. He has extensive experience in partnership development and stakeholder management.",
-      email: "robert@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
-    },
-    {
-      name: "Dr. Sophie Laurent",
-      role: "Research & Impact Director",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "Dr. Laurent leads our research initiatives and impact measurement, ensuring evidence-based program design. She holds a PhD in Social Research and has published extensively on development impact.",
-      email: "sophie@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
-    },
-    {
-      name: "Ahmed Hassan",
-      role: "Field Operations Manager",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "Ahmed coordinates field operations across multiple countries and ensures program quality and safety. He has 12 years of experience in field management and emergency response.",
-      email: "ahmed@betterdreamfoundation.org",
-      linkedin: "#",
-      twitter: "#",
+      bio: "Design is my way of storytelling. As the team's Graphic Designer, I use visuals to reflect who we are and what we stand for. Whether it's a flyer, banner, or social media post, I aim to create work that is not just eye-catching, but deeply connected to our mission. I believe good design should inspire action—and that's what I strive for every time.",
+      email: "james@betterdreamfoundation.org",
     },
   ]
 
@@ -173,7 +105,10 @@ export default function TeamPage() {
         <div className="container mx-auto px-4">
           <div className="flex items-center mb-6">
             <Link href="/about">
-              <Button variant="outline" className="mr-4 border-white text-white hover:bg-white hover:text-blue-800">
+              <Button
+                variant="outline"
+                className="mr-4 border-white text-white hover:bg-white hover:text-blue-800 bg-transparent"
+              >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to About Us
               </Button>
@@ -212,15 +147,6 @@ export default function TeamPage() {
                       fill
                       sizes="(max-width: 768px) 100vw, 128px"
                       className="rounded-full object-cover"
-                      style={
-                        member.image.includes("ceo-shaibu-mohammed")
-                          ? { objectPosition: "center 15%" } // Adjusted from 30% to 15% to show more of the head
-                          : member.image.includes("regional-coordinator-ernest")
-                            ? { objectPosition: "center top" }
-                            : member.image.includes("project-manager-alhassan")
-                              ? { objectPosition: "center 20%" } // Added specific positioning for Alhassan
-                              : {}
-                      }
                     />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">{member.name}</h3>
@@ -229,13 +155,25 @@ export default function TeamPage() {
 
                   {/* Contact Information */}
                   <div className="flex justify-center space-x-3 mt-4">
-                    <a href={`mailto:${member.email}`} className="text-gray-400 hover:text-blue-600 transition-colors">
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="text-gray-400 hover:text-blue-600 transition-colors"
+                      aria-label={`Email ${member.name}`}
+                    >
                       <Mail className="h-4 w-4" />
                     </a>
-                    <a href={member.linkedin} className="text-gray-400 hover:text-blue-600 transition-colors">
+                    <a
+                      href="#"
+                      className="text-gray-400 hover:text-blue-600 transition-colors"
+                      aria-label={`LinkedIn profile of ${member.name}`}
+                    >
                       <Linkedin className="h-4 w-4" />
                     </a>
-                    <a href={member.twitter} className="text-gray-400 hover:text-blue-600 transition-colors">
+                    <a
+                      href="#"
+                      className="text-gray-400 hover:text-blue-600 transition-colors"
+                      aria-label={`Twitter profile of ${member.name}`}
+                    >
                       <Twitter className="h-4 w-4" />
                     </a>
                   </div>
@@ -251,7 +189,7 @@ export default function TeamPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Join Our Team</h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            We're always looking for passionate individuals to join our mission of creating positive change.
+            We are always looking for passionate individuals to join our mission of creating positive change.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/get-involved">
@@ -260,7 +198,7 @@ export default function TeamPage() {
             <Link href="/get-involved">
               <Button
                 variant="outline"
-                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3"
+                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 bg-transparent"
               >
                 Volunteer Opportunities
               </Button>

@@ -58,7 +58,7 @@ export default function AboutPage() {
             <div className="relative">
               <Image
                 src="/images/mission-vision-community.jpg"
-                alt="Better Dream Foundation community distribution event showing volunteers and community members celebrating with aid packages"
+                alt="Better Dream Foundation community distribution event"
                 width={600}
                 height={500}
                 className="rounded-lg shadow-lg"
@@ -136,17 +136,17 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">Our Story</h2>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
-              <p className="text-gray-600 dark:text-gray-300 text-lg mb-6">
+            <div className="space-y-6">
+              <p className="text-gray-600 dark:text-gray-300 text-lg">
                 Better Dream Foundation was founded in 2010 by a group of passionate individuals who believed that
                 everyone deserves the opportunity to build a better future. What started as a small initiative to
                 provide educational support to children in underserved communities has grown into a comprehensive
                 organization working across multiple sectors and countries.
               </p>
 
-              <p className="text-gray-600 dark:text-gray-300 text-lg mb-6">
-                Over the years, we have learned that sustainable change requires a holistic approach. That's why our
-                programs now encompass education, healthcare, environmental conservation, women's empowerment, and
+              <p className="text-gray-600 dark:text-gray-300 text-lg">
+                Over the years, we have learned that sustainable change requires a holistic approach. That is why our
+                programs now encompass education, healthcare, environmental conservation, women empowerment, and
                 emergency relief. We work closely with local communities to understand their unique needs and develop
                 solutions that are culturally appropriate and sustainable.
               </p>
@@ -180,8 +180,7 @@ export default function AboutPage() {
                     alt="Shaibu Mohammed, CEO"
                     fill
                     sizes="(max-width: 768px) 100vw, 160px"
-                    className="rounded-full object-cover object-center"
-                    style={{ objectPosition: "center 15%" }}
+                    className="rounded-full object-cover"
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Shaibu Mohammed</h3>
@@ -201,8 +200,7 @@ export default function AboutPage() {
                     alt="Agolmah Atozire Ernest, Regional Coordinator NR"
                     fill
                     sizes="(max-width: 768px) 100vw, 160px"
-                    className="rounded-full object-cover object-center"
-                    style={{ objectPosition: "center top" }}
+                    className="rounded-full object-cover"
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Agolmah Atozire Ernest</h3>
@@ -216,13 +214,15 @@ export default function AboutPage() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
-                <Image
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Regional Coordinator SR"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
+                <div className="w-32 h-32 mx-auto mb-6 relative">
+                  <Image
+                    src="/placeholder.svg?height=200&width=200"
+                    alt="Regional Coordinator SR"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 128px"
+                    className="rounded-full object-cover"
+                  />
+                </div>
                 <h3 className="text-xl font-semibold mb-2">Awudu Yahaya</h3>
                 <p className="text-blue-600 font-medium mb-4">Regional Coordinator SR</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -234,20 +234,21 @@ export default function AboutPage() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
-                <Image
-                  src="/images/project-manager-alhassan.jpg"
-                  alt="Alhassan Zakaria, Project Manager"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                  style={{ objectPosition: "center 20%" }}
-                />
+                <div className="w-32 h-32 mx-auto mb-6 relative">
+                  <Image
+                    src="/images/project-manager-alhassan.jpg"
+                    alt="Alhassan Zakaria, Project Manager"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 128px"
+                    className="rounded-full object-cover"
+                  />
+                </div>
                 <h3 className="text-xl font-semibold mb-2">Alhassan Zakaria</h3>
                 <p className="text-blue-600 font-medium mb-4">Project Manager</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Alhassan Zakaria is the Project Manager at Better Dream Foundation Ghana (Northern Regional Chapter)
-                  and aspiring Medical Laboratory Scientist with a passion for improving health outcomes. SDG ambassador
-                  at University for Development Studies. Committed to making a positive impact in his community.
+                  Alhassan Zakaria is the Project Manager at Better Dream Foundation Ghana and aspiring Medical
+                  Laboratory Scientist with a passion for improving health outcomes. SDG ambassador at University for
+                  Development Studies. Committed to making a positive impact in his community.
                 </p>
               </CardContent>
             </Card>

@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import Link from "next/link"
 
 export default function Error({
@@ -9,6 +10,11 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
+  useEffect(() => {
+    // Log the error to an error reporting service
+    console.error(error)
+  }, [error])
+
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-white">
       <div className="text-center">
@@ -18,7 +24,13 @@ export default function Error({
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
-            onClick={() => reset()}
+            onClick={() => {
+              if (typeof reset === "function") {
+                reset()
+              } else {
+                window.location.reload()
+              }
+            }}
             className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
           >
             Try again
