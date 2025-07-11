@@ -17,7 +17,7 @@ const projects = [
     id: 1,
     title: "Digital Learning Centers",
     category: "Education",
-    location: "Rural Ghana",
+    location: "Tamale,Ghana",
     status: "Active",
     description:
       "Establishing computer labs and digital literacy programs in rural schools to bridge the digital divide and prepare students for the modern economy.",
@@ -31,7 +31,7 @@ const projects = [
     id: 2,
     title: "Mobile Health Clinics",
     category: "Healthcare",
-    location: "Remote Ghana",
+    location: "Kumasi,Ghana",
     status: "Active",
     description:
       "Bringing essential healthcare services to remote villages through mobile clinics staffed with qualified medical professionals.",
@@ -59,7 +59,7 @@ const projects = [
     id: 4,
     title: "Women's Empowerment Program",
     category: "Women Empowerment",
-    location: "Rural Ghana",
+    location: "Konongo,Ghana",
     status: "Active",
     description:
       "Providing vocational training, microfinance opportunities, and leadership development for women in rural communities.",
@@ -73,7 +73,7 @@ const projects = [
     id: 5,
     title: "Youth Leadership Academy",
     category: "Community Development",
-    location: "Urban Ghana",
+    location: "Daboya,Ghana",
     status: "Active",
     description:
       "Training young leaders to become change agents in their communities through leadership skills and civic engagement programs.",
