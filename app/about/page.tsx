@@ -243,7 +243,7 @@ export default function AboutPage() {
                     className="rounded-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Alhassan Zakaria</h3>
+                <h3 className="text-xl font-semibold mb-2">Abdul karim Hakim</h3>
                 <p className="text-blue-600 font-medium mb-4">Project Manager</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
                   Alhassan Zakaria is the Project Manager at Better Dream Foundation Ghana and aspiring Medical
