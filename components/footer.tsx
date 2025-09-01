@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, Heart } from "lucide-react"
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react"
 import Image from "next/image"
 
 export function Footer() {
@@ -140,12 +140,6 @@ export function Footer() {
               Cookie Policy
             </Link>
           </div>
-        </div>
-
-        <div className="mt-8 text-center">
-          <p className="text-gray-500 text-sm flex items-center justify-center">
-            Made with <Heart className="h-4 w-4 text-red-500 mx-1" /> by Better Dream Foundation
-          </p>
         </div>
       </div>
     </footer>

@@ -23,15 +23,15 @@ export default function TeamPage() {
       name: "Agolmah Atozire Ernest",
       role: "Northern Regional Coordinator",
       image: "/images/regional-coordinator-ernest.jpg",
-      bio: "Agolmah coordinates our regional initiatives and ensures effective implementation of programs across the Northern Region. He has extensive experience in community development and project management.",
+      bio: "Ernest Agulmah serves as the Northern Regional Coordinator for Better Dream Foundation Ghana. He is also a final-year medical student (Level 400) at the University for Development Studies (UDS). Balancing his passion for medicine with community development, Ernest plays a key role in coordinating the foundation's initiatives in the Northern Region, working to promote education, health, and sustainable change. His dedication, leadership, and service-driven mindset make him an inspiring force within the foundation and beyond.",
       email: "ernest@betterdreamfoundation.org",
     },
     {
       name: "Awudu Yahaya",
-      role: "Regional Coordinator SR",
+      role: "Savanna Regional Coordinator",
       image:
         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/savannah%20coordii.jpg-CNLf626WEJKjmCwG0DMWBJWb1bisI1.jpeg",
-      bio: "Awudu oversees our regional programs and coordinates community development initiatives across the Savannah Region. He specializes in rural development and community engagement.",
+      bio: "Awudu Yahaya is the Savanna Regional Coordinator for Better Dream Foundation Ghana. He is passionate about community development and leads the foundation's programs in the region, working with local leaders and stakeholders to drive impact in education, empowerment, and sustainable development. His commitment, integrity, and grassroots engagement make him a valuable pillar of the foundation's mission to create lasting change.",
       email: "awudu@betterdreamfoundationghana2gmail.com",
     },
 
@@ -55,7 +55,7 @@ export default function TeamPage() {
       role: "Western Regional Coordinator",
       image:
         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/western%20coordii.jpg-WjGRpXIV5Yzk9bllb3ED1s8u8PgXvt.jpeg",
-      bio: "Doris Amoako serves as the Western Regional Coordinator for Better Dream Foundation, where she champions youth empowerment, active citizenship, and community development. With a background in education and grassroots mobilization, Doris has successfully led initiatives that inspire positive change, enhance community participation, and drive the foundation’s mission of building stronger, more inclusive communities",
+      bio: "Doris Amoako serves as the Western Regional Coordinator for Better Dream Foundation, where she champions youth empowerment, active citizenship, and community development. With a background in education and grassroots mobilization, Doris has successfully led initiatives that inspire positive change, enhance community participation, and drive the foundation's mission of building stronger, more inclusive communities",
       email: "Doris@betterdreamfoundationghana@gmail.com",
     },
     {
@@ -106,21 +106,29 @@ export default function TeamPage() {
 
     {
       name: "Hamdan Sibdoo Zakaria Hamid",
-      role: "Publicity Secretary",
+      role: "Publicity Secretary NR",
       image: "/images/publicity-secretary-hamdan.jpg",
       bio: "Hamdan Sibdoo Zakaria Hamid is a passionate Computer Science student at the University for Development Studies with strong leadership experience and a drive for youth empowerment. As an active student leader and tech enthusiast, he is committed to using innovation and education to create lasting opportunities for young people across Ghana.",
       email: "hamdan@betterdreamfoundation.org",
     },
     {
+      name: "Bisilki Mawan Joseph",
+      role: "General Secretary NR",
+      image: "/images/bisilki-mawan-joseph.jpg",
+      bio: "Joseph serves as the General Secretary of the Better Dream Foundation Ghana, Northern Regional Chapter. In this role, he manages administrative duties, record-keeping, and communication, ensuring smooth coordination of the chapter's activities. Passionate about youth empowerment and community development, Joseph plays a vital part in advancing the foundation's mission to promote education, create opportunities, and drive sustainable change across the Northern Region.",
+      email: "joseph@betterdreamfoundation.org",
+    },
+
+    {
       name: "Alhassan Zakaria",
-      role: "Project Manager",
+      role: "Project Manager Northern Chapter",
       image: "/images/project-manager-alhassan.jpg",
       bio: "Alhassan Zakaria is the Project Manager at Better Dream Foundation Ghana and aspiring Medical Laboratory Scientist with a passion for improving health outcomes. SDG ambassador at University for Development Studies. Committed to making a positive impact in his community.",
       email: "alhassan@betterdreamfoundation.org",
     },
     {
       name: "Sham-una Zainab",
-      role: "Financial Secretary",
+      role: "Financial Secretary NR",
       image: "/images/financial-secretary-shamuna.jpg",
       bio: "Sham-una Zainab serves as the Financial Secretary of Better Dream Foundation, where she ensures transparency, accountability, and efficient management of the foundation's finances. Her dedication to financial integrity supports the foundation's mission to drive sustainable change and community development.",
       email: "shamuna@betterdreamfoundation.org",
@@ -129,21 +137,21 @@ export default function TeamPage() {
     {
       name: "Benjamin Agyakwa",
       role: "Sponsorship and Partnership Coordination N/R",
-      image: "/images/financial-secretary-shamuna.jpg",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/benjamin.jpg-ag0iCzmP7tlY1xqVP63II4MxqIFoaw.jpeg",
       bio: " I'm Benjamin Agyakwa, a dedicated student and passionate advocate for human rights and social justice. As a Partnership and Sponsorship Coordinator for Better Dream Foundation and Local Officer for Human Rights and Peace at UDSMSA, I strive to empower individuals and communities. With a problem-solving attitude and a commitment to personal liberty, my mission is to be a catalyst for liberation and positive change in all aspects of life..",
       email: "Benjamin@betterdreamfoundation.org",
     },
     {
       name: "Abdul Karim Hakim",
-      role: "Graphic Designer",
+      role: "Graphic Designer NR",
       image: "/images/graphic-designer-abdul-karim.jpg",
       bio: "Abdul Karim Hakim is the creative force behind the visual identity of Better Dream Foundation. As the foundation's Graphic Designer, he brings stories to life through impactful design, blending purpose with creativity. With a strong passion for social impact and visual storytelling, Abdul ensures that every design reflects the mission of hope, empowerment, and transformation at the heart of the foundation's work.",
       email: "wise03667@gmail.com",
     },
-    
+
     {
       name: "Maxwell Opoku Darkwah",
-      role: "Regional Secretary",
+      role: "Regional Secretary AR",
       image: "/images/regional-secretary-maxwell.jpg",
       bio: "I love bringing order to chaos and making sure communication flows smoothly across our team. As Regional Secretary, I manage all official records and correspondence, ensuring we stay organized and informed. I take pride in being dependable, efficient, and always ready to support the team behind the scenes.",
       email: "maxwell@betterdreamfoundation.org",
@@ -157,28 +165,28 @@ export default function TeamPage() {
     },
     {
       name: "David Adu Nantwi",
-      role: "Project Director",
+      role: "Project Director AR",
       image: "/images/project-director-david.jpg",
       bio: "As Project Director, I take pride in turning vision into execution. I am passionate about building meaningful initiatives that are not only effective but also empowering for the people we serve. From planning to implementation, I focus on the little details that make a big impact, and I am always driven by results that uplift communities.",
       email: "david@betterdreamfoundation.org",
     },
     {
       name: "Ahmed Dawud Mohammed",
-      role: "Financial Secretary",
+      role: "Financial Secretary AR",
       image: "/images/financial-secretary-ahmed.jpg",
       bio: "I believe financial accountability is at the heart of any strong organization. As Financial Secretary, I make it my duty to handle all funds with integrity, accuracy, and transparency. I am detail-oriented and deeply committed to ensuring that every cedi we manage contributes to our mission in the most responsible way possible.",
       email: "ahmed@betterdreamfoundation.org",
     },
     {
       name: "Ofori Paul",
-      role: "Deputy Regional Secretary",
+      role: "Deputy Regional Secretary AR",
       image: "/images/deputy-secretary-ofori.jpg",
       bio: "In my role as Deputy Regional Secretary, I focus on the little things that make a big difference—supporting documentation, managing schedules, and helping keep the team organized. I am passionate about teamwork and always ready to lend a hand to ensure everything runs smoothly.",
       email: "ofori@betterdreamfoundation.org",
     },
     {
       name: "James Anibilla Adongo",
-      role: "Graphic Designer",
+      role: "Graphic Designer AR",
       image: "/images/graphic-designer-james.jpg",
       bio: "Design is my way of storytelling. As the team's Graphic Designer, I use visuals to reflect who we are and what we stand for. Whether it's a flyer, banner, or social media post, I aim to create work that is not just eye-catching, but deeply connected to our mission. I believe good design should inspire action—and that's what I strive for every time.",
       email: "james@betterdreamfoundation.org",

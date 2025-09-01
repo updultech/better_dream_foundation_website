@@ -152,7 +152,11 @@ export default function AboutPage() {
               </p>
 
               <p className="text-gray-600 dark:text-gray-300 text-lg">
-                Today, Better Dream Foundation operates in all the 16 regions across Ghana and has impacted over 50,000 lives. But our work is far from over. We continue to innovate, learn, and adapt our approaches to create even greater impact in the communities we serve.</div>
+                Today, Better Dream Foundation operates in all the 16 regions across Ghana and has impacted over 50,000
+                lives. But our work is far from over. We continue to innovate, learn, and adapt our approaches to create
+                even greater impact in the communities we serve.
+              </p>
+            </div>
           </div>
         </div>
       </section>
