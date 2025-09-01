@@ -90,7 +90,7 @@ export function Header() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white dark:bg-gray-900">
                 <nav className="flex flex-col space-y-4 mt-8">
                   {navigation.map((item) => (
                     <Link
@@ -102,7 +102,7 @@ export function Header() {
                       {item.name}
                     </Link>
                   ))}
-                  <div className="pt-4 border-t">
+                  <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
                     <Link href="/donate" onClick={() => setIsOpen(false)}>
                       <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold">
                         <Heart className="mr-2 h-4 w-4" />
