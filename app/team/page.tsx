@@ -194,7 +194,7 @@ export default function TeamPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Header with Back Button */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
         <div className="container mx-auto px-4">
@@ -225,7 +225,7 @@ export default function TeamPage() {
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Complete Leadership Team
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Our comprehensive team of leaders, coordinators, and specialists working across all our programs and
               regions.
             </p>
@@ -233,40 +233,43 @@ export default function TeamPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {leadershipTeam.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+              <Card
+                key={index}
+                className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+              >
                 <CardContent className="p-6">
-                  <div className="w-32 h-32 mx-auto mb-6 relative bg-gray-100 dark:bg-gray-800">
+                  <div className="w-32 h-32 mx-auto mb-6 relative bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
                     <Image
                       src={member.image || "/placeholder.svg"}
                       alt={member.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 128px"
-                      className="rounded-full object-cover"
+                      className="object-cover"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">{member.name}</h3>
-                  <p className="text-blue-600 font-medium mb-4">{member.role}</p>
+                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">{member.name}</h3>
+                  <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">{member.role}</p>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{member.bio}</p>
 
                   {/* Contact Information */}
                   <div className="flex justify-center space-x-3 mt-4">
                     <a
                       href={`mailto:${member.email}`}
-                      className="text-gray-400 hover:text-blue-600 transition-colors"
+                      className="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       aria-label={`Email ${member.name}`}
                     >
                       <Mail className="h-4 w-4" />
                     </a>
                     <a
                       href="#"
-                      className="text-gray-400 hover:text-blue-600 transition-colors"
+                      className="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       aria-label={`LinkedIn profile of ${member.name}`}
                     >
                       <Linkedin className="h-4 w-4" />
                     </a>
                     <a
                       href="#"
-                      className="text-gray-400 hover:text-blue-600 transition-colors"
+                      className="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       aria-label={`Twitter profile of ${member.name}`}
                     >
                       <Twitter className="h-4 w-4" />
@@ -293,7 +296,7 @@ export default function TeamPage() {
             <Link href="/get-involved">
               <Button
                 variant="outline"
-                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 bg-transparent"
+                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 bg-transparent dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-white"
               >
                 Volunteer Opportunities
               </Button>

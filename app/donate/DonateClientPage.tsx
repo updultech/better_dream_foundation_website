@@ -2,50 +2,60 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Heart, CreditCard, Smartphone, CheckCircle, XCircle, Loader2, Clock, Mail } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import {
+  Heart,
+  CreditCard,
+  Smartphone,
+  CheckCircle,
+  XCircle,
+  Loader2,
+  Clock,
+  Mail,
+  Phone,
+  Wifi,
+  AlertCircle,
+} from "lucide-react"
 
-interface DonationData {
+interface DonationForm {
   amount: string
   donorName: string
   email: string
   phone: string
+  paymentMethod: string
   project: string
-  paymentMethod: "card" | "mobile-money"
-  mobileProvider?: "mtn" | "vodafone" | "airteltigo"
-  recurring: boolean
-  anonymous: boolean
   message: string
+  isAnonymous: boolean
+  isRecurring: boolean
   newsletter: boolean
 }
 
 interface PaymentStatus {
-  status: "idle" | "processing" | "success" | "failed" | "pending"
+  status: "idle" | "processing" | "success" | "error" | "pending"
   message: string
   transactionId?: string
 }
 
 export default function DonateClientPage() {
-  const [donationData, setDonationData] = useState<DonationData>({
+  const [form, setForm] = useState<DonationForm>({
     amount: "",
     donorName: "",
     email: "",
     phone: "",
-    project: "",
-    paymentMethod: "card",
-    recurring: false,
-    anonymous: false,
+    paymentMethod: "",
+    project: "General Fund",
     message: "",
+    isAnonymous: false,
+    isRecurring: false,
     newsletter: false,
   })
 
@@ -54,152 +64,105 @@ export default function DonateClientPage() {
     message: "",
   })
 
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [selectedProvider, setSelectedProvider] = useState<string>("")
 
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {}
+  const projects = [
+    "General Fund",
+    "Education Programs",
+    "Healthcare Initiatives",
+    "Community Development",
+    "Emergency Relief",
+    "Women Empowerment",
+    "Youth Development",
+    "Infrastructure Projects",
+  ]
 
-    if (!donationData.amount || Number.parseFloat(donationData.amount) < 1) {
-      newErrors.amount = "Please enter a valid donation amount (minimum GH₵1)"
-    }
+  const predefinedAmounts = ["50", "100", "250", "500", "1000", "2500"]
 
-    if (!donationData.donorName.trim()) {
-      newErrors.donorName = "Please enter your full name"
-    }
-
-    if (!donationData.email.trim() || !/\S+@\S+\.\S+/.test(donationData.email)) {
-      newErrors.email = "Please enter a valid email address"
-    }
-
-    if (!donationData.phone.trim()) {
-      newErrors.phone = "Please enter your phone number"
-    } else if (donationData.paymentMethod === "mobile-money") {
-      const phoneRegex = /^(\+233|0)(20|23|24|25|26|27|28|29|50|53|54|55|56|57|59)\d{7}$/
-      if (!phoneRegex.test(donationData.phone.replace(/\s/g, ""))) {
-        newErrors.phone = "Please enter a valid Ghana mobile number"
-      }
-    }
-
-    if (!donationData.project) {
-      newErrors.project = "Please select a project to support"
-    }
-
-    if (donationData.paymentMethod === "mobile-money" && !donationData.mobileProvider) {
-      newErrors.mobileProvider = "Please select your mobile money provider"
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+  const handleInputChange = (field: keyof DonationForm, value: string | boolean) => {
+    setForm((prev) => ({ ...prev, [field]: value }))
   }
 
-  const detectMobileProvider = (phone: string): "mtn" | "vodafone" | "airteltigo" | null => {
-    const cleanPhone = phone.replace(/\s/g, "").replace(/^\+233/, "0")
+  const handleAmountSelect = (amount: string) => {
+    setForm((prev) => ({ ...prev, amount }))
+  }
 
-    if (/^0(24|25|53|54|55|59)/.test(cleanPhone)) return "mtn"
-    if (/^0(20|50)/.test(cleanPhone)) return "vodafone"
-    if (/^0(23|26|27|28|29|56|57)/.test(cleanPhone)) return "airteltigo"
+  const validateForm = () => {
+    if (!form.amount || Number.parseFloat(form.amount) <= 0) {
+      setPaymentStatus({ status: "error", message: "Please enter a valid donation amount" })
+      return false
+    }
+    if (!form.donorName.trim()) {
+      setPaymentStatus({ status: "error", message: "Please enter your name" })
+      return false
+    }
+    if (!form.email.trim() || !form.email.includes("@")) {
+      setPaymentStatus({ status: "error", message: "Please enter a valid email address" })
+      return false
+    }
+    if (!form.paymentMethod) {
+      setPaymentStatus({ status: "error", message: "Please select a payment method" })
+      return false
+    }
+    if (form.paymentMethod === "mobile-money" && !form.phone.trim()) {
+      setPaymentStatus({ status: "error", message: "Please enter your phone number for mobile money payment" })
+      return false
+    }
+    if (form.paymentMethod === "mobile-money" && !selectedProvider) {
+      setPaymentStatus({ status: "error", message: "Please select your mobile money provider" })
+      return false
+    }
+    return true
+  }
 
+  const detectNetworkProvider = (phoneNumber: string) => {
+    const cleanPhone = phoneNumber.replace(/\D/g, "")
+    if (cleanPhone.startsWith("233")) {
+      const localNumber = cleanPhone.substring(3)
+      if (
+        localNumber.startsWith("24") ||
+        localNumber.startsWith("25") ||
+        localNumber.startsWith("53") ||
+        localNumber.startsWith("54") ||
+        localNumber.startsWith("55") ||
+        localNumber.startsWith("59")
+      ) {
+        return "MTN"
+      } else if (localNumber.startsWith("20") || localNumber.startsWith("50")) {
+        return "Vodafone"
+      } else if (
+        localNumber.startsWith("27") ||
+        localNumber.startsWith("57") ||
+        localNumber.startsWith("26") ||
+        localNumber.startsWith("56")
+      ) {
+        return "AirtelTigo"
+      }
+    }
     return null
   }
 
-  useEffect(() => {
-    if (donationData.paymentMethod === "mobile-money" && donationData.phone) {
-      const provider = detectMobileProvider(donationData.phone)
-      if (provider) {
-        setDonationData((prev) => ({ ...prev, mobileProvider: provider }))
-      }
-    }
-  }, [donationData.phone, donationData.paymentMethod])
-
-  const handleInputChange = (field: keyof DonationData, value: string | boolean) => {
-    setDonationData((prev) => ({ ...prev, [field]: value }))
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: "" }))
-    }
-  }
-
-  const sendDonationEmail = async (donationDetails: DonationData & { transactionId: string }) => {
-    try {
-      const response = await fetch("/api/send-donation-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(donationDetails),
-      })
-
-      if (!response.ok) {
-        console.error("Failed to send donation email")
-      }
-    } catch (error) {
-      console.error("Error sending donation email:", error)
-    }
-  }
-
-  const handleCardPayment = async () => {
-    if (!validateForm()) return
-
-    setPaymentStatus({ status: "processing", message: "Processing your donation..." })
-
-    try {
-      // Simulate card payment processing
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
-      const transactionId = `TXN_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
-
-      // Send email notification
-      await sendDonationEmail({
-        ...donationData,
-        transactionId,
-      })
-
-      setPaymentStatus({
-        status: "success",
-        message: "Thank you! Your donation has been processed successfully and our team has been notified.",
-        transactionId,
-      })
-
-      // Reset form after successful donation
-      setTimeout(() => {
-        setDonationData({
-          amount: "",
-          donorName: "",
-          email: "",
-          phone: "",
-          project: "",
-          paymentMethod: "card",
-          recurring: false,
-          anonymous: false,
-          message: "",
-          newsletter: false,
-        })
-        setPaymentStatus({ status: "idle", message: "" })
-      }, 5000)
-    } catch (error) {
-      setPaymentStatus({
-        status: "failed",
-        message: "Payment failed. Please check your card details and try again.",
-      })
-    }
-  }
-
   const handleMobileMoneyPayment = async () => {
-    if (!validateForm()) return
+    const detectedProvider = detectNetworkProvider(form.phone)
+    if (!detectedProvider) {
+      setPaymentStatus({
+        status: "error",
+        message: "Unable to detect network provider. Please check your phone number format.",
+      })
+      return
+    }
 
-    setPaymentStatus({ status: "processing", message: "Initiating mobile money payment..." })
+    setSelectedProvider(detectedProvider)
+    setPaymentStatus({ status: "processing", message: `Initiating ${detectedProvider} Mobile Money payment...` })
 
     try {
       const response = await fetch("/api/mobile-money", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          phone: donationData.phone,
-          amount: Number.parseFloat(donationData.amount),
-          provider: donationData.mobileProvider,
-          donorName: donationData.donorName,
-          project: donationData.project,
+          phone: form.phone,
+          amount: Number.parseFloat(form.amount),
+          provider: detectedProvider,
         }),
       })
 
@@ -208,201 +171,327 @@ export default function DonateClientPage() {
       if (result.success) {
         setPaymentStatus({
           status: "pending",
-          message: `Payment request sent to ${donationData.phone}. Please check your phone and enter your PIN to complete the donation.`,
+          message: `Payment request sent to ${form.phone}. Please check your phone and enter your PIN to complete the transaction.`,
           transactionId: result.transactionId,
         })
 
         // Poll for payment status
-        const pollInterval = setInterval(async () => {
-          try {
-            const statusResponse = await fetch(`/api/mobile-money/status?transactionId=${result.transactionId}`)
-            const statusResult = await statusResponse.json()
-
-            if (statusResult.status === "completed") {
-              clearInterval(pollInterval)
-
-              // Send email notification
-              await sendDonationEmail({
-                ...donationData,
-                transactionId: result.transactionId,
-              })
-
-              setPaymentStatus({
-                status: "success",
-                message: "Payment completed successfully! Thank you for your donation. Our team has been notified.",
-                transactionId: result.transactionId,
-              })
-
-              // Reset form after successful donation
-              setTimeout(() => {
-                setDonationData({
-                  amount: "",
-                  donorName: "",
-                  email: "",
-                  phone: "",
-                  project: "",
-                  paymentMethod: "card",
-                  recurring: false,
-                  anonymous: false,
-                  message: "",
-                  newsletter: false,
-                })
-                setPaymentStatus({ status: "idle", message: "" })
-              }, 5000)
-            } else if (statusResult.status === "failed") {
-              clearInterval(pollInterval)
-              setPaymentStatus({
-                status: "failed",
-                message: "Payment failed. Please try again or contact support.",
-              })
-            }
-          } catch (error) {
-            console.error("Error polling payment status:", error)
-          }
-        }, 3000)
-
-        // Stop polling after 5 minutes
-        setTimeout(() => {
-          clearInterval(pollInterval)
-          if (paymentStatus.status === "pending") {
-            setPaymentStatus({
-              status: "failed",
-              message: "Payment timeout. Please try again.",
-            })
-          }
-        }, 300000)
+        pollPaymentStatus(result.transactionId)
       } else {
-        setPaymentStatus({
-          status: "failed",
-          message: result.message || "Failed to initiate payment. Please try again.",
-        })
+        setPaymentStatus({ status: "error", message: result.message || "Payment failed" })
       }
     } catch (error) {
+      setPaymentStatus({ status: "error", message: "Network error. Please try again." })
+    }
+  }
+
+  const pollPaymentStatus = async (transactionId: string) => {
+    let attempts = 0
+    const maxAttempts = 30 // 5 minutes with 10-second intervals
+
+    const poll = async () => {
+      try {
+        const response = await fetch(`/api/mobile-money/status?transactionId=${transactionId}`)
+        const result = await response.json()
+
+        if (result.status === "completed") {
+          setPaymentStatus({
+            status: "success",
+            message: "Payment completed successfully! Thank you for your generous donation.",
+            transactionId,
+          })
+
+          // Send email notification
+          await sendDonationEmail(transactionId, selectedProvider)
+        } else if (result.status === "failed") {
+          setPaymentStatus({ status: "error", message: "Payment failed. Please try again." })
+        } else if (attempts < maxAttempts) {
+          attempts++
+          setTimeout(poll, 10000) // Poll every 10 seconds
+        } else {
+          setPaymentStatus({
+            status: "error",
+            message: "Payment timeout. Please check your transaction status or try again.",
+          })
+        }
+      } catch (error) {
+        if (attempts < maxAttempts) {
+          attempts++
+          setTimeout(poll, 10000)
+        } else {
+          setPaymentStatus({ status: "error", message: "Unable to verify payment status." })
+        }
+      }
+    }
+
+    poll()
+  }
+
+  const handleCardPayment = async () => {
+    setPaymentStatus({ status: "processing", message: "Processing your card payment..." })
+
+    try {
+      // Simulate card payment processing
+      const transactionId = `TXN_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+
+      // Simulate successful payment
       setPaymentStatus({
-        status: "failed",
-        message: "Network error. Please check your connection and try again.",
+        status: "success",
+        message: "Payment completed successfully! Thank you for your generous donation.",
+        transactionId,
       })
+
+      // Send email notification
+      await sendDonationEmail(transactionId, "Card Payment")
+    } catch (error) {
+      setPaymentStatus({ status: "error", message: "Card payment failed. Please try again." })
+    }
+  }
+
+  const sendDonationEmail = async (transactionId: string, networkProvider?: string) => {
+    try {
+      const emailResponse = await fetch("/api/send-donation-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          transactionId,
+          networkProvider,
+          timestamp: new Date().toISOString(),
+        }),
+      })
+
+      if (emailResponse.ok) {
+        setPaymentStatus((prev) => ({
+          ...prev,
+          message: prev.message + " Our team has been notified and will send you a receipt shortly.",
+        }))
+      }
+    } catch (error) {
+      console.error("Failed to send email notification:", error)
     }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (donationData.paymentMethod === "card") {
-      await handleCardPayment()
-    } else {
+    if (!validateForm()) return
+
+    if (form.paymentMethod === "mobile-money") {
       await handleMobileMoneyPayment()
+    } else if (form.paymentMethod === "card") {
+      await handleCardPayment()
     }
   }
 
-  const resetPayment = () => {
+  const resetForm = () => {
+    setForm({
+      amount: "",
+      donorName: "",
+      email: "",
+      phone: "",
+      paymentMethod: "",
+      project: "General Fund",
+      message: "",
+      isAnonymous: false,
+      isRecurring: false,
+      newsletter: false,
+    })
     setPaymentStatus({ status: "idle", message: "" })
+    setSelectedProvider("")
   }
 
-  const getProviderColor = (provider: string) => {
-    switch (provider) {
-      case "mtn":
-        return "bg-yellow-500 text-black dark:bg-yellow-400 dark:text-black"
-      case "vodafone":
-        return "bg-red-500 text-white dark:bg-red-400 dark:text-white"
-      case "airteltigo":
-        return "bg-blue-500 text-white dark:bg-blue-400 dark:text-white"
+  const getStatusIcon = () => {
+    switch (paymentStatus.status) {
+      case "processing":
+        return <Loader2 className="h-5 w-5 animate-spin text-blue-600" />
+      case "success":
+        return <CheckCircle className="h-5 w-5 text-green-600" />
+      case "error":
+        return <XCircle className="h-5 w-5 text-red-600" />
+      case "pending":
+        return <Clock className="h-5 w-5 text-yellow-600" />
       default:
-        return "bg-gray-500 text-white dark:bg-gray-400 dark:text-black"
+        return null
     }
   }
 
-  const getProviderName = (provider: string) => {
+  const getProviderBadgeColor = (provider: string) => {
     switch (provider) {
-      case "mtn":
-        return "MTN Mobile Money"
-      case "vodafone":
-        return "Vodafone Cash"
-      case "airteltigo":
-        return "AirtelTigo Money"
+      case "MTN":
+        return "bg-yellow-500 text-black"
+      case "Vodafone":
+        return "bg-red-500 text-white"
+      case "AirtelTigo":
+        return "bg-blue-500 text-white"
       default:
-        return provider
+        return "bg-gray-500 text-white"
     }
+  }
+
+  const renderMobileMoneyInstructions = () => {
+    if (form.paymentMethod !== "mobile-money") return null
+
+    if (!selectedProvider) {
+      return (
+        <Alert className="bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+          <Smartphone className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+          <AlertDescription className="text-gray-900 dark:text-gray-100">
+            <strong>Mobile Money Payment Instructions:</strong>
+            <br />
+            Enter your phone number above and we'll detect your network provider automatically. Then follow the specific
+            instructions for your network.
+          </AlertDescription>
+        </Alert>
+      )
+    }
+
+    const instructions = {
+      MTN: {
+        color: "yellow",
+        steps: [
+          "You will receive a payment request on your phone",
+          "Check your phone for the MTN MoMo prompt",
+          "Enter your MTN MoMo PIN when prompted",
+          "Confirm the payment amount and recipient",
+          "Wait for the confirmation SMS",
+        ],
+        ussd: "*170#",
+        alternative: "Alternatively, dial *170# → Send Money → Enter our number → Enter amount → Enter PIN",
+      },
+      Vodafone: {
+        color: "red",
+        steps: [
+          "You will receive a payment authorization request",
+          "Check your phone for the Vodafone Cash prompt",
+          "Enter your Vodafone Cash PIN",
+          "Confirm the transaction details",
+          "Wait for the success notification",
+        ],
+        ussd: "*110#",
+        alternative: "Or dial *110# → Financial Services → Send Money → Enter details → Confirm with PIN",
+      },
+      AirtelTigo: {
+        color: "blue",
+        steps: [
+          "A payment request will be sent to your phone",
+          "Open the AirtelTigo Money prompt on your device",
+          "Enter your AirtelTigo Money PIN",
+          "Verify the payment amount and confirm",
+          "You will receive a confirmation message",
+        ],
+        ussd: "*110#",
+        alternative: "You can also use *110# → Send Money → Follow prompts → Enter PIN to authorize",
+      },
+    }
+
+    const instruction = instructions[selectedProvider as keyof typeof instructions]
+    if (!instruction) return null
+
+    return (
+      <Alert
+        className={`bg-${instruction.color}-50 dark:bg-${instruction.color}-900/20 border-${instruction.color}-200 dark:border-${instruction.color}-800`}
+      >
+        <Smartphone className={`h-4 w-4 text-${instruction.color}-600 dark:text-${instruction.color}-400`} />
+        <AlertDescription className="text-gray-900 dark:text-gray-100">
+          <div className="space-y-3">
+            <div>
+              <Badge className={getProviderBadgeColor(selectedProvider)}>{selectedProvider} Mobile Money</Badge>
+            </div>
+
+            <div>
+              <strong>Payment Process:</strong>
+              <ol className="list-decimal list-inside mt-2 space-y-1">
+                {instruction.steps.map((step, index) => (
+                  <li key={index} className="text-sm">
+                    {step}
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 p-3 rounded border">
+              <strong>Alternative Method:</strong>
+              <p className="text-sm mt-1">
+                <Phone className="inline h-4 w-4 mr-1" />
+                {instruction.alternative}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 text-sm">
+              <AlertCircle className="h-4 w-4" />
+              <span>Ensure you have sufficient balance and your PIN is ready</span>
+            </div>
+          </div>
+        </AlertDescription>
+      </Alert>
+    )
   }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
-          <Heart className="mx-auto h-16 w-16 text-red-500 mb-4" />
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Make a Donation</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Your generosity helps us create lasting change in communities across Ghana. Every donation makes a
-            difference.
+          <p className="text-xl text-gray-600 dark:text-gray-300">
+            Your generosity helps us create lasting change in communities worldwide
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8">
           {/* Donation Form */}
           <div className="lg:col-span-2">
             <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
               <CardHeader>
-                <CardTitle className="text-gray-900 dark:text-white">Donation Details</CardTitle>
-                <CardDescription className="text-gray-600 dark:text-gray-300">
-                  Please fill in your donation information
-                </CardDescription>
+                <CardTitle className="flex items-center text-gray-900 dark:text-white">
+                  <Heart className="mr-2 h-5 w-5 text-red-500" />
+                  Donation Details
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Amount */}
+                  {/* Amount Selection */}
                   <div>
                     <Label htmlFor="amount" className="text-gray-900 dark:text-white">
                       Donation Amount (GH₵)
                     </Label>
-                    <div className="mt-1 relative">
-                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400">
-                        GH₵
-                      </span>
-                      <Input
-                        id="amount"
-                        type="number"
-                        min="1"
-                        step="0.01"
-                        value={donationData.amount}
-                        onChange={(e) => handleInputChange("amount", e.target.value)}
-                        className="pl-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"
-                        placeholder="0.00"
-                      />
+                    <div className="grid grid-cols-3 gap-2 mt-2 mb-3">
+                      {predefinedAmounts.map((amount) => (
+                        <Button
+                          key={amount}
+                          type="button"
+                          variant={form.amount === amount ? "default" : "outline"}
+                          onClick={() => handleAmountSelect(amount)}
+                          className="text-sm"
+                        >
+                          GH₵{amount}
+                        </Button>
+                      ))}
                     </div>
-                    {errors.amount && <p className="text-red-500 text-sm mt-1">{errors.amount}</p>}
+                    <Input
+                      id="amount"
+                      type="number"
+                      placeholder="Enter custom amount"
+                      value={form.amount}
+                      onChange={(e) => handleInputChange("amount", e.target.value)}
+                      className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
+                    />
                   </div>
 
-                  {/* Quick Amount Buttons */}
-                  <div className="grid grid-cols-4 gap-2">
-                    {[50, 100, 250, 500].map((amount) => (
-                      <Button
-                        key={amount}
-                        type="button"
-                        variant="outline"
-                        onClick={() => handleInputChange("amount", amount.toString())}
-                        className="border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                      >
-                        GH₵{amount}
-                      </Button>
-                    ))}
-                  </div>
-
-                  {/* Personal Information */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Donor Information */}
+                  <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="donorName" className="text-gray-900 dark:text-white">
                         Full Name
                       </Label>
                       <Input
                         id="donorName"
-                        value={donationData.donorName}
+                        value={form.donorName}
                         onChange={(e) => handleInputChange("donorName", e.target.value)}
-                        className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"
-                        placeholder="Your full name"
+                        placeholder="Enter your full name"
+                        className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                       />
-                      {errors.donorName && <p className="text-red-500 text-sm mt-1">{errors.donorName}</p>}
                     </div>
-
                     <div>
                       <Label htmlFor="email" className="text-gray-900 dark:text-white">
                         Email Address
@@ -410,274 +499,79 @@ export default function DonateClientPage() {
                       <Input
                         id="email"
                         type="email"
-                        value={donationData.email}
+                        value={form.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
-                        className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"
-                        placeholder="your.email@example.com"
+                        placeholder="Enter your email"
+                        className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                       />
-                      {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                     </div>
                   </div>
 
-                  <div>
-                    <Label htmlFor="phone" className="text-gray-900 dark:text-white">
-                      Phone Number
-                    </Label>
-                    <Input
-                      id="phone"
-                      value={donationData.phone}
-                      onChange={(e) => handleInputChange("phone", e.target.value)}
-                      className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"
-                      placeholder="+233 XX XXX XXXX"
-                    />
-                    {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
-                  </div>
-
-                  {/* Project Selection */}
-                  <div>
-                    <Label htmlFor="project" className="text-gray-900 dark:text-white">
-                      Choose Project to Support
-                    </Label>
-                    <Select value={donationData.project} onValueChange={(value) => handleInputChange("project", value)}>
-                      <SelectTrigger className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
-                        <SelectValue placeholder="Select a project" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600">
-                        <SelectItem value="education" className="text-gray-900 dark:text-white">
-                          Education & Literacy Programs
-                        </SelectItem>
-                        <SelectItem value="healthcare" className="text-gray-900 dark:text-white">
-                          Healthcare & Medical Support
-                        </SelectItem>
-                        <SelectItem value="water" className="text-gray-900 dark:text-white">
-                          Clean Water & Sanitation
-                        </SelectItem>
-                        <SelectItem value="agriculture" className="text-gray-900 dark:text-white">
-                          Agriculture & Food Security
-                        </SelectItem>
-                        <SelectItem value="youth" className="text-gray-900 dark:text-white">
-                          Youth Development
-                        </SelectItem>
-                        <SelectItem value="women" className="text-gray-900 dark:text-white">
-                          Women's Empowerment
-                        </SelectItem>
-                        <SelectItem value="emergency" className="text-gray-900 dark:text-white">
-                          Emergency Relief
-                        </SelectItem>
-                        <SelectItem value="general" className="text-gray-900 dark:text-white">
-                          General Fund (Where Most Needed)
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                    {errors.project && <p className="text-red-500 text-sm mt-1">{errors.project}</p>}
-                  </div>
+                  {/* Phone Number (shown when mobile money is selected) */}
+                  {form.paymentMethod === "mobile-money" && (
+                    <div>
+                      <Label htmlFor="phone" className="text-gray-900 dark:text-white">
+                        Phone Number
+                      </Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        value={form.phone}
+                        onChange={(e) => handleInputChange("phone", e.target.value)}
+                        placeholder="e.g., +233241234567 or 0241234567"
+                        className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
+                      />
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                        Enter your mobile money number (MTN, Vodafone, or AirtelTigo)
+                      </p>
+                    </div>
+                  )}
 
                   {/* Payment Method */}
                   <div>
                     <Label className="text-gray-900 dark:text-white">Payment Method</Label>
-                    <Tabs
-                      value={donationData.paymentMethod}
-                      onValueChange={(value) => handleInputChange("paymentMethod", value as "card" | "mobile-money")}
-                    >
-                      <TabsList className="grid w-full grid-cols-2 bg-gray-100 dark:bg-gray-700">
-                        <TabsTrigger
-                          value="card"
-                          className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-600 text-gray-900 dark:text-white"
-                        >
-                          <CreditCard className="mr-2 h-4 w-4" />
-                          Card Payment
-                        </TabsTrigger>
-                        <TabsTrigger
-                          value="mobile-money"
-                          className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-600 text-gray-900 dark:text-white"
-                        >
-                          <Smartphone className="mr-2 h-4 w-4" />
-                          Mobile Money
-                        </TabsTrigger>
-                      </TabsList>
-
-                      <TabsContent value="card" className="mt-4">
-                        <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                          <div className="flex items-center mb-2">
-                            <CreditCard className="h-5 w-5 text-blue-600 dark:text-blue-400 mr-2" />
-                            <h3 className="font-semibold text-blue-900 dark:text-blue-100">Secure Card Payment</h3>
-                          </div>
-                          <p className="text-blue-800 dark:text-blue-200 text-sm">
-                            Your card information is processed securely. We accept Visa, Mastercard, and other major
-                            cards.
-                          </p>
-                        </div>
-                      </TabsContent>
-
-                      <TabsContent value="mobile-money" className="mt-4">
-                        <div className="space-y-4">
-                          {/* Mobile Provider Selection */}
-                          <div>
-                            <Label className="text-gray-900 dark:text-white">Mobile Money Provider</Label>
-                            <div className="grid grid-cols-3 gap-2 mt-2">
-                              {[
-                                { id: "mtn", name: "MTN MoMo", color: "bg-yellow-500 hover:bg-yellow-600 text-black" },
-                                {
-                                  id: "vodafone",
-                                  name: "Vodafone Cash",
-                                  color: "bg-red-500 hover:bg-red-600 text-white",
-                                },
-                                {
-                                  id: "airteltigo",
-                                  name: "AirtelTigo Money",
-                                  color: "bg-blue-500 hover:bg-blue-600 text-white",
-                                },
-                              ].map((provider) => (
-                                <Button
-                                  key={provider.id}
-                                  type="button"
-                                  variant={donationData.mobileProvider === provider.id ? "default" : "outline"}
-                                  onClick={() => handleInputChange("mobileProvider", provider.id)}
-                                  className={
-                                    donationData.mobileProvider === provider.id
-                                      ? provider.color
-                                      : "border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                                  }
-                                >
-                                  {provider.name}
-                                </Button>
-                              ))}
-                            </div>
-                            {errors.mobileProvider && (
-                              <p className="text-red-500 text-sm mt-1">{errors.mobileProvider}</p>
-                            )}
-                          </div>
-
-                          {/* Provider-specific instructions */}
-                          {donationData.mobileProvider && (
-                            <div className="mt-4">
-                              {donationData.mobileProvider === "mtn" && (
-                                <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
-                                  <div className="flex items-center mb-3">
-                                    <Smartphone className="h-5 w-5 text-yellow-600 dark:text-yellow-400 mr-2" />
-                                    <h3 className="font-semibold text-yellow-900 dark:text-yellow-100">
-                                      MTN Mobile Money Payment
-                                    </h3>
-                                  </div>
-                                  <div className="text-yellow-800 dark:text-yellow-200 text-sm space-y-2">
-                                    <p className="font-medium">After clicking "Complete Donation", you will:</p>
-                                    <ol className="list-decimal list-inside space-y-1 ml-2">
-                                      <li>Receive a payment request on your phone</li>
-                                      <li>Enter your MTN MoMo PIN when prompted</li>
-                                      <li>Confirm the payment of GH₵{donationData.amount || "0.00"}</li>
-                                      <li>Receive SMS confirmation of successful payment</li>
-                                    </ol>
-                                    <div className="mt-3 p-2 bg-yellow-100 dark:bg-yellow-800/30 rounded border-l-4 border-yellow-400">
-                                      <p className="font-medium text-yellow-900 dark:text-yellow-100">
-                                        Alternative Method:
-                                      </p>
-                                      <p>
-                                        Dial <strong>*170#</strong> → Select "Send Money" → Enter merchant code → Follow
-                                        prompts
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
-
-                              {donationData.mobileProvider === "vodafone" && (
-                                <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
-                                  <div className="flex items-center mb-3">
-                                    <Smartphone className="h-5 w-5 text-red-600 dark:text-red-400 mr-2" />
-                                    <h3 className="font-semibold text-red-900 dark:text-red-100">
-                                      Vodafone Cash Payment
-                                    </h3>
-                                  </div>
-                                  <div className="text-red-800 dark:text-red-200 text-sm space-y-2">
-                                    <p className="font-medium">Payment Process:</p>
-                                    <ol className="list-decimal list-inside space-y-1 ml-2">
-                                      <li>You'll receive a payment request notification</li>
-                                      <li>Open the notification or check your messages</li>
-                                      <li>Enter your Vodafone Cash PIN</li>
-                                      <li>Confirm the donation amount of GH₵{donationData.amount || "0.00"}</li>
-                                      <li>Complete the transaction</li>
-                                    </ol>
-                                    <div className="mt-3 p-2 bg-red-100 dark:bg-red-800/30 rounded border-l-4 border-red-400">
-                                      <p className="font-medium text-red-900 dark:text-red-100">USSD Option:</p>
-                                      <p>
-                                        Dial <strong>*110#</strong> → Select "Financial Services" → "Make Payment" →
-                                        Enter details
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
-
-                              {donationData.mobileProvider === "airteltigo" && (
-                                <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                                  <div className="flex items-center mb-3">
-                                    <Smartphone className="h-5 w-5 text-blue-600 dark:text-blue-400 mr-2" />
-                                    <h3 className="font-semibold text-blue-900 dark:text-blue-100">
-                                      AirtelTigo Money Payment
-                                    </h3>
-                                  </div>
-                                  <div className="text-blue-800 dark:text-blue-200 text-sm space-y-2">
-                                    <p className="font-medium">How to complete your donation:</p>
-                                    <ol className="list-decimal list-inside space-y-1 ml-2">
-                                      <li>Receive payment request on your registered number</li>
-                                      <li>Enter your AirtelTigo Money PIN</li>
-                                      <li>Verify donation amount: GH₵{donationData.amount || "0.00"}</li>
-                                      <li>Authorize the payment</li>
-                                      <li>Get confirmation SMS</li>
-                                    </ol>
-                                    <div className="mt-3 p-2 bg-blue-100 dark:bg-blue-800/30 rounded border-l-4 border-blue-400">
-                                      <p className="font-medium text-blue-900 dark:text-blue-100">Multiple Options:</p>
-                                      <p>
-                                        <strong>USSD:</strong> Dial *110# → Select payment option
-                                      </p>
-                                      <p>
-                                        <strong>App:</strong> Use AirtelTigo Money mobile app
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </TabsContent>
-                    </Tabs>
+                    <div className="grid md:grid-cols-2 gap-4 mt-2">
+                      <Button
+                        type="button"
+                        variant={form.paymentMethod === "mobile-money" ? "default" : "outline"}
+                        onClick={() => handleInputChange("paymentMethod", "mobile-money")}
+                        className="h-16 flex flex-col items-center justify-center"
+                      >
+                        <Smartphone className="h-6 w-6 mb-1" />
+                        <span>Mobile Money</span>
+                      </Button>
+                      <Button
+                        type="button"
+                        variant={form.paymentMethod === "card" ? "default" : "outline"}
+                        onClick={() => handleInputChange("paymentMethod", "card")}
+                        className="h-16 flex flex-col items-center justify-center"
+                      >
+                        <CreditCard className="h-6 w-6 mb-1" />
+                        <span>Credit/Debit Card</span>
+                      </Button>
+                    </div>
                   </div>
 
-                  {/* Additional Options */}
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="recurring"
-                        checked={donationData.recurring}
-                        onCheckedChange={(checked) => handleInputChange("recurring", checked as boolean)}
-                      />
-                      <Label htmlFor="recurring" className="text-gray-900 dark:text-white">
-                        Make this a monthly recurring donation
-                      </Label>
-                    </div>
+                  {/* Mobile Money Instructions */}
+                  {renderMobileMoneyInstructions()}
 
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="anonymous"
-                        checked={donationData.anonymous}
-                        onCheckedChange={(checked) => handleInputChange("anonymous", checked as boolean)}
-                      />
-                      <Label htmlFor="anonymous" className="text-gray-900 dark:text-white">
-                        Make this donation anonymous
-                      </Label>
-                    </div>
-
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="newsletter"
-                        checked={donationData.newsletter}
-                        onCheckedChange={(checked) => handleInputChange("newsletter", checked as boolean)}
-                      />
-                      <Label htmlFor="newsletter" className="text-gray-900 dark:text-white">
-                        Subscribe to our newsletter for updates
-                      </Label>
-                    </div>
+                  {/* Project Selection */}
+                  <div>
+                    <Label htmlFor="project" className="text-gray-900 dark:text-white">
+                      Choose Project
+                    </Label>
+                    <Select value={form.project} onValueChange={(value) => handleInputChange("project", value)}>
+                      <SelectTrigger className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
+                        {projects.map((project) => (
+                          <SelectItem key={project} value={project} className="text-gray-900 dark:text-white">
+                            {project}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   {/* Message */}
@@ -687,55 +581,64 @@ export default function DonateClientPage() {
                     </Label>
                     <Textarea
                       id="message"
-                      value={donationData.message}
+                      value={form.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
-                      className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"
-                      placeholder="Share why you're supporting this cause..."
-                      rows={3}
+                      placeholder="Share why you're donating or leave a message for our team"
+                      className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                     />
                   </div>
 
-                  {/* Payment Status */}
-                  {paymentStatus.status !== "idle" && (
+                  {/* Checkboxes */}
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="anonymous"
+                        checked={form.isAnonymous}
+                        onCheckedChange={(checked) => handleInputChange("isAnonymous", checked as boolean)}
+                      />
+                      <Label htmlFor="anonymous" className="text-sm text-gray-900 dark:text-white">
+                        Make this donation anonymous
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="recurring"
+                        checked={form.isRecurring}
+                        onCheckedChange={(checked) => handleInputChange("isRecurring", checked as boolean)}
+                      />
+                      <Label htmlFor="recurring" className="text-sm text-gray-900 dark:text-white">
+                        Make this a monthly recurring donation
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="newsletter"
+                        checked={form.newsletter}
+                        onCheckedChange={(checked) => handleInputChange("newsletter", checked as boolean)}
+                      />
+                      <Label htmlFor="newsletter" className="text-sm text-gray-900 dark:text-white">
+                        Subscribe to our newsletter for updates
+                      </Label>
+                    </div>
+                  </div>
+
+                  {/* Status Messages */}
+                  {paymentStatus.message && (
                     <Alert
-                      className={`${
-                        paymentStatus.status === "success"
-                          ? "border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20"
-                          : paymentStatus.status === "failed"
-                            ? "border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20"
-                            : paymentStatus.status === "pending"
-                              ? "border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-900/20"
-                              : "border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20"
-                      }`}
+                      className={`
+                      ${paymentStatus.status === "success" ? "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800" : ""}
+                      ${paymentStatus.status === "error" ? "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800" : ""}
+                      ${paymentStatus.status === "processing" ? "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800" : ""}
+                      ${paymentStatus.status === "pending" ? "bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800" : ""}
+                    `}
                     >
-                      <div className="flex items-center">
-                        {paymentStatus.status === "processing" && (
-                          <Loader2 className="h-4 w-4 animate-spin text-blue-600 dark:text-blue-400" />
-                        )}
-                        {paymentStatus.status === "success" && (
-                          <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
-                        )}
-                        {paymentStatus.status === "failed" && (
-                          <XCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
-                        )}
-                        {paymentStatus.status === "pending" && (
-                          <Clock className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
-                        )}
-                      </div>
-                      <AlertDescription
-                        className={`ml-2 ${
-                          paymentStatus.status === "success"
-                            ? "text-green-800 dark:text-green-200"
-                            : paymentStatus.status === "failed"
-                              ? "text-red-800 dark:text-red-200"
-                              : paymentStatus.status === "pending"
-                                ? "text-yellow-800 dark:text-yellow-200"
-                                : "text-blue-800 dark:text-blue-200"
-                        }`}
-                      >
+                      {getStatusIcon()}
+                      <AlertDescription className="text-gray-900 dark:text-gray-100">
                         {paymentStatus.message}
                         {paymentStatus.transactionId && (
-                          <div className="mt-2 text-sm opacity-75">Transaction ID: {paymentStatus.transactionId}</div>
+                          <div className="mt-2 text-sm">
+                            <strong>Transaction ID:</strong> {paymentStatus.transactionId}
+                          </div>
                         )}
                       </AlertDescription>
                     </Alert>
@@ -748,15 +651,10 @@ export default function DonateClientPage() {
                       disabled={paymentStatus.status === "processing" || paymentStatus.status === "pending"}
                       className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
                     >
-                      {paymentStatus.status === "processing" ? (
+                      {paymentStatus.status === "processing" || paymentStatus.status === "pending" ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                           Processing...
-                        </>
-                      ) : paymentStatus.status === "pending" ? (
-                        <>
-                          <Clock className="mr-2 h-4 w-4" />
-                          Waiting for Payment...
                         </>
                       ) : (
                         <>
@@ -766,12 +664,23 @@ export default function DonateClientPage() {
                       )}
                     </Button>
 
-                    {paymentStatus.status === "failed" && donationData.paymentMethod === "mobile-money" && (
+                    {(paymentStatus.status === "success" || paymentStatus.status === "error") && (
                       <Button
                         type="button"
                         variant="outline"
-                        onClick={resetPayment}
-                        className="border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 bg-transparent"
+                        onClick={resetForm}
+                        className="border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-transparent"
+                      >
+                        New Donation
+                      </Button>
+                    )}
+
+                    {paymentStatus.status === "error" && form.paymentMethod === "mobile-money" && (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={handleMobileMoneyPayment}
+                        className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white bg-transparent"
                       >
                         Try Again
                       </Button>
@@ -782,98 +691,80 @@ export default function DonateClientPage() {
             </Card>
           </div>
 
-          {/* Donation Summary & Info */}
+          {/* Donation Impact Sidebar */}
           <div className="space-y-6">
-            {/* Donation Summary */}
             <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
               <CardHeader>
-                <CardTitle className="text-gray-900 dark:text-white">Donation Summary</CardTitle>
+                <CardTitle className="text-gray-900 dark:text-white">Your Impact</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-300">Amount:</span>
-                  <span className="font-semibold text-gray-900 dark:text-white">
-                    GH₵{donationData.amount || "0.00"}
-                  </span>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">GH₵{form.amount || "0"}</div>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Your donation amount</p>
                 </div>
 
-                {donationData.project && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-300">Project:</span>
-                    <span className="font-medium text-gray-900 dark:text-white text-right text-sm">
-                      {donationData.project === "education" && "Education & Literacy"}
-                      {donationData.project === "healthcare" && "Healthcare & Medical"}
-                      {donationData.project === "water" && "Clean Water & Sanitation"}
-                      {donationData.project === "agriculture" && "Agriculture & Food Security"}
-                      {donationData.project === "youth" && "Youth Development"}
-                      {donationData.project === "women" && "Women's Empowerment"}
-                      {donationData.project === "emergency" && "Emergency Relief"}
-                      {donationData.project === "general" && "General Fund"}
-                    </span>
+                {form.amount && Number.parseFloat(form.amount) > 0 && (
+                  <div className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                    <div className="flex justify-between">
+                      <span>School supplies for:</span>
+                      <span className="font-semibold text-gray-900 dark:text-white">
+                        {Math.floor(Number.parseFloat(form.amount) / 25)} children
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Meals provided:</span>
+                      <span className="font-semibold text-gray-900 dark:text-white">
+                        {Math.floor(Number.parseFloat(form.amount) / 5)} meals
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Medical checkups:</span>
+                      <span className="font-semibold text-gray-900 dark:text-white">
+                        {Math.floor(Number.parseFloat(form.amount) / 50)} checkups
+                      </span>
+                    </div>
                   </div>
                 )}
+              </CardContent>
+            </Card>
 
-                {donationData.paymentMethod === "mobile-money" && donationData.mobileProvider && (
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600 dark:text-gray-300">Payment:</span>
-                    <Badge className={getProviderColor(donationData.mobileProvider)}>
-                      {getProviderName(donationData.mobileProvider)}
-                    </Badge>
-                  </div>
-                )}
-
-                {donationData.paymentMethod === "card" && (
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600 dark:text-gray-300">Payment:</span>
-                    <Badge className="bg-blue-500 text-white dark:bg-blue-400 dark:text-black">
-                      <CreditCard className="mr-1 h-3 w-3" />
-                      Card Payment
-                    </Badge>
-                  </div>
-                )}
-
-                {donationData.recurring && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-300">Frequency:</span>
-                    <span className="font-medium text-blue-600 dark:text-blue-400">Monthly</span>
-                  </div>
-                )}
-
-                <div className="border-t border-gray-200 dark:border-gray-600 pt-4">
-                  <div className="flex justify-between text-lg font-bold">
-                    <span className="text-gray-900 dark:text-white">Total:</span>
-                    <span className="text-blue-600 dark:text-blue-400">GH₵{donationData.amount || "0.00"}</span>
-                  </div>
+            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+              <CardHeader>
+                <CardTitle className="text-gray-900 dark:text-white">Why Donate?</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                <div className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>100% of donations go directly to programs</span>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Tax-deductible receipts provided</span>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Regular impact reports sent to donors</span>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Secure and encrypted payment processing</span>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Impact Information */}
-            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-blue-200 dark:border-blue-800">
-              <CardHeader>
-                <CardTitle className="text-blue-900 dark:text-blue-100">Your Impact</CardTitle>
-              </CardHeader>
-              <CardContent className="text-blue-800 dark:text-blue-200 text-sm space-y-2">
-                <p>• GH₵50 can provide school supplies for 2 children</p>
-                <p>• GH₵100 can fund a health checkup for 5 people</p>
-                <p>• GH₵250 can support a family with clean water for 6 months</p>
-                <p>• GH₵500 can sponsor a child's education for a full term</p>
-              </CardContent>
-            </Card>
-
-            {/* Security Information */}
-            <Card className="bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
-              <CardHeader>
-                <CardTitle className="text-green-900 dark:text-green-100 flex items-center">
-                  <CheckCircle className="mr-2 h-5 w-5" />
-                  Secure & Trusted
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-green-800 dark:text-green-200 text-sm space-y-2">
-                <p>✓ SSL encrypted transactions</p>
-                <p>✓ PCI DSS compliant payment processing</p>
-                <p>✓ Registered NGO with transparent reporting</p>
-                <p>✓ Tax-deductible receipts provided</p>
+            <Card className="bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+              <CardContent className="pt-6">
+                <div className="text-center">
+                  <Wifi className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Need Help?</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                    Having trouble with your donation? Contact our support team.
+                  </p>
+                  <div className="space-y-1 text-sm text-gray-600 dark:text-gray-300">
+                    <div>📞 +233597399216</div>
+                    <div>📧 betterdreamfoundationghana@gmail.com</div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
