@@ -23,29 +23,29 @@ export default function ContactPage() {
                 <p className="text-gray-700">
                   <strong>Address:</strong>
                   <br />
-                  123 Hope Street
+                  East Legon
                   <br />
                   Suite 456
                   <br />
-                  New York, NY 10001
+                  Accra, ND 10001
                   <br />
-                  United States
+                  Ghana
                 </p>
                 <p className="text-gray-700">
                   <strong>Phone:</strong>
                   <br />
-                  Main Office: +1 (555) 123-4567
+                  Main Office: +233597399216
                   <br />
-                  Donations: +1 (555) 123-4568
+                  Donations: +233597399216
                 </p>
                 <p className="text-gray-700">
                   <strong>Email:</strong>
                   <br />
-                  General: info@betterdreamfoundation.org
+                  General: betterdreamfoundationghana@gmail.com
                   <br />
-                  Donations: donations@betterdreamfoundation.org
+                  Donations: betterdreamfoundationghana@gmail.com
                   <br />
-                  Volunteers: volunteers@betterdreamfoundation.org
+                  Volunteers: betterdreamfoundationghana@gmail.com
                 </p>
               </div>
             </div>

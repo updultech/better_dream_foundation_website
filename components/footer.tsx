@@ -34,22 +34,20 @@ export function Footer() {
                 <span className="sr-only">Facebook</span>
               </Link>
               <Link
-                href="https://twitter.com/shaibum137?t=nRW3UxWL1isYYkSiVuTuhw&s=09
-
-"
+                href="https://twitter.com/shaibum137?t=nRW3UxWL1isYYkSiVuTuhw&s=09"
                 className="text-gray-400 hover:text-blue-400 transition-colors"
               >
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="https://www.instagram.com/betterdreamfoundationghana?igsh=YzljYTk1ODg3Zg==" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <Link
+                href="https://www.instagram.com/betterdreamfoundationghana?igsh=YzljYTk1ODg3Zg=="
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+              >
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
-              >
+              <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <Youtube className="h-5 w-5" />
                 <span className="sr-only">YouTube</span>
               </Link>
@@ -107,7 +105,7 @@ export function Footer() {
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-blue-400 mr-2" />
-                <span className="text-gray-400">info@betterdreamfoundation.org</span>
+                <span className="text-gray-400">betterdreamfoundationghana@gmail.com</span>
               </li>
             </ul>
           </div>

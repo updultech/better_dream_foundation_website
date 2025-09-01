@@ -21,7 +21,8 @@ const newsArticles = [
     category: "Program Update",
     date: "March 15, 2024",
     readTime: "3 min read",
-    image: "/placeholder.svg?height=200&width=300",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/new%20digital%20center%20opening%20in%20kenya-glAmzJDdtPzDppB9J92kpao67GcdO0.webp",
     featured: true,
   },
   {
@@ -31,7 +32,8 @@ const newsArticles = [
     category: "Partnership",
     date: "March 10, 2024",
     readTime: "4 min read",
-    image: "/placeholder.svg?height=200&width=300",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/expansion%20of%20medical%20reach-B83jOMrYuOpmaB1gPyw5D67twcvNWh.webp",
     featured: false,
   },
   {
@@ -42,7 +44,8 @@ const newsArticles = [
     category: "Milestone",
     date: "March 5, 2024",
     readTime: "2 min read",
-    image: "/placeholder.svg?height=200&width=300",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/clean%20water%20initiative-CbmkJ3AdUclVpFlpUIjhECEyE327Hd.webp",
     featured: false,
   },
   {
@@ -53,7 +56,8 @@ const newsArticles = [
     category: "Success Story",
     date: "February 28, 2024",
     readTime: "5 min read",
-    image: "/placeholder.svg?height=200&width=300",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/women%20empowerent.jpg-GGE2aptQzWm6KZ01qPoucProCQtZA1.jpeg",
     featured: false,
   },
 ]
@@ -176,7 +180,18 @@ export default function NewsPage() {
                   <div className="relative h-64 lg:h-auto">
                     <Image
                       src={featuredArticle.image || "/placeholder.svg"}
-                      alt={featuredArticle.title}
+                      alt={
+                        featuredArticle.title === "New Digital Learning Center Opens in Rural Kenya"
+                          ? "African students working on laptops in a digital learning center classroom"
+                          : featuredArticle.title ===
+                              "Partnership with Local Healthcare Providers Expands Medical Reach"
+                            ? "Healthcare worker holding a young child, representing medical outreach services"
+                            : featuredArticle.title === "Clean Water Project Reaches Milestone: 50 Communities Served"
+                              ? "Young child smiling while collecting clean water from a community water pump"
+                              : featuredArticle.title === "Women's Empowerment Program Graduates 200 Entrepreneurs"
+                                ? "Group of African women learning computer skills together around a laptop"
+                                : "Placeholder Image"
+                      }
                       fill
                       className="object-cover"
                     />
@@ -219,7 +234,17 @@ export default function NewsPage() {
                   <div className="relative h-48">
                     <Image
                       src={article.image || "/placeholder.svg"}
-                      alt={article.title}
+                      alt={
+                        article.title === "New Digital Learning Center Opens in Rural Kenya"
+                          ? "African students working on laptops in a digital learning center classroom"
+                          : article.title === "Partnership with Local Healthcare Providers Expands Medical Reach"
+                            ? "Healthcare worker holding a young child, representing medical outreach services"
+                            : article.title === "Clean Water Project Reaches Milestone: 50 Communities Served"
+                              ? "Young child smiling while collecting clean water from a community water pump"
+                              : article.title === "Women's Empowerment Program Graduates 200 Entrepreneurs"
+                                ? "Group of African women learning computer skills together around a laptop"
+                                : "Placeholder Image"
+                      }
                       fill
                       className="object-cover"
                     />
@@ -291,7 +316,7 @@ export default function NewsPage() {
 
                     <div className="flex gap-2">
                       <Button className="flex-1 bg-blue-600 hover:bg-blue-700">Register Now</Button>
-                      <Button variant="outline" className="flex-1">
+                      <Button variant="outline" className="flex-1 bg-transparent">
                         Learn More
                       </Button>
                     </div>
@@ -341,7 +366,7 @@ export default function NewsPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg"
+                className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg bg-transparent"
               >
                 <Heart className="mr-2 h-5 w-5" />
                 Donate

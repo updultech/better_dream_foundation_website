@@ -1,29 +1,28 @@
 // This script prevents MetaMask detection
 ;(() => {
-  // Disable Web3 and MetaMask detection
-  window.ethereum = undefined
-  window.web3 = undefined
+  if (typeof window === "undefined") return
 
-  // Prevent any potential MetaMask detection
-  Object.defineProperty(window, "ethereum", {
-    value: undefined,
-    writable: false,
-    configurable: false,
-  })
+  try {
+    // Disable Web3 and MetaMask detection
+    window.ethereum = undefined
+    window.web3 = undefined
 
-  // Block any potential Web3 detection
-  Object.defineProperty(window, "web3", {
-    value: undefined,
-    writable: false,
-    configurable: false,
-  })
+    // Prevent any potential MetaMask detection
+    Object.defineProperty(window, "ethereum", {
+      value: undefined,
+      writable: false,
+      configurable: false,
+    })
 
-  // Intercept any attempts to check for MetaMask
-  const originalHasOwnProperty = Object.prototype.hasOwnProperty
-  Object.prototype.hasOwnProperty = function (prop) {
-    if (prop === "ethereum" || prop === "web3") {
-      return false
-    }
-    return originalHasOwnProperty.call(this, prop)
+    // Block any potential Web3 detection
+    Object.defineProperty(window, "web3", {
+      value: undefined,
+      writable: false,
+      configurable: false,
+    })
+
+    console.log("MetaMask detection blocked")
+  } catch (e) {
+    console.log("MetaMask blocker failed:", e.message)
   }
 })()

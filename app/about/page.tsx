@@ -152,11 +152,7 @@ export default function AboutPage() {
               </p>
 
               <p className="text-gray-600 dark:text-gray-300 text-lg">
-                Today, Better Dream Foundation operates in 15 countries and has impacted over 50,000 lives. But our work
-                is far from over. We continue to innovate, learn, and adapt our approaches to create even greater impact
-                in the communities we serve.
-              </p>
-            </div>
+                Today, Better Dream Foundation operates in all the 16 regions across Ghana and has impacted over 50,000 lives. But our work is far from over. We continue to innovate, learn, and adapt our approaches to create even greater impact in the communities we serve.</div>
           </div>
         </div>
       </section>
@@ -216,7 +212,7 @@ export default function AboutPage() {
               <CardContent className="p-8">
                 <div className="w-32 h-32 mx-auto mb-6 relative">
                   <Image
-                    src="/placeholder.svg?height=200&width=200"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/savannah%20coordii.jpg-CNLf626WEJKjmCwG0DMWBJWb1bisI1.jpeg"
                     alt="Regional Coordinator SR"
                     fill
                     sizes="(max-width: 768px) 100vw, 128px"
@@ -227,7 +223,7 @@ export default function AboutPage() {
                 <p className="text-blue-600 font-medium mb-4">Regional Coordinator SR</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
                   Awudu oversees our regional programs and coordinates community development initiatives across the
-                  Savannah Region.
+                  Savannah Region. He specializes in rural development and community engagement.
                 </p>
               </CardContent>
             </Card>
@@ -243,7 +239,7 @@ export default function AboutPage() {
                     className="rounded-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Abdul karim Hakim</h3>
+                <h3 className="text-xl font-semibold mb-2">Alhassan Zakaria</h3>
                 <p className="text-blue-600 font-medium mb-4">Project Manager</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
                   Alhassan Zakaria is the Project Manager at Better Dream Foundation Ghana and aspiring Medical

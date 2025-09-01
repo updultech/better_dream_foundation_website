@@ -21,7 +21,7 @@ export default function TeamPage() {
     },
     {
       name: "Agolmah Atozire Ernest",
-      role: "Regional Coordinator NR",
+      role: "Northern Regional Coordinator",
       image: "/images/regional-coordinator-ernest.jpg",
       bio: "Agolmah coordinates our regional initiatives and ensures effective implementation of programs across the Northern Region. He has extensive experience in community development and project management.",
       email: "ernest@betterdreamfoundation.org",
@@ -29,10 +29,81 @@ export default function TeamPage() {
     {
       name: "Awudu Yahaya",
       role: "Regional Coordinator SR",
-      image: "/images/regional-coordinator-awudu.jpg",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/savannah%20coordii.jpg-CNLf626WEJKjmCwG0DMWBJWb1bisI1.jpeg",
       bio: "Awudu oversees our regional programs and coordinates community development initiatives across the Savannah Region. He specializes in rural development and community engagement.",
-      email: "awudu@betterdreamfoundation.org",
+      email: "awudu@betterdreamfoundationghana2gmail.com",
     },
+
+    {
+      name: "Abdul-Wadud Shaibu",
+      role: "National Graphic desogner",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wadud.jpg-NnkLXIFZbiDb7SpO8dwt9iAJcWI3zN.jpeg",
+      bio: "Abdulwadud Shaibu is a Ghanaian creative and community leader passionate about design, leadership, and impact. With a strong background in accounting, computing, graphic design and project management.  A fresh graduate and he blends creativity and structure to solve real-world problems.He currently serves as National Graphic Designer and Acting Greater Accra Regional Coordinator at Better Dream Foundation, supporting youth through education, technology, and entrepreneurship. He inspired in building initiatives that empower others.A lifelong learner with a Google certification in Project Management and a National Service Personnel at WAEC, Abdulwadud is known for turning ideas into visual stories and service into lasting change.",
+      email: "wadud@betterdreamfoundation.org",
+    },
+    {
+      name: "Amevor Edem John",
+      role: "Oti Regional Coordinator",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/oti%20coordii.jpg-PT8PL1Tlz5Sgl59M5r46sB5xLts6rr.jpeg",
+      bio: "Amevor Edem John, Oti Regional Coordinator of Better Dream Foundation, is an educator at Lolobi Ashiambi R.C. Basic School with a degree in Primary Education from Peki College of Education. Passionate about youth empowerment and community development, he leads sensitization projects, mobilizes communities, and inspires active citizenship. His strong communication, problem-solving, and leadership skills make him a valuable asset .",
+      email: "alhassan@betterdreamfoundation.org",
+    },
+    {
+      name: "Doris Amoako",
+      role: "Western Regional Coordinator",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/western%20coordii.jpg-WjGRpXIV5Yzk9bllb3ED1s8u8PgXvt.jpeg",
+      bio: "Doris Amoako serves as the Western Regional Coordinator for Better Dream Foundation, where she champions youth empowerment, active citizenship, and community development. With a background in education and grassroots mobilization, Doris has successfully led initiatives that inspire positive change, enhance community participation, and drive the foundation’s mission of building stronger, more inclusive communities",
+      email: "Doris@betterdreamfoundationghana@gmail.com",
+    },
+    {
+      name: "Mary Aakyiire",
+      role: "Natiional Programs Manager",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/national%20project%20manager.jpg-VJ9Yz5PKjXGS4rbOhzw5034eGmkLrn.jpeg",
+      bio: "Mary Aakyiire is the National Programs Manager at Better Dream Foundation, where she oversees the planning, implementation, and evaluation of community development projects. With a background in social work and project management, Mary is dedicated to creating impactful programs that empower communities and foster sustainable development.",
+      email: "Mary@betterdreamfoundationghana@gmail.com",
+    },
+    {
+      name: "Esther Lovia Dankyi",
+      role: "Ashanti Regional Coordinator",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Esther.jpg-yJUdNQMIPA6UzYFCuSyTqag8LzzCSC.jpeg",
+      bio: "As Regional Coordinator, I am passionate about creating real impact at the grassroots level. I believe in leading by example and building strong, collaborative teams that can turn ideas into action. Every project I oversee is a chance to make a difference, and I am committed to ensuring our region thrives through purposeful leadership and unity.",
+      email: "esther@betterdreamfoundation.org",
+    },
+    {
+      name: "Getrude Teffey",
+      role: "Managing Director",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/managing%20director.jpg-aid5mWC7oqfq6JX4VL7xvuvwYHBBoB.jpeg",
+      bio: "As Managing Director, I bring a strategic vision and operational expertise to drive our mission forward. I am dedicated to fostering innovation, efficiency, and collaboration across all levels of the organization. My focus is on creating sustainable growth and ensuring that our programs deliver maximum impact for the communities we serve.",
+      email: "Teffey@betterdreamfoundation.org",
+    },
+    {
+      name: "Jennifer Anyeyore Azure",
+      role: "National Media and Publicity Secretary",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/jennifer.jpg-JD0cuO3awCevarRcossg7Oxzu0PEqh.jpeg",
+      bio: "I serve as the Deputy Regional Coordinator with a heart for service and structure. I enjoy being hands-on with planning and problem-solving, and I am always ready to support the team wherever needed. Working closely with the Regional Coordinator, I help keep our projects moving smoothly and our vision alive in every activity we carry out.",
+      email: "munayya@betterdreamfoundation.org",
+    },
+    {
+      name: "Toufique Bansi Adam",
+      role: "Director of Legal Affairs",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bansi.jpg-UgWnpGvM02L8f9LXGjqV4NNmedRllH.jpeg",
+      bio: "My name is Toufique Adam, and I am a driven and passionate individual committed to advancing human rights, social justice, and sustainable peace. As a holder of a Bachelor of Arts degree in Political Science, and currently pursuing a Master Of Philosophy (Mphil) in Human Rights, Conflict and Peace Studies. By that, I developed a solid foundation in understanding the complexities of governance, policy-making, and international relations",
+      email: "bansi@betterdreamfoundation.org",
+    },
+    {
+      name: "Larbi Mary Gyamfua ",
+      role: "Eastern Regional Coordinator",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lardi%20Marry.jpg-lCHwszeCSXpo72rh6JiN31p8xtQSMS.jpeg",
+      bio: "Larbi Mary Gyamfua is a dynamic professional and Business Administration Officer at DotOne Consult, where she drives efficiency and growth. A passionate motivational writer and speaker, she inspires transformation and purpose. As Eastern Regional Coordinator of Better Dream Foundation Ghana, she empowers communities through education and youth engagement, championing change and meaningful impact at the grassroots level.",
+      email: "Larbimary@betterdreamfoundation.org",
+    },
+
     {
       name: "Hamdan Sibdoo Zakaria Hamid",
       role: "Publicity Secretary",
@@ -54,6 +125,14 @@ export default function TeamPage() {
       bio: "Sham-una Zainab serves as the Financial Secretary of Better Dream Foundation, where she ensures transparency, accountability, and efficient management of the foundation's finances. Her dedication to financial integrity supports the foundation's mission to drive sustainable change and community development.",
       email: "shamuna@betterdreamfoundation.org",
     },
+
+    {
+      name: "Benjamin Agyakwa",
+      role: "Sponsorship and Partnership Coordination N/R",
+      image: "/images/financial-secretary-shamuna.jpg",
+      bio: " I'm Benjamin Agyakwa, a dedicated student and passionate advocate for human rights and social justice. As a Partnership and Sponsorship Coordinator for Better Dream Foundation and Local Officer for Human Rights and Peace at UDSMSA, I strive to empower individuals and communities. With a problem-solving attitude and a commitment to personal liberty, my mission is to be a catalyst for liberation and positive change in all aspects of life..",
+      email: "Benjamin@betterdreamfoundation.org",
+    },
     {
       name: "Abdul Karim Hakim",
       role: "Graphic Designer",
@@ -61,13 +140,7 @@ export default function TeamPage() {
       bio: "Abdul Karim Hakim is the creative force behind the visual identity of Better Dream Foundation. As the foundation's Graphic Designer, he brings stories to life through impactful design, blending purpose with creativity. With a strong passion for social impact and visual storytelling, Abdul ensures that every design reflects the mission of hope, empowerment, and transformation at the heart of the foundation's work.",
       email: "wise03667@gmail.com",
     },
-    {
-      name: "Esther Lovia Dankyi",
-      role: "Regional Coordinator AR",
-      image: "/images/regional-coordinator-esther.jpg",
-      bio: "As Regional Coordinator, I am passionate about creating real impact at the grassroots level. I believe in leading by example and building strong, collaborative teams that can turn ideas into action. Every project I oversee is a chance to make a difference, and I am committed to ensuring our region thrives through purposeful leadership and unity.",
-      email: "esther@betterdreamfoundation.org",
-    },
+    
     {
       name: "Maxwell Opoku Darkwah",
       role: "Regional Secretary",
@@ -154,7 +227,7 @@ export default function TeamPage() {
             {leadershipTeam.map((member, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <div className="w-32 h-32 mx-auto mb-6 relative bg-gray-900 bg-gray-50 bg-gray-200 bg-slate-500 bg-black">
+                  <div className="w-32 h-32 mx-auto mb-6 relative bg-gray-100 dark:bg-gray-800">
                     <Image
                       src={member.image || "/placeholder.svg"}
                       alt={member.name}
