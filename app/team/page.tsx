@@ -238,18 +238,21 @@ export default function TeamPage() {
                 className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
               >
                 <CardContent className="p-6">
-                  <div className="w-32 h-32 mx-auto mb-6 relative bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div className="w-40 h-40 mx-auto mb-6 relative bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-600">
                     <Image
                       src={member.image || "/placeholder.svg"}
                       alt={member.name}
                       fill
-                      sizes="(max-width: 768px) 100vw, 128px"
-                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 160px"
+                      className="object-cover object-top scale-110"
+                      style={{
+                        objectPosition: "center top",
+                      }}
                     />
                   </div>
                   <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">{member.name}</h3>
                   <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">{member.role}</p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{member.bio}</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-4">{member.bio}</p>
 
                   {/* Contact Information */}
                   <div className="flex justify-center space-x-3 mt-4">
