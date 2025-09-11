@@ -135,14 +135,14 @@ export default function ProjectsPage() {
             </div>
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">15</div>
-              <div className="text-gray-600 dark:text-gray-300">Countries</div>
+              <div className="text-gray-600 dark:text-gray-300">Regions</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">50K+</div>
+              <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">500+</div>
               <div className="text-gray-600 dark:text-gray-300">Lives Impacted</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">$2M+</div>
+              <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">$1M+</div>
               <div className="text-gray-600 dark:text-gray-300">Funds Deployed</div>
             </div>
           </div>

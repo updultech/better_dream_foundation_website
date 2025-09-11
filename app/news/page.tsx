@@ -1,63 +1,82 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Calendar, MapPin, Clock, ArrowRight, Users, Heart } from "lucide-react"
-import Image from "next/image"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Calendar, Clock, ArrowRight, Users, Heart, Target } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "News & Events - Stay Updated",
-  description:
-    "Stay updated with Better Dream Foundation's latest news, upcoming events, and success stories from our programs worldwide.",
+  title: "News & Events - Better Dream Foundation",
+  description: "Stay updated with the latest news, events, and impact stories from Better Dream Foundation Ghana.",
+  keywords: "Better Dream Foundation news, events, Ghana NGO updates, community impact stories",
 }
 
 const newsArticles = [
   {
     id: 1,
-    title: "New Digital Learning Center Opens in Rural Kenya",
+    title: "Annual Community Health Fair Reaches 2,000 Beneficiaries",
     excerpt:
-      "We're excited to announce the opening of our 15th digital learning center, bringing technology education to 500 more students.",
-    category: "Program Update",
-    date: "March 15, 2024",
-    readTime: "3 min read",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/new%20digital%20center%20opening%20in%20kenya-glAmzJDdtPzDppB9J92kpao67GcdO0.webp",
+      "Our largest health fair to date provided free medical screenings, vaccinations, and health education to communities across three regions.",
+    category: "Health",
+    date: "2024-12-15",
+    readTime: "5 min read",
+    image: "/images/mobile-health-clinic.jpg",
     featured: true,
   },
   {
     id: 2,
-    title: "Partnership with Local Healthcare Providers Expands Medical Reach",
-    excerpt: "Our new partnership will enable us to serve 10,000 additional patients through mobile health clinics.",
-    category: "Partnership",
-    date: "March 10, 2024",
+    title: "Better Dream Foundation Ghana calls for investigation into Kantamato fire outbreak",
+    excerpt:
+      "The foundation demands a thorough investigation into the devastating fire at Kantamato Market and calls for immediate support for affected traders and their families.",
+    category: "Advocacy",
+    date: "2025-01-05",
     readTime: "4 min read",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/expansion%20of%20medical%20reach-B83jOMrYuOpmaB1gPyw5D67twcvNWh.webp",
+    image: "/images/kantamato-market-fire.jpg",
     featured: false,
   },
   {
     id: 3,
-    title: "Clean Water Project Reaches Milestone: 50 Communities Served",
+    title: "Youth Leadership Conference Empowers 500 Young Leaders",
     excerpt:
-      "Celebrating a major milestone in our clean water initiative with the completion of our 50th water purification system.",
-    category: "Milestone",
-    date: "March 5, 2024",
-    readTime: "2 min read",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/clean%20water%20initiative-CbmkJ3AdUclVpFlpUIjhECEyE327Hd.webp",
+      "Three-day conference focused on leadership skills, entrepreneurship, and community development, inspiring the next generation of changemakers.",
+    category: "Education",
+    date: "2024-11-28",
+    readTime: "6 min read",
+    image: "/images/youth-leadership-conference.jpg",
     featured: false,
   },
   {
     id: 4,
-    title: "Women's Empowerment Program Graduates 200 Entrepreneurs",
+    title: "Women's Empowerment Program Graduates 150 Participants",
     excerpt:
-      "Our latest cohort of women entrepreneurs have successfully completed their training and launched their businesses.",
-    category: "Success Story",
-    date: "February 28, 2024",
+      "Successful completion of our six-month skills training program, with 85% of graduates starting their own businesses or finding employment.",
+    category: "Empowerment",
+    date: "2024-11-10",
+    readTime: "4 min read",
+    image: "/images/womens-empowerment-program.jpg",
+    featured: false,
+  },
+  {
+    id: 5,
+    title: "Digital Learning Centers Launch in Rural Communities",
+    excerpt:
+      "New computer labs established in five rural schools, providing technology access and digital literacy training to over 800 students.",
+    category: "Education",
+    date: "2024-10-22",
+    readTime: "3 min read",
+    image: "/images/digital-learning-center.jpg",
+    featured: false,
+  },
+  {
+    id: 6,
+    title: "Emergency Relief Efforts Support Flood Victims",
+    excerpt:
+      "Rapid response team provided emergency supplies, temporary shelter, and medical assistance to 300 families affected by seasonal flooding.",
+    category: "Emergency",
+    date: "2024-10-05",
     readTime: "5 min read",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/women%20empowerent.jpg-GGE2aptQzWm6KZ01qPoucProCQtZA1.jpeg",
+    image: "/images/capacity-building-workshop.jpg",
     featured: false,
   },
 ]
@@ -65,43 +84,47 @@ const newsArticles = [
 const upcomingEvents = [
   {
     id: 1,
-    title: "Annual Fundraising Gala",
-    description: "Join us for an evening of celebration and fundraising to support our global programs.",
-    date: "April 20, 2024",
-    time: "6:00 PM - 10:00 PM",
-    location: "Grand Ballroom, City Center",
-    type: "Fundraising",
-    price: "$150 per person",
+    title: "Community Clean-Up Drive",
+    date: "2025-01-20",
+    location: "Accra Metropolitan Area",
+    description: "Join us for a city-wide environmental cleanup initiative.",
   },
   {
     id: 2,
-    title: "Volunteer Orientation Workshop",
-    description: "Learn about our programs and how you can get involved as a volunteer.",
-    date: "April 15, 2024",
-    time: "2:00 PM - 4:00 PM",
-    location: "Better Dream Foundation Office",
-    type: "Workshop",
-    price: "Free",
+    title: "Skills Training Workshop",
+    date: "2025-02-03",
+    location: "Kumasi Training Center",
+    description: "Free vocational training in tailoring and carpentry.",
   },
   {
     id: 3,
-    title: "Community Health Fair",
-    description: "Free health screenings and wellness education for the local community.",
-    date: "April 25, 2024",
-    time: "9:00 AM - 3:00 PM",
-    location: "Central Park Community Center",
-    type: "Community Event",
-    price: "Free",
+    title: "Health Screening Campaign",
+    date: "2025-02-15",
+    location: "Northern Region",
+    description: "Free medical checkups and health education sessions.",
+  },
+]
+
+const quickNews = [
+  {
+    title: "Better Dream Foundation Ghana calls for investigation into Kantamato fire outbreak",
+    date: "2025-01-05",
+    category: "Advocacy",
   },
   {
-    id: 4,
-    title: "Educational Webinar: Global Water Crisis",
-    description: "Expert panel discussion on water scarcity and sustainable solutions.",
-    date: "May 2, 2024",
-    time: "7:00 PM - 8:30 PM",
-    location: "Online",
-    type: "Webinar",
-    price: "Free",
+    title: "New scholarship program announced for underprivileged students",
+    date: "2024-12-20",
+    category: "Education",
+  },
+  {
+    title: "Mobile health clinic reaches remote villages",
+    date: "2024-12-18",
+    category: "Health",
+  },
+  {
+    title: "Volunteer appreciation ceremony celebrates community heroes",
+    date: "2024-12-12",
+    category: "Community",
   },
 ]
 
@@ -109,272 +132,245 @@ export default function NewsPage() {
   const featuredArticle = newsArticles.find((article) => article.featured)
   const regularArticles = newsArticles.filter((article) => !article.featured)
 
-  const news = [
-    {
-      title: "New Digital Learning Center Opens in Rural Kenya",
-      date: "March 15, 2024",
-      excerpt:
-        "We're excited to announce the opening of our 15th digital learning center, bringing technology education to 500 more students.",
-    },
-    {
-      title: "Partnership with Local Healthcare Providers Expands Medical Reach",
-      date: "March 10, 2024",
-      excerpt: "Our new partnership will enable us to serve 10,000 additional patients through mobile health clinics.",
-    },
-    {
-      title: "Clean Water Project Reaches Milestone: 50 Communities Served",
-      date: "March 5, 2024",
-      excerpt:
-        "Celebrating a major milestone in our clean water initiative with the completion of our 50th water purification system.",
-    },
-  ]
-
-  const events = [
-    {
-      title: "Annual Fundraising Gala",
-      date: "April 20, 2024",
-      location: "Grand Ballroom, City Center",
-      description: "Join us for an evening of celebration and fundraising to support our global programs.",
-    },
-    {
-      title: "Volunteer Orientation Workshop",
-      date: "April 15, 2024",
-      location: "Better Dream Foundation Office",
-      description: "Learn about our programs and how you can get involved as a volunteer.",
-    },
-    {
-      title: "Community Health Fair",
-      date: "April 25, 2024",
-      location: "Central Park Community Center",
-      description: "Free health screenings and wellness education for the local community.",
-    },
-  ]
-
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">News & Events</h1>
-            <p className="text-xl lg:text-2xl text-blue-100">
-              Stay updated with Better Dream Foundation's latest news, upcoming events, and success stories from around
-              the world.
+          <div className="text-center">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-4">News & Events</h1>
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+              Stay updated with our latest initiatives, impact stories, and upcoming events that are making a difference
+              in communities.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Featured Article */}
-      {featuredArticle && (
-        <section className="py-16 bg-white dark:bg-gray-900">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-8">
-                <Badge className="bg-yellow-500 text-blue-900 mb-4">Featured Story</Badge>
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Latest News</h2>
-              </div>
-
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="grid lg:grid-cols-2 gap-0">
-                  <div className="relative h-64 lg:h-auto">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2">
+            {/* Featured Article */}
+            {featuredArticle && (
+              <div className="mb-12">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Featured Story</h2>
+                <Card className="overflow-hidden hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                  <div className="relative h-64 w-full">
                     <Image
                       src={featuredArticle.image || "/placeholder.svg"}
-                      alt={
-                        featuredArticle.title === "New Digital Learning Center Opens in Rural Kenya"
-                          ? "African students working on laptops in a digital learning center classroom"
-                          : featuredArticle.title ===
-                              "Partnership with Local Healthcare Providers Expands Medical Reach"
-                            ? "Healthcare worker holding a young child, representing medical outreach services"
-                            : featuredArticle.title === "Clean Water Project Reaches Milestone: 50 Communities Served"
-                              ? "Young child smiling while collecting clean water from a community water pump"
-                              : featuredArticle.title === "Women's Empowerment Program Graduates 200 Entrepreneurs"
-                                ? "Group of African women learning computer skills together around a laptop"
-                                : "Placeholder Image"
-                      }
+                      alt={featuredArticle.title}
                       fill
                       className="object-cover"
                     />
+                    <div className="absolute top-4 left-4">
+                      <Badge
+                        variant="secondary"
+                        className="bg-blue-600 text-white border-gray-300 dark:border-gray-600"
+                      >
+                        {featuredArticle.category}
+                      </Badge>
+                    </div>
                   </div>
-                  <div className="p-8 flex flex-col justify-center">
-                    <div className="flex items-center gap-4 mb-4">
-                      <Badge variant="outline">{featuredArticle.category}</Badge>
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        {featuredArticle.date}
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-300 mb-3">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        {new Date(featuredArticle.date).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
                       </div>
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <Clock className="h-4 w-4 mr-1" />
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
                         {featuredArticle.readTime}
                       </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{featuredArticle.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6">{featuredArticle.excerpt}</p>
-                    <Button className="w-fit bg-blue-600 hover:bg-blue-700">
-                      Read Full Story
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{featuredArticle.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">{featuredArticle.excerpt}</p>
+                    <Link
+                      href={`/news/${featuredArticle.id}`}
+                      className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
+                    >
+                      Read Full Story <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            )}
+
+            {/* Recent Articles */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Recent News</h2>
+              <div className="grid gap-6">
+                {regularArticles.map((article) => (
+                  <Card
+                    key={article.id}
+                    className="overflow-hidden hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                  >
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="relative h-48 md:h-full">
+                        <Image
+                          src={article.image || "/placeholder.svg"}
+                          alt={article.title}
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute top-2 left-2">
+                          <Badge
+                            variant="secondary"
+                            className="bg-blue-600 text-white text-xs border-gray-300 dark:border-gray-600"
+                          >
+                            {article.category}
+                          </Badge>
+                        </div>
+                      </div>
+                      <CardContent className="md:col-span-2 p-4">
+                        <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-300 mb-2">
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3" />
+                            {new Date(article.date).toLocaleDateString("en-US", {
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                            })}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock className="h-3 w-3" />
+                            {article.readTime}
+                          </div>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{article.title}</h3>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm mb-3 line-clamp-2">{article.excerpt}</p>
+                        <Link
+                          href={`/news/${article.id}`}
+                          className="text-blue-600 hover:text-blue-800 font-medium text-sm inline-flex items-center"
+                        >
+                          Read More <ArrowRight className="ml-1 h-3 w-3" />
+                        </Link>
+                      </CardContent>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-8">
+            {/* Quick News */}
+            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Updates</h3>
+                <div className="space-y-4">
+                  {quickNews.map((news, index) => (
+                    <div
+                      key={index}
+                      className="border-b border-gray-200 dark:border-gray-700 last:border-b-0 pb-3 last:pb-0"
+                    >
+                      <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-300 mb-1">
+                        <Calendar className="h-3 w-3" />
+                        {new Date(news.date).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                        })}
+                        <Badge variant="outline" className="text-xs border-gray-300 dark:border-gray-600">
+                          {news.category}
+                        </Badge>
+                      </div>
+                      <h4 className="text-sm font-medium text-gray-900 dark:text-white line-clamp-2">{news.title}</h4>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Upcoming Events */}
+            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Upcoming Events</h3>
+                <div className="space-y-4">
+                  {upcomingEvents.map((event) => (
+                    <div
+                      key={event.id}
+                      className="border-b border-gray-200 dark:border-gray-700 last:border-b-0 pb-4 last:pb-0"
+                    >
+                      <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-300 mb-1">
+                        <Calendar className="h-3 w-3" />
+                        {new Date(event.date).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        })}
+                      </div>
+                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">{event.title}</h4>
+                      <p className="text-xs text-gray-600 dark:text-gray-300 mb-1">{event.location}</p>
+                      <p className="text-xs text-gray-600 dark:text-gray-300">{event.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Newsletter Signup */}
+            <Card className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-2">Stay Updated</h3>
+                <p className="text-blue-100 text-sm mb-4">
+                  Subscribe to our newsletter for the latest updates on our programs and impact.
+                </p>
+                <div className="space-y-3">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full px-3 py-2 rounded text-gray-900 text-sm"
+                  />
+                  <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold">
+                    Subscribe
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Impact Stats */}
+            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Our Impact</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                      <Users className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <div className="text-lg font-bold text-gray-900 dark:text-white">50K+</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-300">Lives Impacted</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center">
+                      <Target className="h-5 w-5 text-yellow-600" />
+                    </div>
+                    <div>
+                      <div className="text-lg font-bold text-gray-900 dark:text-white">100+</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-300">Projects Completed</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                      <Heart className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <div className="text-lg font-bold text-gray-900 dark:text-white">100+</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-300">Volunteers</div>
+                    </div>
                   </div>
                 </div>
-              </Card>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Recent News */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Recent News</h2>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {regularArticles.map((article) => (
-                <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="relative h-48">
-                    <Image
-                      src={article.image || "/placeholder.svg"}
-                      alt={
-                        article.title === "New Digital Learning Center Opens in Rural Kenya"
-                          ? "African students working on laptops in a digital learning center classroom"
-                          : article.title === "Partnership with Local Healthcare Providers Expands Medical Reach"
-                            ? "Healthcare worker holding a young child, representing medical outreach services"
-                            : article.title === "Clean Water Project Reaches Milestone: 50 Communities Served"
-                              ? "Young child smiling while collecting clean water from a community water pump"
-                              : article.title === "Women's Empowerment Program Graduates 200 Entrepreneurs"
-                                ? "Group of African women learning computer skills together around a laptop"
-                                : "Placeholder Image"
-                      }
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Badge variant="outline" className="text-xs">
-                        {article.category}
-                      </Badge>
-                      <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
-                        <Calendar className="h-3 w-3 mr-1" />
-                        {article.date}
-                      </div>
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{article.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{article.excerpt}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-gray-500 dark:text-gray-400">{article.readTime}</span>
-                      <Button variant="ghost" size="sm">
-                        Read More
-                        <ArrowRight className="ml-1 h-3 w-3" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
-      </section>
-
-      {/* Upcoming Events */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Upcoming Events</h2>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {upcomingEvents.map((event) => (
-                <Card key={event.id} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <CardTitle className="text-xl mb-2">{event.title}</CardTitle>
-                        <Badge variant="outline">{event.type}</Badge>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-lg font-semibold text-blue-600">{event.price}</div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">{event.description}</p>
-
-                    <div className="space-y-2 mb-6">
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <Calendar className="h-4 w-4 mr-2" />
-                        {event.date}
-                      </div>
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <Clock className="h-4 w-4 mr-2" />
-                        {event.time}
-                      </div>
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <MapPin className="h-4 w-4 mr-2" />
-                        {event.location}
-                      </div>
-                    </div>
-
-                    <div className="flex gap-2">
-                      <Button className="flex-1 bg-blue-600 hover:bg-blue-700">Register Now</Button>
-                      <Button variant="outline" className="flex-1 bg-transparent">
-                        Learn More
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="py-16 bg-gradient-to-r from-yellow-400 to-yellow-500">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-blue-900 mb-4">Stay Connected</h2>
-            <p className="text-xl text-blue-800 mb-8">
-              Subscribe to our newsletter to receive the latest updates on our programs and events.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-600"
-              />
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3">Subscribe</Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-16 bg-blue-600">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Get Involved Today</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join our mission to create positive change in communities worldwide.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/get-involved">
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-8 py-4 text-lg">
-                <Users className="mr-2 h-5 w-5" />
-                Volunteer
-              </Button>
-            </Link>
-            <Link href="/donate">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg bg-transparent"
-              >
-                <Heart className="mr-2 h-5 w-5" />
-                Donate
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   )
 }

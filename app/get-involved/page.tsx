@@ -261,7 +261,7 @@ export default function GetInvolvedPage() {
                   <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <Users className="h-8 w-8 text-blue-600" />
                   </div>
-                  <h3 className="text-lg font-semibold">Sarah M.</h3>
+                  <h3 className="text-lg font-semibold">Solomon Timothy</h3>
                   <p className="text-sm text-gray-500">Education Volunteer</p>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 text-sm italic">
@@ -277,7 +277,7 @@ export default function GetInvolvedPage() {
                   <div className="w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <Heart className="h-8 w-8 text-yellow-600" />
                   </div>
-                  <h3 className="text-lg font-semibold">Dr. James K.</h3>
+                  <h3 className="text-lg font-semibold">Shaibu Hudaida (Princess)</h3>
                   <p className="text-sm text-gray-500">Healthcare Volunteer</p>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 text-sm italic">
@@ -293,7 +293,7 @@ export default function GetInvolvedPage() {
                   <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <Globe className="h-8 w-8 text-blue-600" />
                   </div>
-                  <h3 className="text-lg font-semibold">Maria L.</h3>
+                  <h3 className="text-lg font-semibold">Fusieni Abdul-Sammed</h3>
                   <p className="text-sm text-gray-500">Environmental Volunteer</p>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 text-sm italic">
