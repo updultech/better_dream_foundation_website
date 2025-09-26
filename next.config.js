@@ -13,8 +13,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  assetPrefix: process.env.NODE_ENV === "production" ? "/better-dream-foundation" : "",
-  basePath: process.env.NODE_ENV === "production" ? "/better-dream-foundation" : "",
+  // Remove assetPrefix and basePath for GitHub Pages to work properly
+  // GitHub Pages will serve from the root domain
 }
 
 module.exports = nextConfig

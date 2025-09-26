@@ -9,13 +9,10 @@ import { Footer } from "@/components/footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: {
-    default: "Better Dream Foundation Ghana",
-    template: "%s | Better Dream Foundation Ghana",
-  },
+  title: "Better Dream Foundation Ghana",
   description:
-    "Empowering communities across Ghana through education, healthcare, and sustainable development initiatives. Join us in building a better tomorrow.",
-  keywords: ["Ghana", "NGO", "education", "healthcare", "community development", "charity", "foundation"],
+    "Empowering communities through education, healthcare, and sustainable development initiatives across Ghana.",
+  keywords: "Better Dream Foundation, Ghana, education, healthcare, community development, NGO, charity",
   authors: [{ name: "Better Dream Foundation Ghana" }],
   creator: "Better Dream Foundation Ghana",
   publisher: "Better Dream Foundation Ghana",
@@ -29,12 +26,10 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://betterdreamfoundation.org",
     title: "Better Dream Foundation Ghana",
     description:
-      "Empowering communities across Ghana through education, healthcare, and sustainable development initiatives.",
+      "Empowering communities through education, healthcare, and sustainable development initiatives across Ghana.",
+    url: "https://betterdreamfoundation.org",
     siteName: "Better Dream Foundation Ghana",
     images: [
       {
@@ -44,12 +39,14 @@ export const metadata: Metadata = {
         alt: "Better Dream Foundation Ghana",
       },
     ],
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Better Dream Foundation Ghana",
     description:
-      "Empowering communities across Ghana through education, healthcare, and sustainable development initiatives.",
+      "Empowering communities through education, healthcare, and sustainable development initiatives across Ghana.",
     images: ["/images/logo.jpg"],
   },
   robots: {
@@ -65,13 +62,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/images/logo.jpg",
   },
   manifest: "/manifest.json",
-  other: {
-    "theme-color": "#10b981",
-  },
     generator: 'v0.app'
 }
 
@@ -84,7 +78,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="flex min-h-screen flex-col">
+          <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
