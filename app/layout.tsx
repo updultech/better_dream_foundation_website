@@ -10,24 +10,15 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "Better Dream Foundation - Empowering Communities for a Better Tomorrow",
-    template: "%s | Better Dream Foundation",
+    default: "Better Dream Foundation Ghana",
+    template: "%s | Better Dream Foundation Ghana",
   },
   description:
-    "Join Better Dream Foundation in creating positive change. We work to empower communities through education, healthcare, and sustainable development programs.",
-  keywords: [
-    "NGO",
-    "charity",
-    "community development",
-    "education",
-    "healthcare",
-    "Better Dream Foundation",
-    "nonprofit",
-    "social impact",
-  ],
-  authors: [{ name: "Better Dream Foundation" }],
-  creator: "Better Dream Foundation",
-  publisher: "Better Dream Foundation",
+    "Empowering communities across Ghana through education, healthcare, and sustainable development initiatives. Join us in building a better tomorrow.",
+  keywords: ["Ghana", "NGO", "education", "healthcare", "community development", "charity", "foundation"],
+  authors: [{ name: "Better Dream Foundation Ghana" }],
+  creator: "Better Dream Foundation Ghana",
+  publisher: "Better Dream Foundation Ghana",
   formatDetection: {
     email: false,
     address: false,
@@ -41,15 +32,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://betterdreamfoundation.org",
-    title: "Better Dream Foundation",
-    description: "Empowering Communities for a Better Tomorrow",
-    siteName: "Better Dream Foundation",
+    title: "Better Dream Foundation Ghana",
+    description:
+      "Empowering communities across Ghana through education, healthcare, and sustainable development initiatives.",
+    siteName: "Better Dream Foundation Ghana",
+    images: [
+      {
+        url: "/images/logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Better Dream Foundation Ghana",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Better Dream Foundation",
-    description: "Empowering Communities for a Better Tomorrow",
-    creator: "@betterdreamfoundation",
+    title: "Better Dream Foundation Ghana",
+    description:
+      "Empowering communities across Ghana through education, healthcare, and sustainable development initiatives.",
+    images: ["/images/logo.jpg"],
   },
   robots: {
     index: true,
@@ -64,10 +65,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
-  themeColor: "#2563eb",
+  other: {
+    "theme-color": "#10b981",
+  },
     generator: 'v0.app'
 }
 
@@ -78,15 +82,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} theme-transition`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem={true}
-          disableTransitionOnChange={false}
-          storageKey="better-dream-theme"
-        >
-          <div className="flex flex-col min-h-screen">
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
