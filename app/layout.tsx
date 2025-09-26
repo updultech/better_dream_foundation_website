@@ -10,8 +10,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Better Dream Foundation Ghana",
-  description:
-    "Empowering communities through education, healthcare, and sustainable development initiatives across Ghana.",
+  description: "Empowering communities through education, healthcare, and sustainable development across Ghana.",
   keywords: "Better Dream Foundation, Ghana, education, healthcare, community development, NGO, charity",
   authors: [{ name: "Better Dream Foundation Ghana" }],
   creator: "Better Dream Foundation Ghana",
@@ -27,8 +26,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Better Dream Foundation Ghana",
-    description:
-      "Empowering communities through education, healthcare, and sustainable development initiatives across Ghana.",
+    description: "Empowering communities through education, healthcare, and sustainable development across Ghana.",
     url: "https://betterdreamfoundation.org",
     siteName: "Better Dream Foundation Ghana",
     images: [
@@ -45,8 +43,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Better Dream Foundation Ghana",
-    description:
-      "Empowering communities through education, healthcare, and sustainable development initiatives across Ghana.",
+    description: "Empowering communities through education, healthcare, and sustainable development across Ghana.",
     images: ["/images/logo.jpg"],
   },
   robots: {
@@ -62,8 +59,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/images/logo.jpg",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
     generator: 'v0.app'
