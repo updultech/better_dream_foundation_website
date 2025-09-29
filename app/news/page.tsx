@@ -15,6 +15,17 @@ export const metadata: Metadata = {
 const newsArticles = [
   {
     id: 1,
+    title: "Better Dream Foundation Ghana boosts health care in Pusiga with generous donations",
+    excerpt:
+      "The foundation has made significant contributions to improve healthcare infrastructure and services in Pusiga, providing essential medical supplies and equipment to local health facilities.",
+    category: "Health",
+    date: "2025-01-15",
+    readTime: "6 min read",
+    image: "/images/pusiga-healthcare-donation.jpg",
+    featured: true,
+  },
+  {
+    id: 2,
     title: "Annual Community Health Fair Reaches 2,000 Beneficiaries",
     excerpt:
       "Our largest health fair to date provided free medical screenings, vaccinations, and health education to communities across three regions.",
@@ -22,10 +33,10 @@ const newsArticles = [
     date: "2024-12-15",
     readTime: "5 min read",
     image: "/images/mobile-health-clinic.jpg",
-    featured: true,
+    featured: false,
   },
   {
-    id: 2,
+    id: 3,
     title: "Better Dream Foundation Ghana calls for investigation into Kantamato fire outbreak",
     excerpt:
       "The foundation demands a thorough investigation into the devastating fire at Kantamato Market and calls for immediate support for affected traders and their families.",
@@ -36,7 +47,7 @@ const newsArticles = [
     featured: false,
   },
   {
-    id: 3,
+    id: 4,
     title: "Youth Leadership Conference Empowers 500 Young Leaders",
     excerpt:
       "Three-day conference focused on leadership skills, entrepreneurship, and community development, inspiring the next generation of changemakers.",
@@ -47,7 +58,7 @@ const newsArticles = [
     featured: false,
   },
   {
-    id: 4,
+    id: 5,
     title: "Women's Empowerment Program Graduates 150 Participants",
     excerpt:
       "Successful completion of our six-month skills training program, with 85% of graduates starting their own businesses or finding employment.",
@@ -58,7 +69,7 @@ const newsArticles = [
     featured: false,
   },
   {
-    id: 5,
+    id: 6,
     title: "Digital Learning Centers Launch in Rural Communities",
     excerpt:
       "New computer labs established in five rural schools, providing technology access and digital literacy training to over 800 students.",
@@ -69,7 +80,7 @@ const newsArticles = [
     featured: false,
   },
   {
-    id: 6,
+    id: 7,
     title: "Emergency Relief Efforts Support Flood Victims",
     excerpt:
       "Rapid response team provided emergency supplies, temporary shelter, and medical assistance to 300 families affected by seasonal flooding.",
@@ -106,6 +117,11 @@ const upcomingEvents = [
 ]
 
 const quickNews = [
+  {
+    title: "Better Dream Foundation Ghana boosts health care in Pusiga with generous donations",
+    date: "2025-01-15",
+    category: "Health",
+  },
   {
     title: "Better Dream Foundation Ghana calls for investigation into Kantamato fire outbreak",
     date: "2025-01-05",

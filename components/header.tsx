@@ -1,47 +1,66 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Heart, Sun, Moon } from "lucide-react"
-import { useTheme } from "next-themes"
-import Image from "next/image"
+import { Menu, Sun, Moon } from "lucide-react"
 
-export function Header() {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
 
-  // Ensure we only render theme switching UI client-side to avoid hydration mismatch
   useEffect(() => {
     setMounted(true)
   }, [])
 
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
+    { name: "About", href: "/about" },
     { name: "Projects", href: "/projects" },
-    { name: "Get Involved", href: "/get-involved" },
     { name: "News & Events", href: "/news" },
-    { name: "Annual Reports", href: "/reports" },
+    { name: "Get Involved", href: "/get-involved" },
+    { name: "Reports", href: "/reports" },
+    { name: "BDF Academy", href: "/academy" },
     { name: "Contact", href: "/contact" },
   ]
 
-  return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/95 dark:bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60">
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="relative w-10 h-10">
-              <Image
-                src="/images/logo.jpg"
-                alt="Better Dream Foundation Logo"
-                fill
-                className="rounded-full object-cover"
-              />
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark")
+  }
+
+  if (!mounted) {
+    return (
+      <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse"></div>
+              <div className="h-6 w-48 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
             </div>
-            <span className="text-xl font-bold text-blue-600 dark:text-blue-400">Better Dream Foundation</span>
+          </div>
+        </div>
+      </header>
+    )
+  }
+
+  return (
+    <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-3">
+            <Image
+              src="/images/logo.jpg"
+              alt="Better Dream Foundation Ghana Logo"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+            <span className="text-xl font-bold text-gray-900 dark:text-white">Better Dream Foundation Ghana</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -50,87 +69,72 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
               >
                 {item.name}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center space-x-4">
-            {mounted && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="hidden sm:inline-flex text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-                <span className="sr-only">Toggle theme</span>
-              </Button>
-            )}
-
-            <Link href="/donate" className="hidden sm:inline-flex">
-              <Button className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold">
-                <Heart className="mr-2 h-4 w-4" />
-                Donate
-              </Button>
+          {/* Desktop Actions */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleTheme}
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
+            <Link href="/donate">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">Donate Now</Button>
             </Link>
+          </div>
 
-            {/* Mobile Navigation */}
+          {/* Mobile Menu */}
+          <div className="lg:hidden flex items-center space-x-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleTheme}
+              className="text-gray-700 dark:text-gray-300"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="lg:hidden">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20"
-                >
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="sm" className="text-gray-700 dark:text-gray-300">
                   <Menu className="h-6 w-6" />
-                  <span className="sr-only">Toggle menu</span>
+                  <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white dark:bg-gray-900">
-                <nav className="flex flex-col space-y-4 mt-8">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                  <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between py-4 border-b border-gray-200 dark:border-gray-700">
+                    <span className="text-lg font-semibold text-gray-900 dark:text-white">Menu</span>
+                  </div>
+                  <nav className="flex-1 py-6">
+                    <div className="space-y-4">
+                      {navigation.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2 transition-colors"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </nav>
+                  <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
                     <Link href="/donate" onClick={() => setIsOpen(false)}>
-                      <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold">
-                        <Heart className="mr-2 h-4 w-4" />
-                        Donate
-                      </Button>
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">Donate Now</Button>
                     </Link>
                   </div>
-                  {mounted && (
-                    <Button
-                      variant="ghost"
-                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                      className="justify-start text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20"
-                      aria-label="Toggle theme"
-                    >
-                      {theme === "dark" ? (
-                        <>
-                          <Sun className="h-5 w-5 mr-2" />
-                          Light mode
-                        </>
-                      ) : (
-                        <>
-                          <Moon className="h-5 w-5 mr-2" />
-                          Dark mode
-                        </>
-                      )}
-                    </Button>
-                  )}
-                </nav>
+                </div>
               </SheetContent>
             </Sheet>
           </div>

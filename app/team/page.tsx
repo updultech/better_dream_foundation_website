@@ -1,309 +1,361 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowLeft, Mail, Linkedin, Twitter } from "lucide-react"
 import type { Metadata } from "next"
+import Image from "next/image"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Mail, Phone, MapPin } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Our Team - Leadership and Staff",
-  description: "Meet the dedicated team behind Better Dream Foundation working to create positive change worldwide.",
+  title: "Our Team - Better Dream Foundation Ghana",
+  description:
+    "Meet the dedicated team members of Better Dream Foundation Ghana working to empower communities across the country.",
+  keywords: "Better Dream Foundation, team, Ghana, leadership, community development, staff",
 }
 
 export default function TeamPage() {
-  const leadershipTeam = [
+  const leadership = [
     {
       name: "Shaibu Mohammed",
-      role: "Chief Executive Officer",
+      position: "Chief Executive Officer",
       image: "/images/ceo-shaibu-mohammed.jpg",
-      bio: "With over 15 years of experience in international development, Shaibu leads our strategic vision and global operations. He holds a Master's degree in Development Studies and has worked with various international NGOs across Africa.",
+      bio: "Visionary leader with over 10 years of experience in community development and social impact. Shaibu has led the foundation's growth from a small local initiative to a nationally recognized organization.",
       email: "shaibu@betterdreamfoundation.org",
+      phone: "+233 XX XXX XXXX",
+      location: "Accra, Ghana",
     },
-    {
-      name: "Agolmah Atozire Ernest",
-      role: "Northern Regional Coordinator",
-      image: "/images/regional-coordinator-ernest.jpg",
-      bio: "Ernest Agulmah serves as the Northern Regional Coordinator for Better Dream Foundation Ghana. He is also a final-year medical student (Level 400) at the University for Development Studies (UDS). Balancing his passion for medicine with community development, Ernest plays a key role in coordinating the foundation's initiatives in the Northern Region, working to promote education, health, and sustainable change. His dedication, leadership, and service-driven mindset make him an inspiring force within the foundation and beyond.",
-      email: "ernest@betterdreamfoundation.org",
-    },
-    {
-      name: "Awudu Yahaya",
-      role: "Savanna Regional Coordinator",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/savannah%20coordii.jpg-CNLf626WEJKjmCwG0DMWBJWb1bisI1.jpeg",
-      bio: "Awudu Yahaya is the Savanna Regional Coordinator for Better Dream Foundation Ghana. He is passionate about community development and leads the foundation's programs in the region, working with local leaders and stakeholders to drive impact in education, empowerment, and sustainable development. His commitment, integrity, and grassroots engagement make him a valuable pillar of the foundation's mission to create lasting change.",
-      email: "awudu@betterdreamfoundationghana2gmail.com",
-    },
-
     {
       name: "Abdul-Wadud Shaibu",
-      role: "National Graphic desogner",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wadud.jpg-NnkLXIFZbiDb7SpO8dwt9iAJcWI3zN.jpeg",
-      bio: "Abdulwadud Shaibu is a Ghanaian creative and community leader passionate about design, leadership, and impact. With a strong background in accounting, computing, graphic design and project management.  A fresh graduate and he blends creativity and structure to solve real-world problems.He currently serves as National Graphic Designer and Acting Greater Accra Regional Coordinator at Better Dream Foundation, supporting youth through education, technology, and entrepreneurship. He inspired in building initiatives that empower others.A lifelong learner with a Google certification in Project Management and a National Service Personnel at WAEC, Abdulwadud is known for turning ideas into visual stories and service into lasting change.",
-      email: "wadud@betterdreamfoundation.org",
-    },
-    {
-      name: "Amevor Edem John",
-      role: "Oti Regional Coordinator",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/oti%20coordii.jpg-PT8PL1Tlz5Sgl59M5r46sB5xLts6rr.jpeg",
-      bio: "Amevor Edem John, Oti Regional Coordinator of Better Dream Foundation, is an educator at Lolobi Ashiambi R.C. Basic School with a degree in Primary Education from Peki College of Education. Passionate about youth empowerment and community development, he leads sensitization projects, mobilizes communities, and inspires active citizenship. His strong communication, problem-solving, and leadership skills make him a valuable asset .",
-      email: "alhassan@betterdreamfoundation.org",
-    },
-    {
-      name: "Doris Amoako",
-      role: "Western Regional Coordinator",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/western%20coordii.jpg-WjGRpXIV5Yzk9bllb3ED1s8u8PgXvt.jpeg",
-      bio: "Doris Amoako serves as the Western Regional Coordinator for Better Dream Foundation, where she champions youth empowerment, active citizenship, and community development. With a background in education and grassroots mobilization, Doris has successfully led initiatives that inspire positive change, enhance community participation, and drive the foundation's mission of building stronger, more inclusive communities",
-      email: "Doris@betterdreamfoundationghana@gmail.com",
+      position: "National Graphic Designer",
+      image: "/images/graphic-designer-abdul-karim.jpg",
+      bio: "Creative professional responsible for all visual communications and brand identity. Abdul-Wadud ensures our message reaches communities through compelling visual storytelling.",
+      email: "abdul@betterdreamfoundation.org",
+      phone: "+233 XX XXX XXXX",
+      location: "Accra, Ghana",
     },
     {
       name: "Mary Aakyiire",
-      role: "Natiional Programs Manager",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/national%20project%20manager.jpg-VJ9Yz5PKjXGS4rbOhzw5034eGmkLrn.jpeg",
-      bio: "Mary Aakyiire is the National Programs Manager at Better Dream Foundation, where she oversees the planning, implementation, and evaluation of community development projects. With a background in social work and project management, Mary is dedicated to creating impactful programs that empower communities and foster sustainable development.",
-      email: "Mary@betterdreamfoundationghana@gmail.com",
-    },
-    {
-      name: "Esther Lovia Dankyi",
-      role: "Ashanti Regional Coordinator",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Esther.jpg-yJUdNQMIPA6UzYFCuSyTqag8LzzCSC.jpeg",
-      bio: "As Regional Coordinator, I am passionate about creating real impact at the grassroots level. I believe in leading by example and building strong, collaborative teams that can turn ideas into action. Every project I oversee is a chance to make a difference, and I am committed to ensuring our region thrives through purposeful leadership and unity.",
-      email: "esther@betterdreamfoundation.org",
+      position: "National Programs Manager",
+      image: "/images/regional-coordinator-esther.jpg",
+      bio: "Experienced program manager overseeing all national development initiatives. Mary coordinates our education, healthcare, and community development programs across Ghana.",
+      email: "mary@betterdreamfoundation.org",
+      phone: "+233 XX XXX XXXX",
+      location: "Kumasi, Ghana",
     },
     {
       name: "Getrude Teffey",
-      role: "Managing Director",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/managing%20director.jpg-aid5mWC7oqfq6JX4VL7xvuvwYHBBoB.jpeg",
-      bio: "As Managing Director, I bring a strategic vision and operational expertise to drive our mission forward. I am dedicated to fostering innovation, efficiency, and collaboration across all levels of the organization. My focus is on creating sustainable growth and ensuring that our programs deliver maximum impact for the communities we serve.",
-      email: "Teffey@betterdreamfoundation.org",
+      position: "Managing Director",
+      image: "/images/regional-coordinator-esther.jpg",
+      bio: "Strategic leader managing organizational operations and stakeholder relationships. Getrude ensures efficient operations and maintains partnerships with local and international organizations.",
+      email: "getrude@betterdreamfoundation.org",
+      phone: "+233 XX XXX XXXX",
+      location: "Accra, Ghana",
     },
     {
       name: "Jennifer Anyeyore Azure",
-      role: "National Media and Publicity Secretary",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/jennifer.jpg-JD0cuO3awCevarRcossg7Oxzu0PEqh.jpeg",
-      bio: "I serve as the Deputy Regional Coordinator with a heart for service and structure. I enjoy being hands-on with planning and problem-solving, and I am always ready to support the team wherever needed. Working closely with the Regional Coordinator, I help keep our projects moving smoothly and our vision alive in every activity we carry out.",
-      email: "munayya@betterdreamfoundation.org",
+      position: "National Media and Publicity Secretary",
+      image: "/images/regional-coordinator-esther.jpg",
+      bio: "Communications expert managing media relations and public outreach initiatives. Jennifer amplifies our impact stories and maintains our public presence.",
+      email: "jennifer@betterdreamfoundation.org",
+      phone: "+233 XX XXX XXXX",
+      location: "Tamale, Ghana",
     },
     {
       name: "Toufique Bansi Adam",
-      role: "Director of Legal Affairs",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bansi.jpg-UgWnpGvM02L8f9LXGjqV4NNmedRllH.jpeg",
-      bio: "My name is Toufique Adam, and I am a driven and passionate individual committed to advancing human rights, social justice, and sustainable peace. As a holder of a Bachelor of Arts degree in Political Science, and currently pursuing a Master Of Philosophy (Mphil) in Human Rights, Conflict and Peace Studies. By that, I developed a solid foundation in understanding the complexities of governance, policy-making, and international relations",
-      email: "bansi@betterdreamfoundation.org",
+      position: "Director of Legal Affairs",
+      image: "/images/financial-secretary-ahmed.jpg",
+      bio: "Legal expert ensuring compliance and providing legal guidance for all foundation activities. Toufique safeguards our operations and ensures regulatory compliance.",
+      email: "toufique@betterdreamfoundation.org",
+      phone: "+233 XX XXX XXXX",
+      location: "Accra, Ghana",
     },
-    {
-      name: "Larbi Mary Gyamfua ",
-      role: "Eastern Regional Coordinator",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lardi%20Marry.jpg-lCHwszeCSXpo72rh6JiN31p8xtQSMS.jpeg",
-      bio: "Larbi Mary Gyamfua is a dynamic professional and Business Administration Officer at DotOne Consult, where she drives efficiency and growth. A passionate motivational writer and speaker, she inspires transformation and purpose. As Eastern Regional Coordinator of Better Dream Foundation Ghana, she empowers communities through education and youth engagement, championing change and meaningful impact at the grassroots level.",
-      email: "Larbimary@betterdreamfoundation.org",
-    },
+  ]
 
+  const regionalTeam = [
     {
-      name: "Hamdan Sibdoo Zakaria Hamid",
-      role: "Publicity Secretary NR",
-      image: "/images/publicity-secretary-hamdan.jpg",
-      bio: "Hamdan Sibdoo Zakaria Hamid is a passionate Computer Science student at the University for Development Studies with strong leadership experience and a drive for youth empowerment. As an active student leader and tech enthusiast, he is committed to using innovation and education to create lasting opportunities for young people across Ghana.",
-      email: "hamdan@betterdreamfoundation.org",
+      name: "Ernest Awudu",
+      position: "Regional Coordinator - Northern Region",
+      image: "/images/regional-coordinator-ernest.jpg",
+      bio: "Coordinates programs and initiatives across the Northern Region of Ghana. Ernest has deep community connections and ensures our programs meet local needs.",
+      email: "ernest@betterdreamfoundation.org",
+      location: "Tamale, Ghana",
+      region: "Northern Region",
     },
     {
-      name: "Bisilki Mawan Joseph",
-      role: "General Secretary NR",
-      image: "/images/bisilki-mawan-joseph.jpg",
-      bio: "Joseph serves as the General Secretary of the Better Dream Foundation Ghana, Northern Regional Chapter. In this role, he manages administrative duties, record-keeping, and communication, ensuring smooth coordination of the chapter's activities. Passionate about youth empowerment and community development, Joseph plays a vital part in advancing the foundation's mission to promote education, create opportunities, and drive sustainable change across the Northern Region.",
-      email: "joseph@betterdreamfoundation.org",
-    },
-
-    {
-      name: "Alhassan Zakaria",
-      role: "Project Manager Northern Chapter",
+      name: "Alhassan Mohammed",
+      position: "Project Manager",
       image: "/images/project-manager-alhassan.jpg",
-      bio: "Alhassan Zakaria is the Project Manager at Better Dream Foundation Ghana and aspiring Medical Laboratory Scientist with a passion for improving health outcomes. SDG ambassador at University for Development Studies. Committed to making a positive impact in his community.",
+      bio: "Manages implementation of community development projects across multiple regions. Alhassan ensures projects are delivered on time and within budget.",
       email: "alhassan@betterdreamfoundation.org",
+      location: "Bolgatanga, Ghana",
+      region: "Upper East Region",
     },
     {
-      name: "Sham-una Zainab",
-      role: "Financial Secretary NR",
-      image: "/images/financial-secretary-shamuna.jpg",
-      bio: "Sham-una Zainab serves as the Financial Secretary of Better Dream Foundation, where she ensures transparency, accountability, and efficient management of the foundation's finances. Her dedication to financial integrity supports the foundation's mission to drive sustainable change and community development.",
-      email: "shamuna@betterdreamfoundation.org",
+      name: "Esther Awudu",
+      position: "Regional Coordinator - Upper East",
+      image: "/images/regional-coordinator-esther.jpg",
+      bio: "Oversees foundation activities and community outreach in the Upper East Region. Esther has been instrumental in expanding our healthcare programs.",
+      email: "esther@betterdreamfoundation.org",
+      location: "Bolgatanga, Ghana",
+      region: "Upper East Region",
     },
+    {
+      name: "Benjamin Tetteh",
+      position: "Regional Coordinator - Volta Region",
+      image: "/images/benjamin.jpg",
+      bio: "Coordinates foundation activities and community programs in the Volta Region. Benjamin focuses on educational initiatives and youth development.",
+      email: "benjamin@betterdreamfoundation.org",
+      location: "Ho, Ghana",
+      region: "Volta Region",
+    },
+  ]
 
+  const supportTeam = [
     {
-      name: "Benjamin Agyakwa",
-      role: "Sponsorship and Partnership Coordination N/R",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/benjamin.jpg-ag0iCzmP7tlY1xqVP63II4MxqIFoaw.jpeg",
-      bio: " I'm Benjamin Agyakwa, a dedicated student and passionate advocate for human rights and social justice. As a Partnership and Sponsorship Coordinator for Better Dream Foundation and Local Officer for Human Rights and Peace at UDSMSA, I strive to empower individuals and communities. With a problem-solving attitude and a commitment to personal liberty, my mission is to be a catalyst for liberation and positive change in all aspects of life..",
-      email: "Benjamin@betterdreamfoundation.org",
-    },
-    {
-      name: "Abdul Karim Hakim",
-      role: "Graphic Designer NR",
-      image: "/images/graphic-designer-abdul-karim.jpg",
-      bio: "Abdul Karim Hakim is the creative force behind the visual identity of Better Dream Foundation. As the foundation's Graphic Designer, he brings stories to life through impactful design, blending purpose with creativity. With a strong passion for social impact and visual storytelling, Abdul ensures that every design reflects the mission of hope, empowerment, and transformation at the heart of the foundation's work.",
-      email: "wise03667@gmail.com",
-    },
-
-    {
-      name: "Maxwell Opoku Darkwah",
-      role: "Regional Secretary AR",
-      image: "/images/regional-secretary-maxwell.jpg",
-      bio: "I love bringing order to chaos and making sure communication flows smoothly across our team. As Regional Secretary, I manage all official records and correspondence, ensuring we stay organized and informed. I take pride in being dependable, efficient, and always ready to support the team behind the scenes.",
-      email: "maxwell@betterdreamfoundation.org",
-    },
-    {
-      name: "Munayya Seidu Musah",
-      role: "Deputy Regional Coordinator AR",
+      name: "Munayya Ibrahim",
+      position: "Deputy Coordinator",
       image: "/images/deputy-coordinator-munayya.jpg",
-      bio: "I serve as the Deputy Regional Coordinator with a heart for service and structure. I enjoy being hands-on with planning and problem-solving, and I am always ready to support the team wherever needed. Working closely with the Regional Coordinator, I help keep our projects moving smoothly and our vision alive in every activity we carry out.",
+      bio: "Supports regional coordination and assists in program implementation across multiple regions.",
       email: "munayya@betterdreamfoundation.org",
     },
     {
-      name: "David Adu Nantwi",
-      role: "Project Director AR",
-      image: "/images/project-director-david.jpg",
-      bio: "As Project Director, I take pride in turning vision into execution. I am passionate about building meaningful initiatives that are not only effective but also empowering for the people we serve. From planning to implementation, I focus on the little details that make a big impact, and I am always driven by results that uplift communities.",
-      email: "david@betterdreamfoundation.org",
+      name: "Hamdan Alhassan",
+      position: "Publicity Secretary",
+      image: "/images/publicity-secretary-hamdan.jpg",
+      bio: "Manages public relations and community engagement initiatives at the regional level.",
+      email: "hamdan@betterdreamfoundation.org",
     },
     {
-      name: "Ahmed Dawud Mohammed",
-      role: "Financial Secretary AR",
+      name: "Shamuna Mohammed",
+      position: "Financial Secretary",
+      image: "/images/financial-secretary-shamuna.jpg",
+      bio: "Oversees financial management and ensures transparent use of resources across all programs.",
+      email: "shamuna@betterdreamfoundation.org",
+    },
+    {
+      name: "Maxwell Ofori",
+      position: "Regional Secretary",
+      image: "/images/regional-secretary-maxwell.jpg",
+      bio: "Maintains records and coordinates administrative functions at regional level.",
+      email: "maxwell@betterdreamfoundation.org",
+    },
+    {
+      name: "Ahmed Ibrahim",
+      position: "Financial Secretary - Regional",
       image: "/images/financial-secretary-ahmed.jpg",
-      bio: "I believe financial accountability is at the heart of any strong organization. As Financial Secretary, I make it my duty to handle all funds with integrity, accuracy, and transparency. I am detail-oriented and deeply committed to ensuring that every cedi we manage contributes to our mission in the most responsible way possible.",
+      bio: "Manages regional financial operations and budget oversight for community programs.",
       email: "ahmed@betterdreamfoundation.org",
     },
     {
-      name: "Ofori Paul",
-      role: "Deputy Regional Secretary AR",
+      name: "Ofori Atta",
+      position: "Deputy Secretary",
       image: "/images/deputy-secretary-ofori.jpg",
-      bio: "In my role as Deputy Regional Secretary, I focus on the little things that make a big difference—supporting documentation, managing schedules, and helping keep the team organized. I am passionate about teamwork and always ready to lend a hand to ensure everything runs smoothly.",
+      bio: "Assists in administrative functions and supports organizational operations.",
       email: "ofori@betterdreamfoundation.org",
     },
     {
-      name: "James Anibilla Adongo",
-      role: "Graphic Designer AR",
+      name: "David Mensah",
+      position: "Project Director",
+      image: "/images/project-director-david.jpg",
+      bio: "Directs strategic project planning and implementation across all programs.",
+      email: "david@betterdreamfoundation.org",
+    },
+    {
+      name: "James Kwaku",
+      position: "Graphic Designer",
       image: "/images/graphic-designer-james.jpg",
-      bio: "Design is my way of storytelling. As the team's Graphic Designer, I use visuals to reflect who we are and what we stand for. Whether it's a flyer, banner, or social media post, I aim to create work that is not just eye-catching, but deeply connected to our mission. I believe good design should inspire action—and that's what I strive for every time.",
+      bio: "Creates visual content and supports marketing and communication efforts.",
       email: "james@betterdreamfoundation.org",
+    },
+    {
+      name: "Bisilki Mawan Joseph",
+      position: "Community Outreach Coordinator",
+      image: "/images/bisilki-mawan-joseph.jpg",
+      bio: "Facilitates community engagement and ensures effective program delivery.",
+      email: "bisilki@betterdreamfoundation.org",
     },
   ]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Header with Back Button */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center mb-6">
-            <Link href="/about">
-              <Button
-                variant="outline"
-                className="mr-4 border-white text-white hover:bg-white hover:text-blue-800 bg-transparent"
-              >
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to About Us
-              </Button>
-            </Link>
-          </div>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-blue-600 to-green-600 text-white py-20">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Our Complete Team</h1>
-            <p className="text-xl lg:text-2xl text-blue-100">
-              Meet all the dedicated professionals working to create positive change worldwide
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Team</h1>
+            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+              Meet the dedicated individuals working tirelessly to empower communities across Ghana
             </p>
           </div>
         </div>
       </section>
 
-      {/* Leadership Team */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      {/* Executive Leadership */}
+      <section className="py-16 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Complete Leadership Team
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Our comprehensive team of leaders, coordinators, and specialists working across all our programs and
-              regions.
-            </p>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Executive Leadership
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                Our executive team provides strategic direction and ensures organizational excellence
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {leadership.map((leader, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="relative w-32 h-32 mx-auto mb-4">
+                      <Image
+                        src={leader.image || "/placeholder.svg"}
+                        alt={leader.name}
+                        fill
+                        className="rounded-full object-cover"
+                      />
+                    </div>
+                    <div className="text-center mb-4">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{leader.name}</h3>
+                      <Badge className="bg-blue-600 text-white mb-3">{leader.position}</Badge>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{leader.bio}</p>
+                    </div>
+                    <div className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center">
+                        <Mail className="h-4 w-4 mr-2" />
+                        <span>{leader.email}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Phone className="h-4 w-4 mr-2" />
+                        <span>{leader.phone}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <MapPin className="h-4 w-4 mr-2" />
+                        <span>{leader.location}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {leadershipTeam.map((member, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
-              >
-                <CardContent className="p-6">
-                  <div className="w-40 h-40 mx-auto mb-6 relative bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-600">
-                    <Image
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 160px"
-                      className="object-cover object-top scale-110"
-                      style={{
-                        objectPosition: "center top",
-                      }}
-                    />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">{member.name}</h3>
-                  <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">{member.role}</p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-4">{member.bio}</p>
+      {/* Regional Team */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Regional Coordinators
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                Our regional team ensures programs are tailored to local community needs
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {regionalTeam.map((member, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="relative w-24 h-24 mx-auto mb-4">
+                      <Image
+                        src={member.image || "/placeholder.svg"}
+                        alt={member.name}
+                        fill
+                        className="rounded-full object-cover"
+                      />
+                    </div>
+                    <div className="text-center mb-4">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{member.name}</h3>
+                      <Badge variant="outline" className="mb-2 text-xs">
+                        {member.position}
+                      </Badge>
+                      <Badge className="bg-green-600 text-white mb-3 text-xs">{member.region}</Badge>
+                      <p className="text-gray-600 dark:text-gray-300 text-xs mb-3">{member.bio}</p>
+                    </div>
+                    <div className="space-y-1 text-xs text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center">
+                        <Mail className="h-3 w-3 mr-2" />
+                        <span>{member.email}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <MapPin className="h-3 w-3 mr-2" />
+                        <span>{member.location}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-                  {/* Contact Information */}
-                  <div className="flex justify-center space-x-3 mt-4">
-                    <a
-                      href={`mailto:${member.email}`}
-                      className="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      aria-label={`Email ${member.name}`}
-                    >
-                      <Mail className="h-4 w-4" />
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      aria-label={`LinkedIn profile of ${member.name}`}
-                    >
-                      <Linkedin className="h-4 w-4" />
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      aria-label={`Twitter profile of ${member.name}`}
-                    >
-                      <Twitter className="h-4 w-4" />
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+      {/* Support Team */}
+      <section className="py-16 bg-white dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Support Team</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                Our dedicated support staff ensures smooth operations and effective program delivery
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {supportTeam.map((member, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4">
+                    <div className="relative w-20 h-20 mx-auto mb-3">
+                      <Image
+                        src={member.image || "/placeholder.svg"}
+                        alt={member.name}
+                        fill
+                        className="rounded-full object-cover"
+                      />
+                    </div>
+                    <div className="text-center mb-3">
+                      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-1">{member.name}</h3>
+                      <Badge variant="outline" className="mb-2 text-xs">
+                        {member.position}
+                      </Badge>
+                      <p className="text-gray-600 dark:text-gray-300 text-xs mb-2">{member.bio}</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex items-center justify-center text-xs text-gray-500 dark:text-gray-400">
+                        <Mail className="h-3 w-3 mr-1" />
+                        <span className="truncate">{member.email}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Join Our Team */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Join Our Team</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            We are always looking for passionate individuals to join our mission of creating positive change.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/get-involved">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">View Open Positions</Button>
-            </Link>
-            <Link href="/get-involved">
-              <Button
-                variant="outline"
-                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 bg-transparent dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-white"
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Join Our Team</h2>
+            <p className="text-xl text-blue-100 mb-8">
+              Are you passionate about community development and making a difference? We're always looking for dedicated
+              individuals to join our mission.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold py-3 px-8 rounded-lg transition-colors inline-flex items-center justify-center"
               >
-                Volunteer Opportunities
-              </Button>
-            </Link>
+                View Open Positions
+              </a>
+              <a
+                href="/get-involved"
+                className="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-3 px-8 rounded-lg transition-colors inline-flex items-center justify-center"
+              >
+                Volunteer With Us
+              </a>
+            </div>
           </div>
         </div>
       </section>
