@@ -1,26 +1,24 @@
 import { type NextRequest, NextResponse } from "next/server"
 
+// Mark this route as dynamic to prevent static generation
+export const dynamic = "force-dynamic"
+export const runtime = "edge"
+
 export async function POST(request: NextRequest) {
   try {
     const donationData = await request.json()
 
+    // Validate required fields
+    const { donorName, email, amount, currency, transactionId } = donationData
+    if (!donorName || !email || !amount) {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
+    }
+
     // Extract donation details
-    const {
-      donorName,
-      email,
-      phone,
-      amount,
-      paymentMethod,
-      project,
-      message,
-      isAnonymous,
-      isRecurring,
-      transactionId,
-      networkProvider,
-    } = donationData
+    const { phone, paymentMethod, project, message, isAnonymous, isRecurring, networkProvider } = donationData
 
     // Create comprehensive email content
-    const emailSubject = `🎉 New Donation Received: GH₵${amount} from ${isAnonymous ? "Anonymous Donor" : donorName}`
+    const emailSubject = `🎉 New Donation Received: ${currency}${amount} from ${isAnonymous ? "Anonymous Donor" : donorName}`
 
     const emailContent = `
       <!DOCTYPE html>
@@ -50,7 +48,7 @@ export async function POST(request: NextRequest) {
       <body>
         <div class="header">
           <h1>🎉 New Donation Received!</h1>
-          <div class="donation-amount">GH₵${amount}</div>
+          <div class="donation-amount">${currency}${amount}</div>
           <p>A generous donation has been made to Better Dream Foundation</p>
         </div>
         
@@ -73,7 +71,7 @@ export async function POST(request: NextRequest) {
             <h3>💰 Donation Details</h3>
             <div class="info-grid">
               <div class="info-label">Amount:</div>
-              <div class="info-value"><strong>GH₵${amount}</strong></div>
+              <div class="info-value"><strong>${currency}${amount}</strong></div>
               <div class="info-label">Payment Method:</div>
               <div class="info-value">${paymentMethod}${networkProvider ? ` (${networkProvider})` : ""}</div>
               <div class="info-label">Project:</div>

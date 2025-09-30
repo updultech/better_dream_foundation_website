@@ -1,57 +1,26 @@
 "use client"
 
-import type React from "react"
+import { Badge } from "@/components/ui/badge"
 
+import type React from "react"
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import {
-  Heart,
-  CreditCard,
-  Smartphone,
-  CheckCircle,
-  XCircle,
-  Loader2,
-  Clock,
-  Mail,
-  Phone,
-  Wifi,
-  AlertCircle,
-} from "lucide-react"
+import { CheckCircle2, CreditCard, Smartphone, AlertCircle } from "lucide-react"
 
-interface DonationForm {
-  amount: string
-  donorName: string
-  email: string
-  phone: string
-  paymentMethod: string
-  project: string
-  message: string
-  isAnonymous: boolean
-  isRecurring: boolean
-  newsletter: boolean
-}
-
-interface PaymentStatus {
-  status: "idle" | "processing" | "success" | "error" | "pending"
-  message: string
-  transactionId?: string
-}
+type PaymentMethod = "card" | "mobile" | "crypto"
 
 export default function DonateClientPage() {
-  const [form, setForm] = useState<DonationForm>({
+  const [form, setForm] = useState({
     amount: "",
     donorName: "",
     email: "",
     phone: "",
-    paymentMethod: "",
+    paymentMethod: "mobile",
     project: "General Fund",
     message: "",
     isAnonymous: false,
@@ -59,12 +28,12 @@ export default function DonateClientPage() {
     newsletter: false,
   })
 
-  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>({
+  const [paymentStatus, setPaymentStatus] = useState({
     status: "idle",
     message: "",
   })
 
-  const [selectedProvider, setSelectedProvider] = useState<string>("")
+  const [selectedProvider, setSelectedProvider] = useState("")
 
   const projects = [
     "General Fund",
@@ -79,7 +48,7 @@ export default function DonateClientPage() {
 
   const predefinedAmounts = ["50", "100", "250", "500", "1000", "2500"]
 
-  const handleInputChange = (field: keyof DonationForm, value: string | boolean) => {
+  const handleInputChange = (field: string, value: string | boolean) => {
     setForm((prev) => ({ ...prev, [field]: value }))
   }
 
@@ -100,15 +69,11 @@ export default function DonateClientPage() {
       setPaymentStatus({ status: "error", message: "Please enter a valid email address" })
       return false
     }
-    if (!form.paymentMethod) {
-      setPaymentStatus({ status: "error", message: "Please select a payment method" })
-      return false
-    }
-    if (form.paymentMethod === "mobile-money" && !form.phone.trim()) {
+    if (form.paymentMethod === "mobile" && !form.phone.trim()) {
       setPaymentStatus({ status: "error", message: "Please enter your phone number for mobile money payment" })
       return false
     }
-    if (form.paymentMethod === "mobile-money" && !selectedProvider) {
+    if (form.paymentMethod === "mobile" && !selectedProvider) {
       setPaymentStatus({ status: "error", message: "Please select your mobile money provider" })
       return false
     }
@@ -277,7 +242,7 @@ export default function DonateClientPage() {
 
     if (!validateForm()) return
 
-    if (form.paymentMethod === "mobile-money") {
+    if (form.paymentMethod === "mobile") {
       await handleMobileMoneyPayment()
     } else if (form.paymentMethod === "card") {
       await handleCardPayment()
@@ -290,7 +255,7 @@ export default function DonateClientPage() {
       donorName: "",
       email: "",
       phone: "",
-      paymentMethod: "",
+      paymentMethod: "mobile",
       project: "General Fund",
       message: "",
       isAnonymous: false,
@@ -304,13 +269,13 @@ export default function DonateClientPage() {
   const getStatusIcon = () => {
     switch (paymentStatus.status) {
       case "processing":
-        return <Loader2 className="h-5 w-5 animate-spin text-blue-600" />
+        return <AlertCircle className="h-5 w-5 animate-spin text-blue-600" />
       case "success":
-        return <CheckCircle className="h-5 w-5 text-green-600" />
+        return <CheckCircle2 className="h-5 w-5 text-green-600" />
       case "error":
-        return <XCircle className="h-5 w-5 text-red-600" />
+        return <AlertCircle className="h-5 w-5 text-red-600" />
       case "pending":
-        return <Clock className="h-5 w-5 text-yellow-600" />
+        return <AlertCircle className="h-5 w-5 text-yellow-600" />
       default:
         return null
     }
@@ -330,7 +295,7 @@ export default function DonateClientPage() {
   }
 
   const renderMobileMoneyInstructions = () => {
-    if (form.paymentMethod !== "mobile-money") return null
+    if (form.paymentMethod !== "mobile") return null
 
     if (!selectedProvider) {
       return (
@@ -413,7 +378,7 @@ export default function DonateClientPage() {
             <div className="bg-white dark:bg-gray-800 p-3 rounded border">
               <strong>Alternative Method:</strong>
               <p className="text-sm mt-1">
-                <Phone className="inline h-4 w-4 mr-1" />
+                <AlertCircle className="inline h-4 w-4 mr-1" />
                 {instruction.alternative}
               </p>
             </div>
@@ -429,344 +394,176 @@ export default function DonateClientPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Make a Donation</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            Your generosity helps us create lasting change in communities worldwide
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Donation Form */}
-          <div className="lg:col-span-2">
-            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-              <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <Heart className="mr-2 h-5 w-5 text-red-500" />
-                  Donation Details
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Amount Selection */}
-                  <div>
-                    <Label htmlFor="amount" className="text-gray-900 dark:text-white">
-                      Donation Amount (GH₵)
-                    </Label>
-                    <div className="grid grid-cols-3 gap-2 mt-2 mb-3">
-                      {predefinedAmounts.map((amount) => (
-                        <Button
-                          key={amount}
-                          type="button"
-                          variant={form.amount === amount ? "default" : "outline"}
-                          onClick={() => handleAmountSelect(amount)}
-                          className="text-sm"
-                        >
-                          GH₵{amount}
-                        </Button>
-                      ))}
-                    </div>
-                    <Input
-                      id="amount"
-                      type="number"
-                      placeholder="Enter custom amount"
-                      value={form.amount}
-                      onChange={(e) => handleInputChange("amount", e.target.value)}
-                      className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
-                    />
-                  </div>
-
-                  {/* Donor Information */}
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="donorName" className="text-gray-900 dark:text-white">
-                        Full Name
-                      </Label>
-                      <Input
-                        id="donorName"
-                        value={form.donorName}
-                        onChange={(e) => handleInputChange("donorName", e.target.value)}
-                        placeholder="Enter your full name"
-                        className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email" className="text-gray-900 dark:text-white">
-                        Email Address
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={form.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
-                        placeholder="Enter your email"
-                        className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Phone Number (shown when mobile money is selected) */}
-                  {form.paymentMethod === "mobile-money" && (
-                    <div>
-                      <Label htmlFor="phone" className="text-gray-900 dark:text-white">
-                        Phone Number
-                      </Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        value={form.phone}
-                        onChange={(e) => handleInputChange("phone", e.target.value)}
-                        placeholder="e.g., +233241234567 or 0241234567"
-                        className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
-                      />
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                        Enter your mobile money number (MTN, Vodafone, or AirtelTigo)
-                      </p>
-                    </div>
-                  )}
-
-                  {/* Payment Method */}
-                  <div>
-                    <Label className="text-gray-900 dark:text-white">Payment Method</Label>
-                    <div className="grid md:grid-cols-2 gap-4 mt-2">
-                      <Button
-                        type="button"
-                        variant={form.paymentMethod === "mobile-money" ? "default" : "outline"}
-                        onClick={() => handleInputChange("paymentMethod", "mobile-money")}
-                        className="h-16 flex flex-col items-center justify-center"
-                      >
-                        <Smartphone className="h-6 w-6 mb-1" />
-                        <span>Mobile Money</span>
-                      </Button>
-                      <Button
-                        type="button"
-                        variant={form.paymentMethod === "card" ? "default" : "outline"}
-                        onClick={() => handleInputChange("paymentMethod", "card")}
-                        className="h-16 flex flex-col items-center justify-center"
-                      >
-                        <CreditCard className="h-6 w-6 mb-1" />
-                        <span>Credit/Debit Card</span>
-                      </Button>
-                    </div>
-                  </div>
-
-                  {/* Mobile Money Instructions */}
-                  {renderMobileMoneyInstructions()}
-
-                  {/* Project Selection */}
-                  <div>
-                    <Label htmlFor="project" className="text-gray-900 dark:text-white">
-                      Choose Project
-                    </Label>
-                    <Select value={form.project} onValueChange={(value) => handleInputChange("project", value)}>
-                      <SelectTrigger className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
-                        {projects.map((project) => (
-                          <SelectItem key={project} value={project} className="text-gray-900 dark:text-white">
-                            {project}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <Label htmlFor="message" className="text-gray-900 dark:text-white">
-                      Message (Optional)
-                    </Label>
-                    <Textarea
-                      id="message"
-                      value={form.message}
-                      onChange={(e) => handleInputChange("message", e.target.value)}
-                      placeholder="Share why you're donating or leave a message for our team"
-                      className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
-                    />
-                  </div>
-
-                  {/* Checkboxes */}
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="anonymous"
-                        checked={form.isAnonymous}
-                        onCheckedChange={(checked) => handleInputChange("isAnonymous", checked as boolean)}
-                      />
-                      <Label htmlFor="anonymous" className="text-sm text-gray-900 dark:text-white">
-                        Make this donation anonymous
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="recurring"
-                        checked={form.isRecurring}
-                        onCheckedChange={(checked) => handleInputChange("isRecurring", checked as boolean)}
-                      />
-                      <Label htmlFor="recurring" className="text-sm text-gray-900 dark:text-white">
-                        Make this a monthly recurring donation
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="newsletter"
-                        checked={form.newsletter}
-                        onCheckedChange={(checked) => handleInputChange("newsletter", checked as boolean)}
-                      />
-                      <Label htmlFor="newsletter" className="text-sm text-gray-900 dark:text-white">
-                        Subscribe to our newsletter for updates
-                      </Label>
-                    </div>
-                  </div>
-
-                  {/* Status Messages */}
-                  {paymentStatus.message && (
-                    <Alert
-                      className={`
-                      ${paymentStatus.status === "success" ? "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800" : ""}
-                      ${paymentStatus.status === "error" ? "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800" : ""}
-                      ${paymentStatus.status === "processing" ? "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800" : ""}
-                      ${paymentStatus.status === "pending" ? "bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800" : ""}
-                    `}
-                    >
-                      {getStatusIcon()}
-                      <AlertDescription className="text-gray-900 dark:text-gray-100">
-                        {paymentStatus.message}
-                        {paymentStatus.transactionId && (
-                          <div className="mt-2 text-sm">
-                            <strong>Transaction ID:</strong> {paymentStatus.transactionId}
-                          </div>
-                        )}
-                      </AlertDescription>
-                    </Alert>
-                  )}
-
-                  {/* Submit Button */}
-                  <div className="flex gap-4">
-                    <Button
-                      type="submit"
-                      disabled={paymentStatus.status === "processing" || paymentStatus.status === "pending"}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
-                    >
-                      {paymentStatus.status === "processing" || paymentStatus.status === "pending" ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Processing...
-                        </>
-                      ) : (
-                        <>
-                          <Mail className="mr-2 h-4 w-4" />
-                          Complete Donation & Notify Team
-                        </>
-                      )}
-                    </Button>
-
-                    {(paymentStatus.status === "success" || paymentStatus.status === "error") && (
-                      <Button
-                        type="button"
-                        variant="outline"
-                        onClick={resetForm}
-                        className="border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-transparent"
-                      >
-                        New Donation
-                      </Button>
-                    )}
-
-                    {paymentStatus.status === "error" && form.paymentMethod === "mobile-money" && (
-                      <Button
-                        type="button"
-                        variant="outline"
-                        onClick={handleMobileMoneyPayment}
-                        className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white bg-transparent"
-                      >
-                        Try Again
-                      </Button>
-                    )}
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Make a Donation</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Your support helps us transform lives and communities across Ghana
+            </p>
           </div>
 
-          {/* Donation Impact Sidebar */}
-          <div className="space-y-6">
-            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-              <CardHeader>
-                <CardTitle className="text-gray-900 dark:text-white">Your Impact</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">GH₵{form.amount || "0"}</div>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Your donation amount</p>
-                </div>
-
-                {form.amount && Number.parseFloat(form.amount) > 0 && (
-                  <div className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
-                    <div className="flex justify-between">
-                      <span>School supplies for:</span>
-                      <span className="font-semibold text-gray-900 dark:text-white">
-                        {Math.floor(Number.parseFloat(form.amount) / 25)} children
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Meals provided:</span>
-                      <span className="font-semibold text-gray-900 dark:text-white">
-                        {Math.floor(Number.parseFloat(form.amount) / 5)} meals
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Medical checkups:</span>
-                      <span className="font-semibold text-gray-900 dark:text-white">
-                        {Math.floor(Number.parseFloat(form.amount) / 50)} checkups
-                      </span>
-                    </div>
+          {paymentStatus.message && (
+            <Alert className={`mb-6 ${paymentStatus.status === "success" ? "border-green-500" : "border-red-500"}`}>
+              {getStatusIcon()}
+              <AlertDescription className={paymentStatus.status === "success" ? "text-green-700" : "text-red-700"}>
+                {paymentStatus.message}
+                {paymentStatus.transactionId && (
+                  <div className="mt-2 text-sm">
+                    <strong>Transaction ID:</strong> {paymentStatus.transactionId}
                   </div>
                 )}
-              </CardContent>
-            </Card>
+              </AlertDescription>
+            </Alert>
+          )}
 
-            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-              <CardHeader>
-                <CardTitle className="text-gray-900 dark:text-white">Why Donate?</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
-                <div className="flex items-start">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>100% of donations go directly to programs</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Tax-deductible receipts provided</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Regular impact reports sent to donors</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Secure and encrypted payment processing</span>
-                </div>
-              </CardContent>
-            </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Choose Payment Method</CardTitle>
+              <CardDescription>Select how you would like to donate</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <Button
+                  type="button"
+                  variant={form.paymentMethod === "mobile" ? "default" : "outline"}
+                  onClick={() => handleInputChange("paymentMethod", "mobile")}
+                  className="h-24 flex flex-col gap-2"
+                >
+                  <Smartphone className="h-6 w-6" />
+                  <span>Mobile Money</span>
+                </Button>
+                <Button
+                  type="button"
+                  variant={form.paymentMethod === "card" ? "default" : "outline"}
+                  onClick={() => handleInputChange("paymentMethod", "card")}
+                  className="h-24 flex flex-col gap-2"
+                >
+                  <CreditCard className="h-6 w-6" />
+                  <span>Card Payment</span>
+                </Button>
+                <Button
+                  type="button"
+                  variant={form.paymentMethod === "crypto" ? "default" : "outline"}
+                  onClick={() => handleInputChange("paymentMethod", "crypto")}
+                  className="h-24 flex flex-col gap-2"
+                >
+                  <CreditCard className="h-6 w-6" />
+                  <span>Cryptocurrency</span>
+                </Button>
+              </div>
 
-            <Card className="bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
-              <CardContent className="pt-6">
-                <div className="text-center">
-                  <Wifi className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Need Help?</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                    Having trouble with your donation? Contact our support team.
-                  </p>
-                  <div className="space-y-1 text-sm text-gray-600 dark:text-gray-300">
-                    <div>📞 +233597399216</div>
-                    <div>📧 betterdreamfoundationghana@gmail.com</div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="amount">Donation Amount (GHS)</Label>
+                  <Input
+                    id="amount"
+                    type="number"
+                    placeholder="Enter amount"
+                    value={form.amount}
+                    onChange={(e) => handleInputChange("amount", e.target.value)}
+                    min="1"
+                    required
+                  />
+                  <div className="flex gap-2 flex-wrap">
+                    {predefinedAmounts.map((preset) => (
+                      <Button
+                        key={preset}
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleInputChange("amount", preset)}
+                      >
+                        GHS {preset}
+                      </Button>
+                    ))}
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+
+                <div className="space-y-2">
+                  <Label htmlFor="donorName">Full Name</Label>
+                  <Input
+                    id="donorName"
+                    placeholder="Enter your name"
+                    value={form.donorName}
+                    onChange={(e) => handleInputChange("donorName", e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email Address</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    value={form.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    required
+                  />
+                </div>
+
+                {form.paymentMethod === "mobile" && (
+                  <>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Phone Number</Label>
+                      <Input
+                        id="phone"
+                        placeholder="e.g., 0241234567"
+                        value={form.phone}
+                        onChange={(e) => handleInputChange("phone", e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="network">Mobile Network</Label>
+                      <select
+                        id="network"
+                        className="w-full border rounded-md p-2"
+                        value={selectedProvider}
+                        onChange={(e) => setSelectedProvider(e.target.value)}
+                        required
+                      >
+                        <option value="">Select Network</option>
+                        <option value="MTN">MTN Mobile Money</option>
+                        <option value="Vodafone">Vodafone Cash</option>
+                        <option value="AirtelTigo">AirtelTigo Money</option>
+                      </select>
+                    </div>
+                  </>
+                )}
+
+                <div className="space-y-2">
+                  <Label htmlFor="message">Message (Optional)</Label>
+                  <Textarea
+                    id="message"
+                    placeholder="Leave a message"
+                    rows={4}
+                    value={form.message}
+                    onChange={(e) => handleInputChange("message", e.target.value)}
+                  />
+                </div>
+
+                {renderMobileMoneyInstructions()}
+
+                <Button
+                  type="submit"
+                  className="w-full"
+                  size="lg"
+                  disabled={paymentStatus.status === "processing" || paymentStatus.status === "pending"}
+                >
+                  {paymentStatus.status === "processing" || paymentStatus.status === "pending"
+                    ? "Processing..."
+                    : `Donate GHS ${form.amount || "0"}`}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+
+          <div className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+            <p>Better Dream Foundation Ghana is a registered non-profit organization.</p>
+            <p className="mt-2">All donations are tax-deductible and go directly to supporting our programs.</p>
           </div>
         </div>
       </div>

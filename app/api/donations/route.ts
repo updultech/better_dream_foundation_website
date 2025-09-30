@@ -1,57 +1,77 @@
-import { type NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 
-interface DonationData {
-  firstName: string
-  lastName: string
-  email: string
-  phone?: string
+// Mark this route as dynamic to prevent static generation
+export const dynamic = "force-dynamic"
+export const runtime = "edge"
+
+interface Donation {
+  id: string
+  donorName: string
   amount: number
   currency: string
+  date: string
+  status: string
   paymentMethod: string
-  project?: string
-  message?: string
-  transactionId?: string
-  anonymous?: boolean
 }
 
-export async function POST(request: NextRequest) {
+export async function GET(request: Request) {
   try {
-    const donationData: DonationData = await request.json()
+    const { searchParams } = new URL(request.url)
+    const donorEmail = searchParams.get("email")
+
+    if (!donorEmail) {
+      return NextResponse.json({ error: "Email is required" }, { status: 400 })
+    }
+
+    // In production, fetch from database
+    // For now, return mock data
+    const donations: Donation[] = [
+      {
+        id: "DON-001",
+        donorName: "Sample Donor",
+        amount: 100,
+        currency: "GHS",
+        date: new Date().toISOString(),
+        status: "completed",
+        paymentMethod: "Mobile Money",
+      },
+    ]
+
+    return NextResponse.json({ donations })
+  } catch (error) {
+    console.error("Donations fetch error:", error)
+    return NextResponse.json({ error: "Failed to fetch donations" }, { status: 500 })
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json()
+    const { donorName, donorEmail, amount, currency, paymentMethod, transactionId } = body
 
     // Validate required fields
-    if (!donationData.firstName || !donationData.lastName || !donationData.email || !donationData.amount) {
-      return NextResponse.json({ success: false, message: "Missing required fields" }, { status: 400 })
+    if (!donorName || !donorEmail || !amount || !paymentMethod) {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    // Generate donation ID
-    const donationId = `DON-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`
-
-    // Create donation record (in production, save to database)
-    const donation = {
-      id: donationId,
-      ...donationData,
+    // In production, save to database
+    const donation: Donation = {
+      id: `DON-${Date.now()}`,
+      donorName,
+      amount,
+      currency: currency || "GHS",
+      date: new Date().toISOString(),
       status: "completed",
-      createdAt: new Date().toISOString(),
-      receiptNumber: `REC-${Date.now()}`,
+      paymentMethod,
     }
-
-    console.log("Donation Record Created:", donation)
-
-    // In production, you would:
-    // 1. Save to database
-    // 2. Send confirmation email
-    // 3. Generate tax receipt
-    // 4. Update donor profile
-    // 5. Trigger thank you workflows
 
     return NextResponse.json({
       success: true,
-      donationId,
-      receiptNumber: donation.receiptNumber,
+      donation,
       message: "Donation recorded successfully",
     })
   } catch (error) {
-    console.error("Donation API Error:", error)
-    return NextResponse.json({ success: false, message: "Failed to process donation" }, { status: 500 })
+    console.error("Donation creation error:", error)
+    return NextResponse.json({ error: "Failed to record donation" }, { status: 500 })
   }
 }
