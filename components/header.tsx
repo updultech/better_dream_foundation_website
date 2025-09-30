@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, Sun, Moon } from "lucide-react"
 
-export default function Header() {
+export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
@@ -51,7 +51,6 @@ export default function Header() {
     <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <Image
               src="/images/logo.jpg"
@@ -63,7 +62,6 @@ export default function Header() {
             <span className="text-xl font-bold text-gray-900 dark:text-white">Better Dream Foundation Ghana</span>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
@@ -76,7 +74,6 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop Actions */}
           <div className="hidden lg:flex items-center space-x-4">
             <Button
               variant="ghost"
@@ -92,7 +89,6 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile Menu */}
           <div className="lg:hidden flex items-center space-x-2">
             <Button
               variant="ghost"

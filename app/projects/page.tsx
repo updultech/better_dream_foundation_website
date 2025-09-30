@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { BookOpen, Heart, Globe, Users, Handshake, Target, MapPin, Calendar } from "lucide-react"
+import { BookOpen, Heart, Globe, Users, Target, MapPin, Calendar } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import type { Metadata } from "next"
@@ -17,7 +17,7 @@ const projects = [
     id: 1,
     title: "Digital Learning Centers",
     category: "Education",
-    location: "Tamale,Ghana",
+    location: "Tamale, Ghana",
     status: "Active",
     description:
       "Establishing computer labs and digital literacy programs in rural schools to bridge the digital divide and prepare students for the modern economy.",
@@ -31,7 +31,7 @@ const projects = [
     id: 2,
     title: "Mobile Health Clinics",
     category: "Healthcare",
-    location: "Kumasi,Ghana",
+    location: "Kumasi, Ghana",
     status: "Active",
     description:
       "Bringing essential healthcare services to remote villages through mobile clinics staffed with qualified medical professionals.",
@@ -59,21 +59,21 @@ const projects = [
     id: 4,
     title: "Women's Empowerment Program",
     category: "Women Empowerment",
-    location: "Konongo,Ghana",
+    location: "Konongo, Ghana",
     status: "Active",
     description:
       "Providing vocational training, microfinance opportunities, and leadership development for women in rural communities.",
     impact: "1,200 women empowered",
     duration: "2023 - 2026",
     image: "/images/womens-empowerment-program.jpg",
-    icon: Handshake,
+    icon: Users,
     color: "purple",
   },
   {
     id: 5,
     title: "Youth Leadership Academy",
     category: "Community Development",
-    location: "Daboya,Ghana",
+    location: "Daboya, Ghana",
     status: "Active",
     description:
       "Training young leaders to become change agents in their communities through leadership skills and civic engagement programs.",
@@ -111,8 +111,7 @@ const categories = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
@@ -125,31 +124,29 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Impact Stats */}
       <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">200+</div>
+              <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">100+</div>
               <div className="text-gray-600 dark:text-gray-300">Projects Completed</div>
             </div>
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">15</div>
-              <div className="text-gray-600 dark:text-gray-300">Regions</div>
+              <div className="text-gray-600 dark:text-gray-300">Regions Serving</div>
             </div>
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">500+</div>
               <div className="text-gray-600 dark:text-gray-300">Lives Impacted</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">$1M+</div>
-              <div className="text-gray-600 dark:text-gray-300">Funds Deployed</div>
+              <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">100+</div>
+              <div className="text-gray-600 dark:text-gray-300">Volunteers</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Project Categories */}
       <section className="py-8 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-4 justify-center">
@@ -157,7 +154,7 @@ export default function ProjectsPage() {
               <Button
                 key={category.name}
                 variant="outline"
-                className="hover:bg-blue-600 hover:text-white bg-transparent"
+                className="hover:bg-blue-600 hover:text-white bg-transparent dark:bg-transparent dark:text-gray-300 dark:border-gray-600 dark:hover:bg-blue-600 dark:hover:text-white"
               >
                 {category.name} ({category.count})
               </Button>
@@ -166,14 +163,16 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Projects Grid */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => {
               const IconComponent = project.icon
               return (
-                <Card key={project.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <Card
+                  key={project.id}
+                  className="overflow-hidden hover:shadow-lg transition-shadow dark:bg-gray-800 dark:border-gray-700"
+                >
                   <div className="relative">
                     <Image
                       src={project.image || "/placeholder.svg"}
@@ -191,7 +190,7 @@ export default function ProjectsPage() {
                               ? "secondary"
                               : "outline"
                         }
-                        className="bg-white/90 text-gray-900"
+                        className="bg-white/90 text-gray-900 dark:bg-gray-800/90 dark:text-gray-100"
                       >
                         {project.status}
                       </Badge>
@@ -201,14 +200,42 @@ export default function ProjectsPage() {
                   <CardContent className="p-6">
                     <div className="flex items-center mb-3">
                       <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 bg-${project.color}-100 dark:bg-${project.color}-900`}
+                        className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 ${
+                          project.color === "blue"
+                            ? "bg-blue-100 dark:bg-blue-900"
+                            : project.color === "red"
+                              ? "bg-red-100 dark:bg-red-900"
+                              : project.color === "green"
+                                ? "bg-green-100 dark:bg-green-900"
+                                : project.color === "purple"
+                                  ? "bg-purple-100 dark:bg-purple-900"
+                                  : project.color === "yellow"
+                                    ? "bg-yellow-100 dark:bg-yellow-900"
+                                    : "bg-orange-100 dark:bg-orange-900"
+                        }`}
                       >
-                        <IconComponent className={`h-4 w-4 text-${project.color}-600`} />
+                        <IconComponent
+                          className={`h-4 w-4 ${
+                            project.color === "blue"
+                              ? "text-blue-600"
+                              : project.color === "red"
+                                ? "text-red-600"
+                                : project.color === "green"
+                                  ? "text-green-600"
+                                  : project.color === "purple"
+                                    ? "text-purple-600"
+                                    : project.color === "yellow"
+                                      ? "text-yellow-600"
+                                      : "text-orange-600"
+                          }`}
+                        />
                       </div>
-                      <Badge variant="outline">{project.category}</Badge>
+                      <Badge variant="outline" className="dark:border-gray-600 dark:text-gray-300">
+                        {project.category}
+                      </Badge>
                     </div>
 
-                    <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+                    <h3 className="text-xl font-semibold mb-3 dark:text-white">{project.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{project.description}</p>
 
                     <div className="space-y-2 mb-4">
@@ -222,14 +249,14 @@ export default function ProjectsPage() {
                       </div>
                     </div>
 
-                    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 mb-4">
+                    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 mb-4">
                       <div className="text-sm font-medium text-blue-600 dark:text-blue-400">Impact</div>
                       <div className="text-sm text-gray-600 dark:text-gray-300">{project.impact}</div>
                     </div>
 
                     <Link
                       href={`/projects/${project.title.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="text-blue-600 hover:underline"
+                      className="text-blue-600 hover:underline dark:text-blue-400"
                     >
                       Learn more →
                     </Link>
@@ -241,7 +268,6 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="py-20 bg-gradient-to-r from-yellow-400 to-yellow-500">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-6">Want to Support Our Projects?</h2>

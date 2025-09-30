@@ -386,7 +386,7 @@ export default function AcademyPage() {
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <Phone className="h-5 w-5" />
-                <span>+233 XX XXX XXXX</span>
+                <span>+233597399216</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <Mail className="h-5 w-5" />
