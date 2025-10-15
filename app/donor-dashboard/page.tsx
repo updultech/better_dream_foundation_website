@@ -24,7 +24,6 @@ export default function DonorDashboard() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Check if user is logged in
     const storedEmail = localStorage.getItem("donorEmail")
     const storedName = localStorage.getItem("donorName")
 
@@ -35,7 +34,6 @@ export default function DonorDashboard() {
 
     setDonorName(storedName || "Donor")
 
-    // Load donations from localStorage or show empty state
     const storedDonations = localStorage.getItem("donorDonations")
     if (storedDonations) {
       try {
@@ -71,7 +69,6 @@ export default function DonorDashboard() {
   return (
     <div className="min-h-screen bg-background py-12 px-4">
       <div className="container mx-auto max-w-6xl">
-        {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-4xl font-bold">Welcome back, {donorName}!</h1>
@@ -83,7 +80,6 @@ export default function DonorDashboard() {
           </Button>
         </div>
 
-        {/* Info Alert */}
         <Alert className="mb-6">
           <Info className="h-4 w-4" />
           <AlertDescription>
@@ -92,7 +88,6 @@ export default function DonorDashboard() {
           </AlertDescription>
         </Alert>
 
-        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -130,7 +125,6 @@ export default function DonorDashboard() {
           </Card>
         </div>
 
-        {/* Donation History */}
         <Card>
           <CardHeader>
             <CardTitle>Donation History</CardTitle>
@@ -169,7 +163,6 @@ export default function DonorDashboard() {
           </CardContent>
         </Card>
 
-        {/* Quick Actions */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
           <Card>
             <CardHeader>
