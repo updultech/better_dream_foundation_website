@@ -35,6 +35,7 @@ const categoryColors: { [key: string]: string } = {
 export default function NewsPage() {
   const [news, setNews] = useState<NewsArticle[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [filteredNews, setFilteredNews] = useState<NewsArticle[]>([])
 
@@ -42,18 +43,26 @@ export default function NewsPage() {
     // Fetch initial news
     const fetchNews = async () => {
       try {
-        const { data, error } = await supabase
+        setError(null)
+        const { data, error: fetchError } = await supabase
           .from('news')
           .select('*')
           .eq('published', true)
           .order('featured', { ascending: false })
           .order('published_at', { ascending: false })
 
-        if (error) throw error
+        if (fetchError) {
+          console.error('[v0] Database error:', fetchError)
+          setError(fetchError.message)
+          return
+        }
+        console.log('[v0] News loaded:', data?.length || 0, 'articles')
         setNews(data || [])
         setFilteredNews(data || [])
-      } catch (error) {
-        console.error('Error fetching news:', error)
+      } catch (err) {
+        const errorMsg = err instanceof Error ? err.message : 'Unknown error fetching news'
+        console.error('[v0] Error:', errorMsg)
+        setError(errorMsg)
       } finally {
         setLoading(false)
       }
@@ -73,23 +82,24 @@ export default function NewsPage() {
           filter: 'published=eq.true',
         },
         (payload) => {
+          console.log('[v0] Real-time update:', payload.eventType)
           if (payload.eventType === 'INSERT') {
             setNews((prev) => [payload.new as NewsArticle, ...prev])
             setFilteredNews((prev) => [payload.new as NewsArticle, ...prev])
           } else if (payload.eventType === 'UPDATE') {
             setNews((prev) =>
               prev.map((item) =>
-                item.id === payload.new.id ? (payload.new as NewsArticle) : item
+                item.id === (payload.new as NewsArticle).id ? (payload.new as NewsArticle) : item
               )
             )
             setFilteredNews((prev) =>
               prev.map((item) =>
-                item.id === payload.new.id ? (payload.new as NewsArticle) : item
+                item.id === (payload.new as NewsArticle).id ? (payload.new as NewsArticle) : item
               )
             )
           } else if (payload.eventType === 'DELETE') {
-            setNews((prev) => prev.filter((item) => item.id !== payload.old.id))
-            setFilteredNews((prev) => prev.filter((item) => item.id !== payload.old.id))
+            setNews((prev) => prev.filter((item) => item.id !== (payload.old as NewsArticle).id))
+            setFilteredNews((prev) => prev.filter((item) => item.id !== (payload.old as NewsArticle).id))
           }
         }
       )
@@ -121,6 +131,25 @@ export default function NewsPage() {
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400">Loading news...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+        <div className="text-center max-w-md">
+          <div className="bg-red-100 dark:bg-red-900 rounded-lg p-6 mb-4">
+            <p className="text-red-800 dark:text-red-200 font-semibold">Unable to Load News</p>
+            <p className="text-red-700 dark:text-red-300 text-sm mt-2">{error}</p>
+          </div>
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+          >
+            Try Again
+          </button>
         </div>
       </div>
     )
