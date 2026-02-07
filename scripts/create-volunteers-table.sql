@@ -21,22 +21,13 @@ CREATE INDEX IF NOT EXISTS volunteers_created_at_idx ON public.volunteers(create
 -- Enable RLS
 ALTER TABLE public.volunteers ENABLE ROW LEVEL SECURITY;
 
--- Create policy: Service role can manage all volunteers
-CREATE POLICY "Service role can manage all volunteers" ON public.volunteers
-  AS (SELECT) USING (true);
-
--- Create policy: Service role can insert volunteers
-CREATE POLICY "Service role can insert volunteers" ON public.volunteers
-  AS (INSERT) WITH CHECK (true);
-
--- Create policy: Allow public to insert (for form submissions)
+-- Create policy: Allow public to insert volunteers (for form submissions)
 CREATE POLICY "Allow public insert" ON public.volunteers
-  AS (INSERT) WITH CHECK (true);
+  FOR INSERT WITH CHECK (true);
 
--- Create policy: Only service role can view all
-DROP POLICY IF EXISTS "Service role can manage all volunteers" ON public.volunteers;
-CREATE POLICY "Service role can manage all volunteers" ON public.volunteers
-  FOR ALL USING (auth.role() = 'service_role');
+-- Create policy: Allow authenticated users to view all volunteers
+CREATE POLICY "Authenticated can view all" ON public.volunteers
+  FOR SELECT USING (auth.role() = 'authenticated');
 
 -- Insert sample volunteer for testing
 INSERT INTO public.volunteers (first_name, last_name, email, phone, interest, availability, skills, status)
