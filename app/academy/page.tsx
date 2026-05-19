@@ -27,7 +27,7 @@ export default function AcademyPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-green-600 text-white py-20">
+      <section className="relative bg-blue-600 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-6">
@@ -61,13 +61,13 @@ export default function AcademyPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">About BDF Ghana Academy</h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-green-500 mx-auto mb-6"></div>
+              <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
             </div>
 
-            <Card className="bg-gradient-to-br from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 border-blue-200 dark:border-blue-800">
+            <Card className="bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
               <CardContent className="p-8">
                 <div className="flex items-start gap-6">
-                  <div className="bg-gradient-to-br from-blue-600 to-green-600 p-4 rounded-full flex-shrink-0">
+                  <div className="bg-blue-600 p-4 rounded-full flex-shrink-0">
                     <GraduationCap className="h-8 w-8 text-white" />
                   </div>
                   <div className="space-y-4">
@@ -123,7 +123,7 @@ export default function AcademyPage() {
             <Card className="hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-lg">
+                  <div className="bg-blue-600 p-3 rounded-lg">
                     <Globe className="h-8 w-8 text-white" />
                   </div>
                   <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">6 Months</Badge>
@@ -167,7 +167,7 @@ export default function AcademyPage() {
             <Card className="hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="bg-gradient-to-br from-green-600 to-green-700 p-3 rounded-lg">
+                  <div className="bg-green-600 p-3 rounded-lg">
                     <Users className="h-8 w-8 text-white" />
                   </div>
                   <Badge className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">4 Months</Badge>
@@ -211,7 +211,7 @@ export default function AcademyPage() {
             <Card className="hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="bg-gradient-to-br from-yellow-600 to-yellow-700 p-3 rounded-lg">
+                  <div className="bg-yellow-600 p-3 rounded-lg">
                     <Award className="h-8 w-8 text-white" />
                   </div>
                   <Badge className="bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
@@ -257,7 +257,7 @@ export default function AcademyPage() {
             <Card className="hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="bg-gradient-to-br from-purple-600 to-purple-700 p-3 rounded-lg">
+                  <div className="bg-purple-600 p-3 rounded-lg">
                     <TrendingUp className="h-8 w-8 text-white" />
                   </div>
                   <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300">
@@ -313,7 +313,7 @@ export default function AcademyPage() {
           <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
-                <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <div className="bg-blue-600 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                   <Globe className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">International Diplomacy</h3>
@@ -325,7 +325,7 @@ export default function AcademyPage() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
-                <div className="bg-gradient-to-br from-green-600 to-green-700 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <div className="bg-green-600 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                   <Users className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Political Leadership</h3>
@@ -337,7 +337,7 @@ export default function AcademyPage() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
-                <div className="bg-gradient-to-br from-yellow-600 to-yellow-700 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <div className="bg-yellow-600 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                   <Award className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Personal Branding</h3>
@@ -349,7 +349,7 @@ export default function AcademyPage() {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
-                <div className="bg-gradient-to-br from-purple-600 to-purple-700 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <div className="bg-purple-600 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                   <TrendingUp className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Global Trade</h3>
@@ -376,7 +376,7 @@ export default function AcademyPage() {
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center text-center">
-                  <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-4 rounded-full mb-4">
+                  <div className="bg-blue-600 p-4 rounded-full mb-4">
                     <User className="h-8 w-8 text-white" />
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 italic mb-4">
@@ -499,7 +499,7 @@ export default function AcademyPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-green-600 text-white">
+      <section className="py-16 bg-blue-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Political Career?</h2>

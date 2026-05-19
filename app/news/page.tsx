@@ -127,7 +127,7 @@ export default function NewsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400">Loading news...</p>
@@ -138,7 +138,7 @@ export default function NewsPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center max-w-md">
           <div className="bg-red-100 dark:bg-red-900 rounded-lg p-6 mb-4">
             <p className="text-red-800 dark:text-red-200 font-semibold">Unable to Load News</p>
@@ -156,9 +156,9 @@ export default function NewsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <main className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 text-white py-12 sm:py-16">
+      <section className="bg-blue-600 dark:bg-blue-900 text-white py-12 sm:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">News & Updates</h1>
           <p className="text-lg text-blue-100">
@@ -229,7 +229,7 @@ export default function NewsPage() {
           {/* Sidebar */}
           <div className="space-y-8">
             {/* Live Indicator */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-lg p-4 border-l-4 border-blue-600">
+            <div className="bg-blue-100 dark:bg-blue-900 rounded-lg p-4 border-l-4 border-blue-600">
               <div className="flex items-center gap-2 mb-2">
                 <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
                 <p className="text-sm font-semibold text-blue-900 dark:text-blue-100">Live Updates</p>

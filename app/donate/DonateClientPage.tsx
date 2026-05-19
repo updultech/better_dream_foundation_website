@@ -341,7 +341,7 @@ export default function DonateClientPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-blue-50 to-green-50 dark:from-blue-950 dark:to-green-950">
+            <Card className="bg-blue-50 dark:bg-blue-950">
               <CardHeader>
                 <CardTitle className="text-lg">Your Impact</CardTitle>
               </CardHeader>

@@ -9,8 +9,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900 text-white py-20 lg:py-32">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section className="relative bg-blue-600 dark:bg-blue-900 text-white py-20 lg:py-32">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">

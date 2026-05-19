@@ -112,7 +112,7 @@ const categories = [
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+      <section className="bg-blue-600 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">Our Projects</h1>
@@ -268,7 +268,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-yellow-400 to-yellow-500">
+      <section className="py-20 bg-yellow-400">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-6">Want to Support Our Projects?</h2>
           <p className="text-xl text-blue-800 mb-8 max-w-2xl mx-auto">

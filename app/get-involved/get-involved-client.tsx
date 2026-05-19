@@ -220,7 +220,7 @@ export default function GetInvolvedClient() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+      <section className="bg-blue-600 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">Get Involved</h1>
@@ -428,7 +428,7 @@ export default function GetInvolvedClient() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-yellow-400 to-yellow-500">
+      <section className="py-20 bg-yellow-400">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-6">Ready to Start Your Journey?</h2>
           <p className="text-xl text-blue-800 mb-8 max-w-2xl mx-auto">
