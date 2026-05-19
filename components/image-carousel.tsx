@@ -104,12 +104,12 @@ export default function ImageCarousel() {
                   Transforming lives and building stronger communities through meaningful action and dedicated service across Ghana.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="px-8 py-3 bg-[#1e3a8a] hover:bg-[#1e40af] text-white font-semibold rounded transition-colors duration-300">
+                  <a href="/donate" className="px-8 py-3 bg-[#1e3a8a] hover:bg-[#1e40af] text-white font-semibold rounded transition-colors duration-300 inline-block">
                     Donate Now
-                  </button>
-                  <button className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-[#1e3a8a] font-semibold rounded transition-colors duration-300">
+                  </a>
+                  <a href="/get-involved" className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-[#1e3a8a] font-semibold rounded transition-colors duration-300 inline-block">
                     Volunteer With Us
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
