@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Heart, Users, BookOpen, Stethoscope, Home, Calendar, ArrowRight } from "lucide-react"
+import ImageCarousel from "@/components/image-carousel"
 
 export default function HomePage() {
   return (
@@ -39,6 +40,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Image Carousel */}
+      <ImageCarousel />
 
       {/* Impact Stats */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
