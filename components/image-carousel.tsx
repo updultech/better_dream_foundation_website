@@ -105,10 +105,10 @@ export default function ImageCarousel() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="px-8 py-3 bg-[#1e3a8a] hover:bg-[#1e40af] text-white font-semibold rounded transition-colors duration-300">
-                    Get Support
+                    Donate Now
                   </button>
                   <button className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-[#1e3a8a] font-semibold rounded transition-colors duration-300">
-                    Support Our Work
+                    Volunteer With Us
                   </button>
                 </div>
               </div>
