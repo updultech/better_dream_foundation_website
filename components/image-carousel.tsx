@@ -68,7 +68,7 @@ export default function ImageCarousel() {
   }
 
   return (
-    <section className="relative w-full bg-[#1a4d3e] dark:bg-[#0f2f28] py-0">
+    <section className="relative w-full bg-white dark:bg-gray-900 py-0">
       <div className="relative w-full max-w-full">
         {/* Main Carousel Container */}
         <div className="relative w-full min-h-screen md:min-h-[600px] overflow-hidden">
@@ -96,7 +96,7 @@ export default function ImageCarousel() {
           {/* Content Overlay - Left Side */}
           <div className="absolute inset-0 flex flex-col justify-center items-start z-10">
             <div className="container mx-auto px-6 md:px-12">
-              <div className="max-w-2xl">
+                <div className="max-w-2xl">
                 <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
                   {carouselImages[currentIndex].title}
                 </h2>
@@ -104,10 +104,10 @@ export default function ImageCarousel() {
                   Transforming lives and building stronger communities through meaningful action and dedicated service across Ghana.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="px-8 py-3 bg-[#c1443e] hover:bg-[#a93835] text-white font-semibold rounded transition-colors duration-300">
+                  <button className="px-8 py-3 bg-[#1e3a8a] hover:bg-[#1e40af] text-white font-semibold rounded transition-colors duration-300">
                     Get Support
                   </button>
-                  <button className="px-8 py-3 border-2 border-[#d4a574] text-[#d4a574] hover:bg-[#d4a574] hover:text-[#1a4d3e] font-semibold rounded transition-colors duration-300">
+                  <button className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-[#1e3a8a] font-semibold rounded transition-colors duration-300">
                     Support Our Work
                   </button>
                 </div>
@@ -118,7 +118,7 @@ export default function ImageCarousel() {
           {/* Navigation Buttons */}
           <button
             onClick={goToPrevious}
-            className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#1a4d3e] rounded-full p-2 transition-all duration-200 hover:scale-110 shadow-lg"
+            className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#1e3a8a] rounded-full p-2 transition-all duration-200 hover:scale-110 shadow-lg"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -126,7 +126,7 @@ export default function ImageCarousel() {
 
           <button
             onClick={goToNext}
-            className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#1a4d3e] rounded-full p-2 transition-all duration-200 hover:scale-110 shadow-lg"
+            className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#1e3a8a] rounded-full p-2 transition-all duration-200 hover:scale-110 shadow-lg"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />
