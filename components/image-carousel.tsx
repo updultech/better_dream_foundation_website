@@ -47,7 +47,7 @@ export default function ImageCarousel() {
 
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % carouselImages.length)
-    }, 5000)
+    }, 4000)
 
     return () => clearInterval(timer)
   }, [isAutoplay])
@@ -64,89 +64,89 @@ export default function ImageCarousel() {
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index)
-    setIsAutoplay(false)
+    setIsAutoplay(true)
   }
 
   return (
-    <section className="relative bg-white dark:bg-gray-800 py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Our Impact in Action
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            See the real stories and transformations happening across Ghana through our programs
-          </p>
-        </div>
+    <section className="relative w-full bg-[#1a4d3e] dark:bg-[#0f2f28] py-0">
+      <div className="relative w-full max-w-full">
+        {/* Main Carousel Container */}
+        <div className="relative w-full min-h-screen md:min-h-[600px] overflow-hidden">
+          {carouselImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1200 ease-in-out ${
+                index === currentIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover"
+                priority={index === currentIndex}
+                quality={90}
+              />
+            </div>
+          ))}
 
-        {/* Main Carousel */}
-        <div className="relative max-w-5xl mx-auto">
-          <div className="relative w-full aspect-video overflow-hidden rounded-2xl shadow-2xl bg-gray-200">
-            {carouselImages.map((image, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  index === currentIndex ? 'opacity-100' : 'opacity-0'
-                }`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover"
-                  priority={index === currentIndex}
-                  quality={90}
-                />
-              </div>
-            ))}
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/40" />
 
-            {/* Dark overlay with title */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-              <div className="w-full p-8">
-                <h3 className="text-3xl md:text-4xl font-bold text-white">
+          {/* Content Overlay - Left Side */}
+          <div className="absolute inset-0 flex flex-col justify-center items-start z-10">
+            <div className="container mx-auto px-6 md:px-12">
+              <div className="max-w-2xl">
+                <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
                   {carouselImages[currentIndex].title}
-                </h3>
+                </h2>
+                <p className="text-lg md:text-xl text-gray-100 mb-8 leading-relaxed">
+                  Transforming lives and building stronger communities through meaningful action and dedicated service across Ghana.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button className="px-8 py-3 bg-[#c1443e] hover:bg-[#a93835] text-white font-semibold rounded transition-colors duration-300">
+                    Get Support
+                  </button>
+                  <button className="px-8 py-3 border-2 border-[#d4a574] text-[#d4a574] hover:bg-[#d4a574] hover:text-[#1a4d3e] font-semibold rounded transition-colors duration-300">
+                    Support Our Work
+                  </button>
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* Navigation Buttons */}
+          {/* Navigation Buttons */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#1a4d3e] rounded-full p-2 transition-all duration-200 hover:scale-110 shadow-lg"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={goToNext}
+            className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#1a4d3e] rounded-full p-2 transition-all duration-200 hover:scale-110 shadow-lg"
+            aria-label="Next image"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
+
+        {/* Dot Indicators at Bottom */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex justify-center items-center gap-3">
+          {carouselImages.map((_, index) => (
             <button
-              onClick={goToPrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-900 rounded-full p-3 transition-all duration-200 hover:scale-110"
-              aria-label="Previous image"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
-            <button
-              onClick={goToNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-900 rounded-full p-3 transition-all duration-200 hover:scale-110"
-              aria-label="Next image"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Dot Indicators */}
-          <div className="flex justify-center items-center gap-3 mt-8">
-            {carouselImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  index === currentIndex
-                    ? 'bg-blue-600 w-3 h-3'
-                    : 'bg-gray-400 hover:bg-gray-500 w-2 h-2'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* Autoplay Indicator */}
-          <div className="text-center mt-6 text-gray-600 dark:text-gray-400 text-sm">
-            {isAutoplay ? 'Autoplay: ON' : 'Autoplay: OFF'}
-          </div>
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`transition-all duration-300 rounded-full border-2 ${
+                index === currentIndex
+                  ? 'bg-white border-white w-4 h-4'
+                  : 'bg-transparent border-white/60 hover:border-white w-3 h-3'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

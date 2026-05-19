@@ -10,13 +10,13 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-blue-600 dark:bg-blue-900 text-white py-20 lg:py-32">
+      <section className="relative bg-[#1a4d3e] dark:bg-[#0f2f28] text-white py-20 lg:py-32">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Building Better Dreams for <span className="text-yellow-400">Ghana's Future</span>
+              Building Better Dreams for <span className="text-[#d4a574]">Ghana's Future</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
+            <p className="text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed">
               Empowering communities through education, healthcare, and sustainable development across Ghana. Together,
               we're creating lasting change that transforms lives and builds stronger communities.
             </p>
@@ -24,7 +24,7 @@ export default function HomePage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-3"
+                className="bg-[#c1443e] hover:bg-[#a93835] text-white font-semibold px-8 py-3"
               >
                 <Link href="/donate">Donate Now</Link>
               </Button>
@@ -32,7 +32,7 @@ export default function HomePage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-blue-800 px-8 py-3 bg-transparent"
+                className="border-[#d4a574] text-[#d4a574] hover:bg-[#d4a574] hover:text-[#1a4d3e] px-8 py-3 bg-transparent"
               >
                 <Link href="/get-involved">Volunteer With Us</Link>
               </Button>
@@ -49,19 +49,19 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">100+</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#1a4d3e] dark:text-[#d4a574] mb-2">100+</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-green-600 dark:text-green-400 mb-2">15</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#1a4d3e] dark:text-[#d4a574] mb-2">15</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Regions Serving</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-purple-600 dark:text-purple-400 mb-2">100+</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#1a4d3e] dark:text-[#d4a574] mb-2">100+</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Volunteers</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-orange-600 dark:text-orange-400 mb-2">5000+</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#c1443e] dark:text-[#d4a574] mb-2">5000+</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Lives Impacted</div>
             </div>
           </div>
@@ -72,7 +72,7 @@ export default function HomePage() {
       <section className="py-20 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Focus Areas</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1a4d3e] dark:text-white mb-4">Our Focus Areas</h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               We work across multiple sectors to create comprehensive solutions that address the root causes of poverty
               and inequality.
@@ -80,12 +80,12 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:border-t-4 hover:border-[#1a4d3e]">
               <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <BookOpen className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                <div className="w-16 h-16 bg-[#1a4d3e]/10 dark:bg-[#d4a574]/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <BookOpen className="w-8 h-8 text-[#1a4d3e] dark:text-[#d4a574]" />
                 </div>
-                <CardTitle className="text-2xl text-gray-900 dark:text-white">Education</CardTitle>
+                <CardTitle className="text-2xl text-[#1a4d3e] dark:text-white">Education</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
@@ -95,12 +95,12 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:border-t-4 hover:border-[#1a4d3e]">
               <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Stethoscope className="w-8 h-8 text-green-600 dark:text-green-400" />
+                <div className="w-16 h-16 bg-[#1a4d3e]/10 dark:bg-[#d4a574]/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Stethoscope className="w-8 h-8 text-[#1a4d3e] dark:text-[#d4a574]" />
                 </div>
-                <CardTitle className="text-2xl text-gray-900 dark:text-white">Healthcare</CardTitle>
+                <CardTitle className="text-2xl text-[#1a4d3e] dark:text-white">Healthcare</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
@@ -110,12 +110,12 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:border-t-4 hover:border-[#1a4d3e]">
               <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Home className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+                <div className="w-16 h-16 bg-[#1a4d3e]/10 dark:bg-[#d4a574]/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Home className="w-8 h-8 text-[#1a4d3e] dark:text-[#d4a574]" />
                 </div>
-                <CardTitle className="text-2xl text-gray-900 dark:text-white">Community Development</CardTitle>
+                <CardTitle className="text-2xl text-[#1a4d3e] dark:text-white">Community Development</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
