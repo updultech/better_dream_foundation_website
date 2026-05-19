@@ -4,42 +4,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Heart, Users, BookOpen, Stethoscope, Home, Calendar, ArrowRight } from "lucide-react"
-
+import ImageCarousel from "@/components/image-carousel"
 
 export default function HomePage() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative bg-[#1e3a8a] dark:bg-[#1e3a8a] text-white py-20 lg:py-32">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Building Better Dreams for <span className="text-white">Ghana's Future</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed">
-              Empowering communities through education, healthcare, and sustainable development across Ghana. Together,
-              we're creating lasting change that transforms lives and builds stronger communities.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-white hover:bg-gray-100 text-[#1e3a8a] font-semibold px-8 py-3"
-              >
-                <Link href="/donate">Donate Now</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-[#1e3a8a] px-8 py-3 bg-transparent"
-              >
-                <Link href="/get-involved">Volunteer With Us</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Image Carousel */}
+      <ImageCarousel />
 
       {/* Impact Stats */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
