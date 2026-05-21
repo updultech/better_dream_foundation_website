@@ -6,41 +6,42 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Plus, Edit2, Trash2 } from 'lucide-react'
 
-interface News {
+interface TeamMember {
   id: string
-  title: string
-  author: string
+  name: string
+  position: string
+  region: string
   status: string
   created_at: string
 }
 
-export default function NewsPage() {
-  const [news, setNews] = useState<News[]>([])
+export default function TeamPage() {
+  const [team, setTeam] = useState<TeamMember[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetchNews()
+    fetchTeam()
   }, [])
 
-  const fetchNews = async () => {
+  const fetchTeam = async () => {
     try {
-      const response = await fetch('/api/news')
+      const response = await fetch('/api/team')
       const data = await response.json()
-      setNews(data)
+      setTeam(data)
     } catch (error) {
-      console.error('Error fetching news:', error)
+      console.error('Error fetching team:', error)
     } finally {
       setLoading(false)
     }
   }
 
-  const deleteNews = async (id: string) => {
+  const deleteTeam = async (id: string) => {
     if (!confirm('Are you sure?')) return
     try {
-      await fetch(`/api/news/${id}`, { method: 'DELETE' })
-      setNews(news.filter((n) => n.id !== id))
+      await fetch(`/api/team/${id}`, { method: 'DELETE' })
+      setTeam(team.filter((t) => t.id !== id))
     } catch (error) {
-      console.error('Error deleting news:', error)
+      console.error('Error deleting team member:', error)
     }
   }
 
@@ -48,55 +49,54 @@ export default function NewsPage() {
     <div>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">News</h1>
-          <p className="text-gray-600 mt-2">Publish news and updates</p>
+          <h1 className="text-3xl font-bold text-gray-900">Team Profiles</h1>
+          <p className="text-gray-600 mt-2">Manage team members and staff</p>
         </div>
-        <Link href="/admin/news/new">
+        <Link href="/admin/team/new">
           <Button className="bg-[#1e40af] hover:bg-blue-700 text-white">
             <Plus className="w-4 h-4 mr-2" />
-            New Article
+            Add Team Member
           </Button>
         </Link>
       </div>
 
       {loading ? (
         <div className="text-center py-12">
-          <p className="text-gray-500">Loading news...</p>
+          <p className="text-gray-500">Loading team...</p>
         </div>
-      ) : news.length === 0 ? (
+      ) : team.length === 0 ? (
         <Card>
           <CardContent className="py-12 text-center">
-            <p className="text-gray-500 mb-4">No news articles yet</p>
-            <Link href="/admin/news/new">
+            <p className="text-gray-500 mb-4">No team members yet</p>
+            <Link href="/admin/team/new">
               <Button className="bg-[#1e40af] hover:bg-blue-700 text-white">
-                Create first article
+                Add first team member
               </Button>
             </Link>
           </CardContent>
         </Card>
       ) : (
-        <div className="space-y-4">
-          {news.map((item) => (
-            <Card key={item.id}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {team.map((member) => (
+            <Card key={member.id}>
               <CardContent className="p-6">
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3">
-                      <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          item.status === 'published'
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-yellow-100 text-yellow-800'
-                        }`}
-                      >
-                        {item.status}
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-600 mt-2">By {item.author}</p>
+                    <h3 className="text-lg font-semibold text-gray-900">{member.name}</h3>
+                    <p className="text-sm text-[#1e40af] font-medium mt-1">{member.position}</p>
+                    <p className="text-xs text-gray-500 mt-1">{member.region}</p>
+                    <span
+                      className={`inline-block px-3 py-1 rounded-full text-xs font-medium mt-3 ${
+                        member.status === 'active'
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}
+                    >
+                      {member.status}
+                    </span>
                   </div>
                   <div className="flex gap-2">
-                    <Link href={`/admin/news/${item.id}`}>
+                    <Link href={`/admin/team/${member.id}`}>
                       <Button variant="outline" size="sm">
                         <Edit2 className="w-4 h-4" />
                       </Button>
@@ -104,7 +104,7 @@ export default function NewsPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => deleteNews(item.id)}
+                      onClick={() => deleteTeam(member.id)}
                       className="text-red-600"
                     >
                       <Trash2 className="w-4 h-4" />
