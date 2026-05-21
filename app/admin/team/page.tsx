@@ -27,9 +27,10 @@ export default function TeamPage() {
     try {
       const response = await fetch('/api/team')
       const data = await response.json()
-      setTeam(data)
+      setTeam(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error('Error fetching team:', error)
+      setTeam([])
     } finally {
       setLoading(false)
     }

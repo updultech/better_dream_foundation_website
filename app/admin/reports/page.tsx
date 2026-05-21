@@ -27,9 +27,10 @@ export default function ReportsPage() {
     try {
       const response = await fetch('/api/reports')
       const data = await response.json()
-      setReports(data)
+      setReports(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error('Error fetching reports:', error)
+      setReports([])
     } finally {
       setLoading(false)
     }

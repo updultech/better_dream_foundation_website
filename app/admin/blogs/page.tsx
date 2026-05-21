@@ -26,9 +26,10 @@ export default function BlogsPage() {
     try {
       const response = await fetch('/api/blogs')
       const data = await response.json()
-      setBlogs(data)
+      setBlogs(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error('Error fetching blogs:', error)
+      setBlogs([])
     } finally {
       setLoading(false)
     }

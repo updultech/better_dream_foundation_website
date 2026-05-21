@@ -9,11 +9,14 @@ export async function GET() {
       .select('*')
       .order('created_at', { ascending: false })
 
-    if (error) throw error
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json([])
+    }
     return NextResponse.json(data || [])
   } catch (error) {
     console.error('Error fetching news:', error)
-    return NextResponse.json({ error: 'Failed to fetch news' }, { status: 500 })
+    return NextResponse.json([])
   }
 }
 

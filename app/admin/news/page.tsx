@@ -26,9 +26,10 @@ export default function NewsPage() {
     try {
       const response = await fetch('/api/news')
       const data = await response.json()
-      setNews(data)
+      setNews(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error('Error fetching news:', error)
+      setNews([])
     } finally {
       setLoading(false)
     }
