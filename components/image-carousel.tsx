@@ -96,7 +96,7 @@ export default function ImageCarousel() {
           {/* Content Overlay - Left Side */}
           <div className="absolute inset-0 flex flex-col justify-center items-start z-10">
             <div className="container mx-auto px-6 md:px-12">
-                <div className="max-w-2xl">
+              <div className="max-w-2xl">
                 <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
                   {carouselImages[currentIndex].title}
                 </h2>
