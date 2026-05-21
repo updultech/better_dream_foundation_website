@@ -104,10 +104,10 @@ export default function ImageCarousel() {
                   Transforming lives and building stronger communities through meaningful action and dedicated service across Ghana.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="/donate" className="px-8 py-3 bg-[#1e3a8a] hover:bg-[#1e40af] text-white font-semibold rounded transition-colors duration-300 inline-block">
+                  <a href="/donate" className="px-8 py-3 bg-[#1e40af] hover:bg-[#1e40af] text-white font-semibold rounded transition-colors duration-300 inline-block">
                     Donate Now
                   </a>
-                  <a href="/get-involved" className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-[#1e3a8a] font-semibold rounded transition-colors duration-300 inline-block">
+                  <a href="/get-involved" className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-[#1e40af] font-semibold rounded transition-colors duration-300 inline-block">
                     Volunteer With Us
                   </a>
                 </div>
@@ -118,7 +118,7 @@ export default function ImageCarousel() {
           {/* Navigation Buttons */}
           <button
             onClick={goToPrevious}
-            className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#1e3a8a] rounded-full p-2 transition-all duration-200 hover:scale-110 shadow-lg"
+            className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#1e40af] rounded-full p-2 transition-all duration-200 hover:scale-110 shadow-lg"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -126,7 +126,7 @@ export default function ImageCarousel() {
 
           <button
             onClick={goToNext}
-            className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#1e3a8a] rounded-full p-2 transition-all duration-200 hover:scale-110 shadow-lg"
+            className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#1e40af] rounded-full p-2 transition-all duration-200 hover:scale-110 shadow-lg"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />

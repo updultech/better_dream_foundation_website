@@ -17,19 +17,19 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1e3a8a] dark:text-[#60a5fa] mb-2">100+</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#1e40af] dark:text-[#60a5fa] mb-2">100+</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1e3a8a] dark:text-[#60a5fa] mb-2">15</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#1e40af] dark:text-[#60a5fa] mb-2">15</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Regions Serving</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1e3a8a] dark:text-[#60a5fa] mb-2">100+</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#1e40af] dark:text-[#60a5fa] mb-2">100+</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Volunteers</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1e3a8a] dark:text-[#60a5fa] mb-2">5000+</div>
+              <div className="text-4xl md:text-5xl font-bold text-[#1e40af] dark:text-[#60a5fa] mb-2">5000+</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Lives Impacted</div>
             </div>
           </div>
@@ -40,7 +40,7 @@ export default function HomePage() {
       <section className="py-20 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1e3a8a] dark:text-white mb-4">Our Focus Areas</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1e40af] dark:text-white mb-4">Our Focus Areas</h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               We work across multiple sectors to create comprehensive solutions that address the root causes of poverty
               and inequality.
@@ -48,12 +48,12 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:border-t-4 hover:border-[#1e3a8a]">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:border-t-4 hover:border-[#1e40af]">
               <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-[#1e3a8a]/10 dark:bg-[#60a5fa]/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <BookOpen className="w-8 h-8 text-[#1e3a8a] dark:text-[#60a5fa]" />
+                <div className="w-16 h-16 bg-[#1e40af]/10 dark:bg-[#60a5fa]/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <BookOpen className="w-8 h-8 text-[#1e40af] dark:text-[#60a5fa]" />
                 </div>
-                <CardTitle className="text-2xl text-[#1e3a8a] dark:text-white">Education</CardTitle>
+                <CardTitle className="text-2xl text-[#1e40af] dark:text-white">Education</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
@@ -63,12 +63,12 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:border-t-4 hover:border-[#1e3a8a]">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:border-t-4 hover:border-[#1e40af]">
               <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-[#1e3a8a]/10 dark:bg-[#60a5fa]/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Stethoscope className="w-8 h-8 text-[#1e3a8a] dark:text-[#60a5fa]" />
+                <div className="w-16 h-16 bg-[#1e40af]/10 dark:bg-[#60a5fa]/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Stethoscope className="w-8 h-8 text-[#1e40af] dark:text-[#60a5fa]" />
                 </div>
-                <CardTitle className="text-2xl text-[#1e3a8a] dark:text-white">Healthcare</CardTitle>
+                <CardTitle className="text-2xl text-[#1e40af] dark:text-white">Healthcare</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
@@ -78,12 +78,12 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:border-t-4 hover:border-[#1e3a8a]">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:border-t-4 hover:border-[#1e40af]">
               <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-[#1e3a8a]/10 dark:bg-[#60a5fa]/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Home className="w-8 h-8 text-[#1e3a8a] dark:text-[#60a5fa]" />
+                <div className="w-16 h-16 bg-[#1e40af]/10 dark:bg-[#60a5fa]/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Home className="w-8 h-8 text-[#1e40af] dark:text-[#60a5fa]" />
                 </div>
-                <CardTitle className="text-2xl text-[#1e3a8a] dark:text-white">Community Development</CardTitle>
+                <CardTitle className="text-2xl text-[#1e40af] dark:text-white">Community Development</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
@@ -349,7 +349,7 @@ export default function HomePage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-[#1e3a8a] text-white">
+      <section className="py-20 bg-[#1e40af] text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
