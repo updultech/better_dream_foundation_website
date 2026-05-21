@@ -25,9 +25,22 @@ export async function POST(request: NextRequest) {
     const supabase = await createClient()
     const body = await request.json()
 
+    // Sanitize content to remove script tags
+    const sanitizeContent = (content: string) => {
+      return content
+        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+        .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '')
+        .replace(/on\w+\s*=\s*[^\s>]*/gi, '')
+    }
+
+    const sanitizedBody = {
+      ...body,
+      bio: sanitizeContent(body.bio),
+    }
+
     const { data, error } = await supabase
       .from('team_profiles')
-      .insert([body])
+      .insert([sanitizedBody])
       .select()
 
     if (error) throw error
