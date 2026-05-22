@@ -12,25 +12,34 @@ export default function HomePage() {
       {/* Image Carousel */}
       <ImageCarousel />
 
-      {/* Impact Stats */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+      {/* Impact Stats - Enhanced */}
+      <section className="py-20 bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1e40af] dark:text-[#60a5fa] mb-2">100+</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Projects Completed</div>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Impact By The Numbers</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Transforming lives across Ghana through measurable action and community-driven programs</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="text-center p-6 rounded-xl bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="text-5xl md:text-6xl font-bold text-[#1e40af] dark:text-blue-400 mb-2">100<span className="text-3xl">+</span></div>
+              <div className="text-gray-700 dark:text-gray-300 font-semibold text-lg">Projects Completed</div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Across education, healthcare and community</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1e40af] dark:text-[#60a5fa] mb-2">15</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Regions Serving</div>
+            <div className="text-center p-6 rounded-xl bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="text-5xl md:text-6xl font-bold text-[#1e40af] dark:text-blue-400 mb-2">15</div>
+              <div className="text-gray-700 dark:text-gray-300 font-semibold text-lg">Regions Serving</div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Throughout Ghana reaching diverse communities</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1e40af] dark:text-[#60a5fa] mb-2">100+</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Volunteers</div>
+            <div className="text-center p-6 rounded-xl bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="text-5xl md:text-6xl font-bold text-[#1e40af] dark:text-blue-400 mb-2">100<span className="text-3xl">+</span></div>
+              <div className="text-gray-700 dark:text-gray-300 font-semibold text-lg">Active Volunteers</div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Dedicated community champions</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#1e40af] dark:text-[#60a5fa] mb-2">5000+</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Lives Impacted</div>
+            <div className="text-center p-6 rounded-xl bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="text-5xl md:text-6xl font-bold text-[#1e40af] dark:text-blue-400 mb-2">5000<span className="text-3xl">+</span></div>
+              <div className="text-gray-700 dark:text-gray-300 font-semibold text-lg">Lives Impacted</div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Real change in real communities</p>
             </div>
           </div>
         </div>
